@@ -1,0 +1,19 @@
+Admin_report_by_date:  1 day
+Administrator can lookup data collected by
+users (walk reports) from a specific set of dates.
+
+Admin_report_by_surveyor: 1 day
+Administrator can lookup data collected by
+users (walk reports)from a specific Surveyor.
+
+Admin_report_by_coordinates:  1 day
+Administrator can lookup data collected by users
+(walk reports) sorted by LAT and LONG coordinates.
+
+
+Note: We have determined by working with Brianna that these user stories
+are appropriate	for our	first iteration.
+The confirmation email is in client-conf-1.pdf.
+
+
+Agreed to be completed by: 10/14/16

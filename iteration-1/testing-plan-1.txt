@@ -1,0 +1,15 @@
+Our first iteration will involve creating the survey database and
+populating the database with sample data provided by the client.
+Our unit testing will be as follow for each of the user stories:
+
+  * admin_report_by_date: to unit test we will write a sql query
+                          which will provide reports by date.
+
+  * admin_report_by_surveyor: to unit test we will write a sql query
+                              which will provide reports by date.
+
+  * admin_report_by_coordinate: to unit test we will write a sql query
+                                which will provide reports by date.
+
+  Acceptance testing will include running multiple SQL queries to test
+  the functionality of database to generate accurate results. 
