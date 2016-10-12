@@ -3,9 +3,36 @@
 --Guthrie Hayward
 --Abdul Shaikh
 -- CS 458 - Fall 2016
--- last modified: 2016-10-09
+-- last modified: 2016-10-12
 
 spool project-design-out.txt
+
+/*
+  Table name: beach
+  Table contents: names and abbreviations of
+  beaches covered by MMERP.
+*/
+drop table Beaches cascade constraints;
+create table Beaches
+  (
+    beach_abbr varchar(4), --Beach abbreviation
+    beach_name varchar(45), -- Beach name or description (Based on the data sheet document)
+    primary key (beach_abbr)
+
+  );
+
+/*
+  Table name: species
+  Table contents: names and abbreviations of
+  species covered by MMERP.
+*/
+drop table Species cascade constraints;
+create table Species
+  (
+    spec_abbr varchar(4), --Species abbreviation
+    spec_name varchar(30), -- Species name or description (Based on the data sheet document)
+    primary key (spec_abbr)
+  );
 
 --============================================================
 --Reports table => purpose: to track important information about
@@ -18,11 +45,11 @@ create table Reports
 (report_id                      integer(5) not null,
  report_date			              date default sysdate not null,
  start_time                     time not null,
- end_time                       time not null,
+ end_time                       time,
  beach_abbr                     char(4),
  survey_summary                 long varchar2,
-  primary key (report_id),
-  foreign key (beach_abbr) references Beaches
+ primary key (report_id),
+ foreign key (beach_abbr) references Beaches
  );
 
 
@@ -37,7 +64,7 @@ Drop table Report_entries cascade constraints;
 
 create table Report_entries
 (PRN				                    varchar(30) not null,
- surveyor_id                    integer(3),
+ surveyor_id                    varchar(7),
  report_id                      integer(5),
  species_abbr			              char(4),
  LAT                            decimal(7,2),
@@ -46,7 +73,7 @@ create table Report_entries
  existing_tags                  char(1),
  photos                         char(1),
  comments                       long varchar2,
- photos_uploaded                varchar2,
+ photos_uploaded                varchar2(256), -- should this be a link to a photo album?
  no_of_animals                  integer(2),
  primary key (PRN),
  foreign key (species_abbr) references Species,
@@ -55,36 +82,9 @@ create table Report_entries
 );
 
 
-drop sequence surveyor_seq;
-create sequence surveyor_seq
-start with 1;
-
 drop sequence report_seq;
 create sequence report_seq
 start with 1000;
 
-/*
-  Table name: beach
-  Table contents: names and abbreviations of
-  beaches covered by MMERP.
-*/
-drop table beach cascade constraints;
-create table beach
-  (
-    BEACH_ABBR varchar(2), --Beach abbreviation
-    beach_name varchar(45) -- Beach name or description (Based on the data sheet document)
-  );
-
-/*
-  Table name: species
-  Table contents: names and abbreviations of
-  species covered by MMERP.
-*/
-drop table species cascade constraints;
-create table species
-  (
-    SPEC_ABBR varchar(4), --Species abbreviation
-    spec_name varchar(30) -- Species name or description (Based on the data sheet document)
-  );
 
 spool off
