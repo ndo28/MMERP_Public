@@ -2,8 +2,14 @@
 --Nathan Ortolan
 --Guthrie Hayward
 --Abdul Shaikh
--- CS 458 - Fall 2016
--- last modified: 2016-10-09
+--CS 458 - Fall 2016
+--modified: 2016-10-09 by rjw125
+--modified: 2016-10-09 by ndo28
+--modified: 2016-10-10 by ats234
+--modified: 2016-10-12 by gmh234
+--modified: 2016-10-12 by ndo28
+--modified: 2016-10-12 by ats234
+
 
 spool project-design-out.txt
 
