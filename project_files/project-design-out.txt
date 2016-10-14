@@ -1,0 +1,48 @@
+drop sequence report_id_seq
+              *
+ERROR at line 1:
+ORA-02289: sequence does not exist 
+
+
+
+Commit complete.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Sequence created.
+

@@ -13,6 +13,9 @@
 
 spool project-design-out.txt
 
+drop sequence report_id_seq;
+commit;
+
 /*
   Table name: beach
   Table contents: names and abbreviations of
@@ -20,12 +23,11 @@ spool project-design-out.txt
 */
 drop table Beaches cascade constraints;
 create table Beaches
-  (
-    beach_abbr char(4) not null, --Beach abbreviation
-    beach_name varchar2(45) not null, -- Beach name or description (Based on the data sheet document)
+(
+    beach_abbr                  char(4) not null, --Beach abbreviation
+    beach_name                  varchar2(45) not null, -- Beach name or description (Based on the data sheet document)
     primary key (beach_abbr)
-
-  );
+);
 
 /*
   Table name: species
@@ -34,11 +36,11 @@ create table Beaches
 */
 drop table Species cascade constraints;
 create table Species
-  (
-    spec_abbr char(4) not null, --Species abbreviation
-    spec_name varchar2(30) not null, -- Species name or description (Based on the data sheet document)
+(
+    spec_abbr                  char(4) not null, --Species abbreviation
+    spec_name                  varchar2(30) not null, -- Species name or description (Based on the data sheet document)
     primary key (spec_abbr)
-  );
+);
 
 
 
@@ -55,7 +57,7 @@ create table Users
   user_lname                        varchar2(30) not null,
   user_fname                        varchar2(20) not null,
   user_email                        varchar2(45) not null,
-	password                          varchar2 not null,
+	password                          varchar2(30) not null,
   is_admin                          char(1) check(is_admin in('Y', 'N')) not null,
   is_surveyor                       char(1) check(is_surveyor in('Y', 'N')) not null,
 	primary key (hsu_username)
@@ -70,7 +72,7 @@ drop table Admins cascade constraints;
 
 create table Admins
 (
-	admin_id			                   integer(2) not null,
+	admin_id			                   number(2) not null,
   admin_lname                      varchar2 not null,
   admin_fname                      varchar2 not null,
   admin_email                      varchar2 not null,
@@ -111,11 +113,11 @@ create table Surveyors
 drop table Reports cascade constraints;
 
 create table Reports
-(report_id                      integer(5) not null,
+(report_id                      number(5,0) not null,
  start_date_time                date default sysdate not null,
  end_date_time                  date default sysdate,
  beach_abbr                     char(4),
- survey_summary                 long varchar2,
+ survey_summary                 long,
  primary key (report_id),
  foreign key (beach_abbr) references Beaches
  );
@@ -133,16 +135,16 @@ Drop table Report_entries cascade constraints;
 create table Report_entries
 (PRN				                    varchar2(30) not null,
  hsu_username                   varchar2(7) not null,
- report_id                      integer(5) not null,
+ report_id                      number(5,0) not null,
  species_abbr			              char(4) not null,
- LAT                            decimal(7,2), --Need to look at Maps API return format
- LONG                           decimal(7,2), --Need to look at Maps API return format
+ LATITUDE                       decimal(7,2), --Need to look at Maps API return format
+ LONGITUDE                      decimal(7,2), --Need to look at Maps API return format
  post_survey_tag                char(1) check(post_survey_tag in('Y', 'N')) not null,
  existing_tags                  char(1) check(existing_tags in('Y', 'N')) not null,
  photos                         char(1) check(photos in('Y', 'N')) not null,
- comments                       long varchar2,
+ comments                       long,
  photos_uploaded                varchar2(256), -- should this be a link to a photo album?
- no_of_animals                  integer(2) not null,
+ no_of_animals                  number(2,0) not null,
  primary key (PRN),
  foreign key (species_abbr) references Species,
  foreign key (hsu_username) references Users,
@@ -156,20 +158,19 @@ create table Report_entries
 -- Determined by a 3-digit surveyor id and a 5-digit report_id
 -- surveyor email and phone will be selected from the Surveyor table by reference
 
-drop table Surveyor cascade constraints;
+drop table Surveyors cascade constraints;
 
-create table Surveyor
+create table Surveyors
 (
   hsu_username                  varchar2(7) not null,
-  report_id                     integer(5) not null,
+  report_id                     number(5,0) not null,
 	primary key (hsu_username, report_id),
   foreign key (hsu_username) references Users,
   foreign key (report_id) references Reports
 );
 
 
-drop sequence report_seq;
-create sequence report_seq
+create sequence report_id_seq
 start with 1000;
 
 
