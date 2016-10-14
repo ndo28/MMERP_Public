@@ -2,13 +2,14 @@
 --Nathan Ortolan
 --Guthrie Hayward
 --Abdul Shaikh
---CS 458 - Fall 2016
+-- CS 458 - Fall 2016
 --modified: 2016-10-09 by rjw125
 --modified: 2016-10-09 by ndo28
 --modified: 2016-10-10 by ats234
 --modified: 2016-10-12 by gmh234
 --modified: 2016-10-12 by ndo28
 --modified: 2016-10-12 by ats234
+--modified: 2016-10-14 by ndo28 and rjw125(pair programming)
 
 spool project-design-out.txt
 
@@ -20,8 +21,8 @@ spool project-design-out.txt
 drop table Beaches cascade constraints;
 create table Beaches
   (
-    beach_abbr varchar(4), --Beach abbreviation
-    beach_name varchar(45), -- Beach name or description (Based on the data sheet document)
+    beach_abbr char(4) not null, --Beach abbreviation
+    beach_name varchar2(45) not null, -- Beach name or description (Based on the data sheet document)
     primary key (beach_abbr)
 
   );
@@ -34,8 +35,8 @@ create table Beaches
 drop table Species cascade constraints;
 create table Species
   (
-    spec_abbr varchar(4), --Species abbreviation
-    spec_name varchar(30), -- Species name or description (Based on the data sheet document)
+    spec_abbr char(4) not null, --Species abbreviation
+    spec_name varchar2(30) not null, -- Species name or description (Based on the data sheet document)
     primary key (spec_abbr)
   );
 
@@ -50,12 +51,17 @@ drop table Users cascade constraints;
 
 create table Users
 (
-	user_name			                    varchar2 check(user_name in ('admin', 'surveyor')) not null,
+	hsu_username			                varchar2(7) not null,
+  user_lname                        varchar2(30) not null,
+  user_fname                        varchar2(20) not null,
+  user_email                        varchar2(45) not null,
 	password                          varchar2 not null,
-	primary key (menu_id)
+  is_admin                          char(1) check(is_admin in('Y', 'N')) not null,
+  is_surveyor                       char(1) check(is_surveyor in('Y', 'N')) not null,
+	primary key (hsu_username)
 );
 
-
+/*
 --============================================================
 -- Admins
 -- Determined by a 2-digit admin id
@@ -95,7 +101,7 @@ create table Surveyors
 );
 
 
-
+*/
 
 --============================================================
 --Reports table => purpose: to track important information about
@@ -106,9 +112,8 @@ drop table Reports cascade constraints;
 
 create table Reports
 (report_id                      integer(5) not null,
- report_date			              date default sysdate not null,
- start_time                     time not null,
- end_time                       time,
+ start_date_time                date default sysdate not null,
+ end_date_time                  date default sysdate,
  beach_abbr                     char(4),
  survey_summary                 long varchar2,
  primary key (report_id),
@@ -126,39 +131,39 @@ create table Reports
 Drop table Report_entries cascade constraints;
 
 create table Report_entries
-(PRN				                    varchar(30) not null,
- surveyor_id                    varchar(7),
- report_id                      integer(5),
- species_abbr			              char(4),
- LAT                            decimal(7,2),
- LONG                           decimal(7,2),
- post_survey_tag                char(1),
- existing_tags                  char(1),
- photos                         char(1),
+(PRN				                    varchar2(30) not null,
+ hsu_username                   varchar2(7) not null,
+ report_id                      integer(5) not null,
+ species_abbr			              char(4) not null,
+ LAT                            decimal(7,2), --Need to look at Maps API return format
+ LONG                           decimal(7,2), --Need to look at Maps API return format
+ post_survey_tag                char(1) check(post_survey_tag in('Y', 'N')) not null,
+ existing_tags                  char(1) check(existing_tags in('Y', 'N')) not null,
+ photos                         char(1) check(photos in('Y', 'N')) not null,
  comments                       long varchar2,
  photos_uploaded                varchar2(256), -- should this be a link to a photo album?
- no_of_animals                  integer(2),
+ no_of_animals                  integer(2) not null,
  primary key (PRN),
  foreign key (species_abbr) references Species,
- foreign key (surveyor_id) references Surveyor,
+ foreign key (hsu_username) references Users,
  foreign key (report_id) references Reports
 );
 
 
 --============================================================
--- Reporters
--- Surveyors act as Reporters while completing reports
+-- Surveyors
+-- Users act as Surveyors while completing reports
 -- Determined by a 3-digit surveyor id and a 5-digit report_id
 -- surveyor email and phone will be selected from the Surveyor table by reference
 
-drop table Reporters cascade constraints;
+drop table Surveyor cascade constraints;
 
-create table Reporters
+create table Surveyor
 (
-  surv_id                       integer(3),
-  report_id                     integer(5),
-	primary key (surv_id, report_id),
-  foreign key (surv_id) references Surveyors,
+  hsu_username                  varchar2(7) not null,
+  report_id                     integer(5) not null,
+	primary key (hsu_username, report_id),
+  foreign key (hsu_username) references Users,
   foreign key (report_id) references Reports
 );
 
