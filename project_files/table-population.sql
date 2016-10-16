@@ -55,6 +55,49 @@ insert into Beaches
 insert into Beaches
     values('PB','Pelican State Beach');
 
+
+insert into Species
+    values('CASL','California Sea Lion');
+insert into Species
+    values('STSL','Steller Sea Lion');
+insert into Species
+    values('NOFS','Northern Fur Seal');
+insert into Species
+    values('GUFS','Guadalupe Fur Seal');
+insert into Species
+    values('ELSE','Northern Elephant Seal');
+insert into Species
+    values('HASE','Harbor Seal');
+insert into Species
+    values('UNSL','Unidentified Sea Lion');
+insert into Species
+    values('UNSE','Unidenified Seal');
+insert into Species
+      values('UNPI','Unidenified Pinniped');
+
+insert into Species
+    values ('HAPO','Harbor Porpoise');
+insert into Species
+    values ('DAPO','Dalls Porpoise');
+insert into Species
+    values ('PAWD','Pacific White-Sided Dolphin');
+insert into Species
+    values ('CADO','Common Dolphin');
+insert into Species
+    values ('RIDO','Dolphin');
+insert into Species
+    values ('ORCA','Orca');
+insert into Species
+    values ('GRWH','Gray Whale');
+insert into Species
+    values ('SPWH','Sperm Whale');
+insert into Species
+    values ('UNDO','Unidenified Dolphin');
+insert into Species
+    values ('UNWH','Unidenified Whale');
+insert into Species
+    values ('UNCE','Unidenified Cetacean');
+
 commit;
 
 spool off
