@@ -98,6 +98,19 @@ insert into Species
 insert into Species
     values ('UNCE','Unidenified Cetacean');
 
+insert into Users
+  values ('ats234','Shaikh','Abdul','ats234@humboldt.edu','root','N','Y');
+insert into Users
+  values ('ndo28','Ortolan','Nathan','ndo28@humboldt.edu','root','N','Y');
+insert into Users
+  values ('gmh234','Hayward','Guthrie','gmh234@humboldt.edu','root','N','Y');
+insert into Users
+  values ('rjw125','Williams','Rebecca','rjw125@humboldt.edu','root','N','Y');
+insert into Users
+  values ('adm000','ADMIN','ADMIN','ADMIN@humboldt.edu','root','N','Y'); -- this should be changed to MMERD@HUMBOLDT.EDU
+
+
+
 commit;
 
 spool off
