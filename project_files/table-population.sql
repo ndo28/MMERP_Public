@@ -107,9 +107,7 @@ insert into Users
 insert into Users
   values ('rjw125','Williams','Rebecca','rjw125@humboldt.edu','root','N','Y');
 insert into Users
-  values ('adm000','ADMIN','ADMIN','ADMIN@humboldt.edu','root','Y','N'); -- this should be changed to MMERD@HUMBOLDT.EDU
-
-
+  values ('adm000','ADMIN','ADMIN','ADMIN@humboldt.edu','root','Y','N');
 
 commit;
 
