@@ -107,7 +107,7 @@ insert into Users
 insert into Users
   values ('rjw125','Williams','Rebecca','rjw125@humboldt.edu','root','N','Y');
 insert into Users
-k
+  values ('admin000','ADMIN','SYS','admin000@humboldt.edu','admin','Y','N');
 
 insert into Reports
   values (10001,SYSDATE,SYSDATE+1,'MR','The beach was hella fun');
