@@ -66,7 +66,7 @@ insert into Species
     values('GUFS','Guadalupe Fur Seal');
 insert into Species
     values('ELSE','Northern Elephant Seal');
-insert into Species
+    insert into Species
     values('HASE','Harbor Seal');
 insert into Species
     values('UNSL','Unidentified Sea Lion');
@@ -107,7 +107,33 @@ insert into Users
 insert into Users
   values ('rjw125','Williams','Rebecca','rjw125@humboldt.edu','root','N','Y');
 insert into Users
-  values ('adm000','ADMIN','ADMIN','ADMIN@humboldt.edu','root','Y','N');
+k
+
+insert into Reports
+  values (10001,SYSDATE,SYSDATE+1,'MR','The beach was hella fun');
+insert into Reports
+  values (10002,SYSDATE,SYSDATE+3,'PL','The beach was hella fun');
+insert into Reports
+  values (10003,SYSDATE,SYSDATE,'MN','The beach was hella fun');
+insert into Reports
+  values (10004,SYSDATE,SYSDATE,'AG','The beach was hella fun');
+insert into Reports
+  values (10005,SYSDATE,SYSDATE,'TR','The beach was hella fun');
+insert into Reports
+  values (10006,SYSDATE,SYSDATE,'CO','The beach was hella fun');
+insert into Reports
+  values (10007,SYSDATE,SYSDATE,'DL','The beach was hella fun');
+insert into Reports
+  values (10008,SYSDATE,SYSDATE,'SL','The beach was hella fun');
+insert into Reports
+  values (10009,SYSDATE,SYSDATE,'BA','The beach was hella fun');
+insert into Reports
+  values (10010,SYSDATE,SYSDATE,'BL','The beach was hella fun');
+insert into Reports
+  values (10011,SYSDATE,SYSDATE,'CO','The beach was hella fun');
+insert into Reports
+  values (10012,SYSDATE,SYSDATE,'CC','The beach was hella fun');
+
 
 commit;
 
