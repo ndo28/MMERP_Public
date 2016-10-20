@@ -107,32 +107,57 @@ insert into Users
 insert into Users
   values ('rjw125','Williams','Rebecca','rjw125@humboldt.edu','root','N','Y');
 insert into Users
-  values ('admin000','ADMIN','SYS','admin000@humboldt.edu','admin','Y','N');
+  values ('adm000','ADMIN','SYS','admin000@humboldt.edu','admin','Y','N');
 
 insert into Reports
-  values (10001,SYSDATE,SYSDATE+1,'MR','The beach was hella fun');
+  values (10001,'01:30','04:30',SYSDATE+1,'MR','The beach was hella fun');
 insert into Reports
-  values (10002,SYSDATE,SYSDATE+3,'PL','The beach was hella fun');
+  values (10002,'01:30','04:30',SYSDATE+3,'PL','The beach was hella fun');
 insert into Reports
-  values (10003,SYSDATE,SYSDATE,'MN','The beach was hella fun');
+  values (10003,'01:30','04:30',SYSDATE,'MN','The beach was hella fun');
 insert into Reports
-  values (10004,SYSDATE,SYSDATE,'AG','The beach was hella fun');
+  values (10004,'01:30','04:30',SYSDATE,'AG','The beach was hella fun');
 insert into Reports
-  values (10005,SYSDATE,SYSDATE,'TR','The beach was hella fun');
-insert into Reports
-  values (10006,SYSDATE,SYSDATE,'CO','The beach was hella fun');
-insert into Reports
-  values (10007,SYSDATE,SYSDATE,'DL','The beach was hella fun');
-insert into Reports
-  values (10008,SYSDATE,SYSDATE,'SL','The beach was hella fun');
-insert into Reports
-  values (10009,SYSDATE,SYSDATE,'BA','The beach was hella fun');
-insert into Reports
-  values (10010,SYSDATE,SYSDATE,'BL','The beach was hella fun');
-insert into Reports
-  values (10011,SYSDATE,SYSDATE,'CO','The beach was hella fun');
-insert into Reports
-  values (10012,SYSDATE,SYSDATE,'CC','The beach was hella fun');
+  values (10005,'01:30','04:30',SYSDATE,'TR','The beach was hella fun');
+
+
+
+
+insert into Report_entries
+   values ('HSU_05OCT2016_LU_ORCA_1_SYS', 'ndo28', 10001, 'ORCA', 41.040519, -124.120278, 'y', 'y', 'y', 'blah', 'humboldt.edu', 1 );
+insert into Report_entries
+   values ('HSU_05OCT2016_LU_HASE_2_SYS', 'rjw125', 10001, 'HASE', 41.050520, -124.120271, 'n', 'n', 'y', 'blah', 'google.com', 2 );
+insert into Report_entries
+   values ('HSU_05OCT2016_MN_GUFS_1_OPP', 'ats234', 10003, 'GUFS', 40.851112, -124.168776, 'n', 'n', 'y', 'blah', 'humboldt.edu', 1 );
+insert into Report_entries
+   values ('HSU_05OCT2016_MA_STSL_1_SYS', 'gmh234', 10004, 'STSL', 40.869188, -124.157745, 'y', 'n', 'y', 'blah', 'google.com', 1 );
+insert into Report_entries
+   values ('HSU_05OCT2016_CL_UNSE_1_SYS', 'gmh234', 10005, 'UNSE', 40.994816, -124.110487, 'n', 'y', 'n', 'blah', 'humboldt.edu', 1 );
+insert into Report_entries
+   values ('HSU_05OCT2016_CL_HAPO_2_SYS', 'rjw125', 10005, 'HAPO', 40.994815, -124.110482, 'y', 'n', 'y', 'blah', 'google.com', 2 );
+insert into Report_entries
+   values ('HSU_05OCT2016_CL_DAPO_3_SYS', 'gmh234', 10005, 'DAPO', 40.994828, -124.110533, 'y', 'n', 'y', 'blah', 'humboldt.edu', 3 );
+
+
+
+insert into Surveyors
+  values ('ndo28',10001);
+insert into Surveyors
+  values ('rjw125',10001);
+insert into Surveyors
+  values ('ats234',10003);
+insert into Surveyors
+  values ('gmh234',10004);
+insert into Surveyors
+  values ('gmh234',10005);
+insert into Surveyors
+  values ('rjw125',10005);
+
+
+
+
+
+
 
 
 commit;

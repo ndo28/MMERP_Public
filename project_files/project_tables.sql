@@ -114,8 +114,9 @@ drop table Reports cascade constraints;
 
 create table Reports
 (report_id                      number(5,0) not null,
- start_date_time                date default sysdate not null,
- end_date_time                  date default sysdate,
+ start_time                     char(5) not null,
+ end_time                       char(5),
+ report_date                    date,
  beach_abbr                     char(4),
  survey_summary                 long,
  primary key (report_id),
@@ -137,11 +138,11 @@ create table Report_entries
  hsu_username                   varchar2(7) not null,
  report_id                      number(5,0) not null,
  species_abbr			              char(4) not null,
- LATITUDE                       decimal(7,2), --Need to look at Maps API return format
- LONGITUDE                      decimal(7,2), --Need to look at Maps API return format
- post_survey_tag                char(1) check(post_survey_tag in('Y', 'N')) not null,
- existing_tags                  char(1) check(existing_tags in('Y', 'N')) not null,
- photos                         char(1) check(photos in('Y', 'N')) not null,
+ LATITUDE                       decimal(9,6), --Need to look at Maps API return format
+ LONGITUDE                      decimal(9,6), --Need to look at Maps API return format
+ post_survey_tag                char(1) check(post_survey_tag in('y', 'n')) not null,
+ existing_tags                  char(1) check(existing_tags in('y', 'n')) not null,
+ photos                         char(1) check(photos in('y', 'n')) not null,
  comments                       long,
  photos_uploaded                varchar2(256), -- should this be a link to a photo album?
  no_of_animals                  number(2,0) not null,
