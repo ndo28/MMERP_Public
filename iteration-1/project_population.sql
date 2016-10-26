@@ -5,7 +5,7 @@
 -- CS 458 - Fall 2016
 -- Last Edited 10/16/16
 
-spool table-population-status.txt
+spool project-population-out.txt
 
 /*
 Populating Beaches table

@@ -1,0 +1,26 @@
+Iteration 2 due date: 11/18/16
+
+Client feedback on Iteration 1:
+
+User stories for Iteration 2:
+
+Surveyor_coordinates: 1 week
+Surveyor can submit current location (GPS) while on a beach walk.
+
+Surveyor_mammal: 1 day
+Surveyor can submit the species of marine mammal they encounter while on a beach walk.
+
+Surveyor_beach: 5 hours
+Surveyor can submit the name of the beach while on the beach walk.
+
+Surveyor_tag: 5 hours
+Surveyor can submit tag information related to carcass found on the beach walk.
+
+Surveryor_comments: 5 hours
+Surveyor can submit comments containing additional information about an encounter.
+
+System_PRN: 6 hours
+System can create the PRN based on surveyors report.
+
+Coordinator_reports: 1 week
+Coordinator can create reports about animal strandings.
