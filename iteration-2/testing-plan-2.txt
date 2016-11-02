@@ -1,15 +1,15 @@
-Our first iteration will involve creating the survey database and
-populating the database with sample data provided by the client.
-Our unit testing will be as follow for each of the user stories:
+Our second iteration will involve creating the front end so our client will be
+able to interact with the database. Our acceptance testing will be as follow for each
+of the user stories:
 
-  * admin_report_by_date: to unit test we will write a sql query
-                          which will provide reports by date.
+  Surveyor_coordinates:
+  Surveyor_mammal:
+  Surveyor_beach:
+  Surveyor_tag:
+  Surveryor_comments:
+  System_PRN:
+  Coordinator_reports: testing PHP  
 
-  * admin_report_by_surveyor: to unit test we will write a sql query
-                              which will provide reports by surveyor.
-
-  * admin_report_by_coordinate: to unit test we will write a sql query
-                                which will provide reports by coordinates.
-
-  Acceptance testing will include running multiple SQL queries to test
-  the functionality of database to generate accurate results.
+Our unit testing will be as follows:
+We will be using HTML/CSS validators to validate our HTML modules.
+We will be testing the PHP by completing database transactions with each module.
