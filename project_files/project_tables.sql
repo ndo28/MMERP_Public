@@ -54,6 +54,7 @@ drop table Users cascade constraints;
 create table Users
 (
 	hsu_username			                varchar2(7) not null,
+  user_initials                     char(2) not null,
   user_lname                        varchar2(30) not null,
   user_fname                        varchar2(20) not null,
   user_email                        varchar2(45) not null,
@@ -173,6 +174,5 @@ create table Surveyors
 
 create sequence report_id_seq
 start with 1000;
-
 
 spool off

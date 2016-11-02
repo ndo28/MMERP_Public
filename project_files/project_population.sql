@@ -99,15 +99,15 @@ insert into Species
     values ('UNCE','Unidenified Cetacean');
 
 insert into Users
-  values ('ats234','Shaikh','Abdul','ats234@humboldt.edu','root','N','Y');
+  values ('ats234','AS','Shaikh','Abdul','ats234@humboldt.edu','root','N','Y');
 insert into Users
-  values ('ndo28','Ortolan','Nathan','ndo28@humboldt.edu','root','N','Y');
+  values ('ndo28','NO','Ortolan','Nathan','ndo28@humboldt.edu','root','N','Y');
 insert into Users
-  values ('gmh234','Hayward','Guthrie','gmh234@humboldt.edu','root','N','Y');
+  values ('gmh234','GH','Hayward','Guthrie','gmh234@humboldt.edu','root','N','Y');
 insert into Users
-  values ('rjw125','Williams','Rebecca','rjw125@humboldt.edu','root','N','Y');
+  values ('rjw125','RW','Williams','Rebecca','rjw125@humboldt.edu','root','N','Y');
 insert into Users
-  values ('adm000','ADMIN','SYS','admin000@humboldt.edu','admin','Y','N');
+  values ('adm000','AD','ADMIN','SYS','admin000@humboldt.edu','admin','Y','N');
 
 insert into Reports
   values (10001,'01:30','04:30',SYSDATE+1,'MR','The beach was hella fun');
