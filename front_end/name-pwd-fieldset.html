@@ -1,0 +1,21 @@
+<!--
+    refactored after W8-2 to make textfields required
+    (w/thanks to A. Shaikh)
+-->
+<div class = login-block>
+  <fieldset>
+      <legend> Enter Oracle username/password:
+          </legend>
+
+      <label for="name_entry"> Username: </label>
+      <input type="text" name="username" id="name_entry"
+             required="required" />
+
+      <label for="pwd_entry"> Password: </label>
+      <input type="password" name="password" id="pwd_entry"
+             required="required" />
+       <div class= submit-button>
+                 <input type="submit" value="log in" />
+       </div>
+  </fieldset>
+</div>
