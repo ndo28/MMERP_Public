@@ -76,8 +76,8 @@
              </select><br/>
 
              <div class="submit">
-             <input class="button" type="submit" name="finish_report" value="No Findings">
-             <input class="button" type="submit" name="new_entry" value="Continue"/>
+             <input class="button" type="submit" name="main_menu" value="Go Back">
+             <input class="button" type="submit" name="report_recap" value="Continue"/>
                 </div>
           </fieldset>
         </form>

@@ -65,7 +65,8 @@ function user_reports_menu($username, $password)
     ?>
 
     <div class="submit">
-      <input type="submit" name="new_entry" value="Next" />
+      <input type="submit" name="report_recap" value="Continue" />
+      <input type="submit" name="main_menu" value="Go Back" />
     </div>
 
   </fieldset>

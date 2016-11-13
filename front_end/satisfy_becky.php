@@ -24,7 +24,7 @@
     <?php
 
         require_once("custom-login-9.php");
-        require_once("custom-session-admin-user.php");
+        require_once("main_menu.php");
         require_once("make_report_menu.php");
         require_once("user_reports_menu.php");
         require_once("hsu_conn_sess.php");
@@ -53,77 +53,97 @@
         (! array_key_exists("next_screen", $_SESSION)))
     {
       custom_login_9();
-      $_SESSION['next_screen'] = 'user_type';
+
+      $_SESSION['next_screen'] = 'main_menu';
     }
-    elseif (array_key_exists("username", $_POST) and
-            ($_SESSION['next_screen'] == 'user_type'))
+
+    elseif ((array_key_exists("username", $_POST) and
+            (($_SESSION['next_screen'] == 'main_menu'))) or
+             ((array_key_exists('main_menu', $_POST)) and
+             (array_key_exists("username", $_SESSION))))
     {
-        $username = strip_tags($_POST['username']);
-        $password = $_POST['password'];
+
+        if(array_key_exists('username', $_SESSION))
+        {
+          $username = $_SESSION["username"];
+          $password = $_SESSION["password"];
+        }
+        else
+        {
+          $username = strip_tags($_POST['username']);
+          $password = $_POST['password'];
+        }
 
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
 
-        custom_session_admin_user();
-
-        if(array_key_exists("user", $_POST))
-        {
-          $_SESSION['next_screen'] = 'make_report_menu';
-        }
-        else
-        {
-          $_SESSION['next_screen'] = 'admin_console';
-        }
+        main_menu();
 
     }
+
+     elseif (array_key_exists("username", $_SESSION)
+             and (array_key_exists('admin', $_POST)))
+     {
+       $username = strip_tags($_SESSION['username']);
+       $password = $_SESSION['password'];
+
+       admin_console();
+
+      }
+
     elseif (array_key_exists("username", $_SESSION)
-            and (array_key_exists("user", $_POST))
-            )
+            and (array_key_exists('new', $_POST)))
     {
       $username = strip_tags($_SESSION['username']);
       $password = $_SESSION['password'];
 
-      make_report_menu();
+      make_new_report($username, $password);
 
-      if(array_key_exists("new", $_POST))
+     /*if(array_key_exists("main_menu", $_POST))
       {
-        $_SESSION['next_screen'] = 'new_report';
+        $_SESSION['next_screen'] = 'main_menu';
       }
-      else
+      elseif(array_key_exists("report_recap", $_POST))
       {
-        $_SESSION['next_screen'] = 'user_reports_menu';
-      }
+        $_SESSION['next_screen'] = 'report_recap';
+      }*/
 
+    }
 
-     }
-     elseif (array_key_exists("username", $_SESSION)
-             and (array_key_exists("admin", $_POST))
-             and $_SESSION['next_screen'] == 'admin_console')
-     {
-       $username = strip_tags($_SESSION['username']);
-       $password = $_SESSION['password'];
-       //admin_console();
-      }
-      elseif (array_key_exists("username", $_SESSION)
-              and (array_key_exists("new", $_POST)))
-      {
-        $username = strip_tags($_SESSION['username']);
-        $password = $_SESSION['password'];
-
-        make_new_report($username, $password);
-      }
-      elseif (array_key_exists("username", $_SESSION)
-              and (array_key_exists("continue", $_POST))
-              and $_SESSION['next_screen'] == 'user_reports_menu')
+    elseif (array_key_exists("username", $_SESSION)
+            and (array_key_exists('continue', $_POST)))
       {
         $username = strip_tags($_SESSION['username']);
         $password = $_SESSION['password'];
 
         user_reports_menu($username, $password);
 
-        $_SESSION['next_screen'] = 'new_entry';
+        /*if(array_key_exists("main_menu", $_POST))
+        {
+         $_SESSION['next_screen'] = 'main_menu';
+        }
+        elseif(array_key_exists("report_recap", $_POST))
+        {
+          $_SESSION['next_screen'] = 'report_recap';
+        }*/
       }
+      elseif (array_key_exists("username", $_SESSION)
+              and (array_key_exists('report_recap', $_POST)))
+        {
+          $username = strip_tags($_SESSION['username']);
+          $password = $_SESSION['password'];
 
+          report_recap($username, $password);
+
+          /*if(array_key_exists("main_menu", $_POST))
+          {
+           $_SESSION['next_screen'] = 'main_menu';
+          }
+          elseif(array_key_exists("report_recap", $_POST))
+          {
+            $_SESSION['next_screen'] = 'report_recap';
+          }*/
+        }
     else
     {
         custom_login_9();
@@ -132,7 +152,7 @@
         session_regenerate_id(TRUE);
         session_start();
 
-        $_SESSION['next_screen'] = 'user_type';
+        $_SESSION['next_screen'] = 'main_menu';
     }?>
     <div class='footer'>
     <?php require_once("328footer-better.html"); ?>
