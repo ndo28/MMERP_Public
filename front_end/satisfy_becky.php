@@ -33,6 +33,8 @@
         require_once("update_report.php");
         require_once("create_surveyors.php");
         require_once("get_report_info.php");
+        require_once("map.php");
+        require_once("admin_menu.php");
     ?>
 
     <link href="http://users.humboldt.edu/smtuttle/styles/normalize.css"
@@ -48,10 +50,6 @@
   <header class="header">
     <h1>MMERP</h1>
   </header>
-
-    <p>
-      You have landed on the MMERP page
-    </p>
     <?php
     if((! array_key_exists("username", $_POST)) and
         (! array_key_exists("next_screen", $_SESSION)))
@@ -94,6 +92,13 @@
        admin_console();
 
       }
+    elseif (array_key_exists("username", $_SESSION)
+            and (array_key_exists("map_view", $_POST)))
+    {
+      $username = strip_tags($_SESSION['username']);
+      $password = $_SESSION['password'];
+      create_map($username,$password);
+     }
 
     elseif (array_key_exists("username", $_SESSION)
             and (array_key_exists('new', $_POST)))
