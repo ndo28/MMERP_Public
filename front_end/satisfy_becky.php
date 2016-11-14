@@ -26,9 +26,12 @@
         require_once("custom-login-9.php");
         require_once("main_menu.php");
         require_once("make_report_menu.php");
+        require_once("get_report_id.php");
+        require_once("get_user_inits.php");
+        require_once("get_second_inits.php");
         require_once("user_reports_menu.php");
         require_once("hsu_conn_sess.php");
-        require_once("make_new_report.php");
+        require_once("get_report_info.php");
     ?>
 
     <link href="http://users.humboldt.edu/smtuttle/styles/normalize.css"
@@ -96,18 +99,34 @@
     {
       $username = strip_tags($_SESSION['username']);
       $password = $_SESSION['password'];
+      // CALL THREE FUNCTIONS HERE:
+          // first, get current report_id and 1st USER_INITIALS
+      get_inits($username, $password);
 
+      $_SESSION['first_init'] = $first_init;
+      $_SESSION['first_user'] = $username;
+
+
+      get_report_id($username, $password);
+
+      $_SESSION['report_id'] = $report_id;
+
+       // second display to the user the report options
       make_new_report($username, $password);
 
-     /*if(array_key_exists("main_menu", $_POST))
-      {
-        $_SESSION['next_screen'] = 'main_menu';
-      }
-      elseif(array_key_exists("report_recap", $_POST))
-      {
-        $_SESSION['next_screen'] = 'report_recap';
-      }*/
+      $second_user = $_POST['user_choice'];
+      $beach_abbr = $_POST['beach_choice'];
+      $_SESSION['second_user'] = $second_user;
+      $_SESSION['beach_abbr'] = $beach_abbr;
 
+      //get 2nd USER_INITIALS
+      get_second_inits($username, $password, $second_user);
+
+      $_SESSION['second_init'] = $second_init;
+
+          //third, update report table with beach, time, date
+      // //create_report($username, $password);
+      //
     }
 
     elseif (array_key_exists("username", $_SESSION)
@@ -118,14 +137,6 @@
 
         user_reports_menu($username, $password);
 
-        /*if(array_key_exists("main_menu", $_POST))
-        {
-         $_SESSION['next_screen'] = 'main_menu';
-        }
-        elseif(array_key_exists("report_recap", $_POST))
-        {
-          $_SESSION['next_screen'] = 'report_recap';
-        }*/
       }
       elseif (array_key_exists("username", $_SESSION)
               and (array_key_exists('report_recap', $_POST)))
@@ -135,14 +146,6 @@
 
           report_recap($username, $password);
 
-          /*if(array_key_exists("main_menu", $_POST))
-          {
-           $_SESSION['next_screen'] = 'main_menu';
-          }
-          elseif(array_key_exists("report_recap", $_POST))
-          {
-            $_SESSION['next_screen'] = 'report_recap';
-          }*/
         }
     else
     {
