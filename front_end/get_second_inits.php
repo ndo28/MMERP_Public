@@ -14,14 +14,14 @@
 
           // here  ive connected
 
-          // this collects 1st user initials and stores to a SESSION variable
+          // this collects 1st user initials and stores to a variable
           $user_query =  'SELECT USER_INITIALS '.
                          'FROM USERS '.
                          'WHERE HSU_USERNAME = :USERNAME';
 
           $user_stmt = oci_parse($conn, $user_query);
 
-          oci_bind_by_name($user_stmt,":username",$second_user);
+          oci_bind_by_name($user_stmt, ":username", $second_user);
 
           oci_execute($user_stmt, OCI_DEFAULT);
           oci_fetch($user_stmt);
@@ -30,6 +30,8 @@
 
           oci_free_statement($user_stmt);
           oci_close($conn);
+
+          $_SESSION['second_init'] = $second_init;
 
       }
 

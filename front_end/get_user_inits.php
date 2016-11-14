@@ -31,6 +31,8 @@
           oci_free_statement($user_stmt);
           oci_close($conn);
 
+          $_SESSION['first_init'] = $first_init;
+
       }
 
  ?>

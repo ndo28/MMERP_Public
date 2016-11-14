@@ -5,7 +5,7 @@
       //     returns nothing but builds a dropdorn of current
       //     beach info
 
-      function make_new_report($username, $password)
+      function get_report_info($username, $password)
       {
           $conn = hsu_conn_sess($username, $password);
 

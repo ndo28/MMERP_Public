@@ -15,14 +15,14 @@
           // here  ive connected
           // this creates a report in the database
 
-          $report_insert = "INSERT INTO REPORTS (REPORT_ID, START_TIME)
-                            VALUES (REPORT_ID_SEQ.NEXTVAL, '0.00') ";
+          $report_insert = "INSERT INTO REPORTS (REPORT_ID, START_TIME, REPORT_DATE)
+                            VALUES (REPORT_ID_SEQ.NEXTVAL, '0.00', sysdate) ";
 
           $insert_stmt = oci_parse($conn, $report_insert);
           oci_execute($insert_stmt, OCI_DEFAULT);
           oci_commit($conn);
 
-          oci_free_statement($insert_stmt);
+
           // this collects the report_id from the current
            $report_query = 'SELECT REPORT_ID_SEQ.CURRVAL '.
                           'FROM REPORTS';
@@ -33,8 +33,11 @@
            oci_fetch($report_stmt);
            $report_id = oci_result($report_stmt, "CURRVAL");
 
+          oci_free_statement($insert_stmt);
           oci_free_statement($report_stmt);
           oci_close($conn);
+
+          $_SESSION['report_id'] = $report_id;
 
       }
 

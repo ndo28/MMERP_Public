@@ -25,12 +25,13 @@
 
         require_once("custom-login-9.php");
         require_once("main_menu.php");
-        require_once("make_report_menu.php");
         require_once("get_report_id.php");
         require_once("get_user_inits.php");
         require_once("get_second_inits.php");
         require_once("user_reports_menu.php");
         require_once("hsu_conn_sess.php");
+        require_once("update_report.php");
+        require_once("create_surveyors.php");
         require_once("get_report_info.php");
     ?>
 
@@ -103,30 +104,14 @@
           // first, get current report_id and 1st USER_INITIALS
       get_inits($username, $password);
 
-      $_SESSION['first_init'] = $first_init;
-      $_SESSION['first_user'] = $username;
+      $_SESSION["first_user"] = $username;
 
-
+      // get report_id from database
       get_report_id($username, $password);
 
-      $_SESSION['report_id'] = $report_id;
-
        // second display to the user the report options
-      make_new_report($username, $password);
+      get_report_info($username, $password);
 
-      $second_user = $_POST['user_choice'];
-      $beach_abbr = $_POST['beach_choice'];
-      $_SESSION['second_user'] = $second_user;
-      $_SESSION['beach_abbr'] = $beach_abbr;
-
-      //get 2nd USER_INITIALS
-      get_second_inits($username, $password, $second_user);
-
-      $_SESSION['second_init'] = $second_init;
-
-          //third, update report table with beach, time, date
-      // //create_report($username, $password);
-      //
     }
 
     elseif (array_key_exists("username", $_SESSION)
@@ -142,9 +127,47 @@
               and (array_key_exists('report_recap', $_POST)))
         {
           $username = strip_tags($_SESSION['username']);
+          $report_id = strip_tags($_SESSION['report_id']);
+          $first_user = strip_tags($_SESSION['first_user']);
           $password = $_SESSION['password'];
 
-          report_recap($username, $password);
+          if(array_key_exists('beach_choice', $_POST))
+          {
+            $second_user = strip_tags($_POST['user_choice']);
+            $beach_abbr = strip_tags($_POST['beach_choice']);
+            $_SESSION['second_user'] = $second_user;
+            $_SESSION['beach_abbr'] = $beach_abbr;
+
+            //get 2nd USER_INITIALS
+            get_second_inits($username, $password, $second_user);
+
+            //update report table with beach, date
+            update_report($username, $password, $report_id, $beach_abbr);
+
+            // Echo session variables that were set on previous pages
+            echo "Username is " . $_SESSION["username"] . ".<br>";
+            echo "beach_choice is " . $_SESSION["beach_abbr"] . ".<br>";
+            echo "report_id is " . $_SESSION["report_id"] . ".<br>";
+            echo "second_user is " . $_SESSION["second_user"] . ".<br>";
+            echo "second_init is " . $_SESSION["second_init"] . ".<br>";
+            echo "first_init is " . $_SESSION["first_init"] . ".<br>";
+            echo "first_user is " . $_SESSION["first_user"] . ".";
+
+            $first_user = strip_tags($_SESSION['first_user']);
+            $second_user = strip_tags($_SESSION['second_user']);
+
+            create_surveyors($username, $password, $report_id, $first_user);
+            create_surveyors($username, $password, $report_id, $second_user);
+
+          }
+          else
+          {
+            $username = strip_tags($_POST['username']);
+            $report_id = strip_tags($_POST['reports']);
+            $password = $_POST['password'];
+          }
+          echo "you have arrived at report recap";
+          //report_recap($username, $password, $report_id);
 
         }
     else
