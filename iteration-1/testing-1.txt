@@ -1,0 +1,18 @@
+Our first iteration involved creating the surveyor database and
+populating the database with sample data provided by the client.
+Our unit testing went as follows for each of the user stories:
+
+  * admin_report_by_date: to unit test we used the project_db_test1.sql file
+                          which provided reports by date. The output
+                          of these test files went to project-db-test1.txt
+
+  * admin_report_by_surveyor: to unit test we used the project_db_test1.sql file
+                              which provided reports by surveyor. The output
+                              of these test files went to project-db-test1.txt
+
+  * admin_report_by_coordinate: to unit test we used the project_db_test1.sql file
+                                which provided reports by coordinates. The output
+                                of these test files went to project-db-test1.txt
+
+  Acceptance testing will include running multiple SQL queries to test
+  the functionality of database to generate accurate results.

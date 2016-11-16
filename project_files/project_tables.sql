@@ -173,6 +173,7 @@ create table Surveyors
 
 
 create sequence report_id_seq
-start with 1000;
+start with 10010
+nocache;
 
 spool off
