@@ -110,15 +110,15 @@ insert into Users
   values ('adm000','AD','ADMIN','SYS','admin000@humboldt.edu','admin','Y','N');
 
 insert into Reports
-  values (10001,'01:30','04:30',SYSDATE+1,'MR','The beach was hella fun');
+  values (10001,'01:30','04:30','05-OCT-16','MR','The beach was hella fun');
 insert into Reports
-  values (10002,'01:30','04:30',SYSDATE+3,'PL','The beach was hella fun');
+  values (10002,'01:30','04:30','05-OCT-16','PL','The beach was hella fun');
 insert into Reports
-  values (10003,'01:30','04:30',SYSDATE,'MN','The beach was hella fun');
+  values (10003,'01:30','04:30','05-OCT-16','MN','The beach was hella fun');
 insert into Reports
-  values (10004,'01:30','04:30',SYSDATE,'AG','The beach was hella fun');
+  values (10004,'01:30','04:30','05-OCT-16','AG','The beach was hella fun');
 insert into Reports
-  values (10005,'01:30','04:30',SYSDATE,'TR','The beach was hella fun');
+  values (10005,'01:30','04:30','05-OCT-16','TR','The beach was hella fun');
 
 
 
