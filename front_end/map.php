@@ -6,7 +6,30 @@
 </script>
 <?php
 
-function create_map($login, $username, $password)
+/*--------
+map.php
+
+Guthrie Hayward (gmh234)
+Nathan Ortolan (ndo28)
+Becky Williams (rjw125)
+Abdul Shaikh (ats234)
+
+Created by Abdul on 11/16/16
+
+Modified by: rjw  on: 11/20/16
+
+    function: create_map
+    purpose: expects an entered Oracle login and
+        password and retrives from the database the
+        list of current LATITUDE and LONGITUDE, PRN and report_date
+        from a query of REPORTS joined with REPORT_ENTRIES tables
+        --Stores the informaion in arrays.
+        --Builds a map with pins with information about each location
+
+    uses: hsu_conn_sess
+-------*/
+
+function create_map($login, $password)
 {
   $conn = hsu_conn_sess($login, $password);
 

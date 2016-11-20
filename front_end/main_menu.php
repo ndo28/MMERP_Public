@@ -1,16 +1,27 @@
 <?php
-  /*---
-  Guthrie Hayward
-  CS 328 - Homework 12
+/*--------
+main_menu.php
 
-  File: custom-session-menu.php
-  Purpose: a form containing two radio buttons and a submit,
-  for the user to choose either items or bands.
-  Last Edited: 5/5/16
+Guthrie Hayward (gmh234)
+Nathan Ortolan (ndo28)
+Becky Williams (rjw125)
+Abdul Shaikh (ats234)
 
-  url: http://nrs-projects.humboldt.edu/~gmh234/hw12/custom-session-menu.php
+Created by Abdul, Guthrie and Rebecca on 11/5/16
 
-	---*/
+Modified by: rjw, ats  on: 11/13/16
+Modified by: rjw  on: 11/20/16
+
+    function: main_menu
+    purpose: a form containing four submit buttons with the following
+    choices:
+        --option to go to Admin console
+        --option to go to list existing reports for user
+        --option to go to create a new report
+        --option to change password 
+
+-------*/
+
 
 function main_menu()
 {

@@ -1,14 +1,30 @@
 <?php
+/*--------
+get_report_id.php
 
-      // function:  get_report_id
-      // purpose: expects Oracle username and password
-      //     returns nothing but stores into session variable
-      //     the new report_id and USER_INITIALS
-      //     queries the database for user initial and
-      //     inserts a report with only a report_id and
-      //     time.
+Guthrie Hayward (gmh234)
+Nathan Ortolan (ndo28)
+Becky Williams (rjw125)
+Abdul Shaikh (ats234)
 
-      function get_report_id($login, $username, $password)
+Created by Abdul, Guthrie on 11/5/16
+
+Modified by: rjw, ats  on: 11/13/16
+Modified by: rjw  on: 11/16/16
+Modified by: rjw  on: 11/20/16
+
+      function:  get_report_id
+      purpose: expects Oracle login and password
+          returns nothing but performs the following:
+          --inserts into reports table a new report
+          --uses the reports-sequence for report_id
+          --queries reports table for current report_id
+          --store the report_id in SESSION array
+
+    uses: hsu_conn_sess
+-------*/
+
+      function get_report_id($login, $password)
       {
           $conn = hsu_conn_sess($login, $password);
 

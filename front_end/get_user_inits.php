@@ -1,12 +1,25 @@
 <?php
 
-      // function:  get_report_id
-      // purpose: expects Oracle username and password
-      //     returns nothing but stores into session variable
-      //     the new report_id and USER_INITIALS
-      //     queries the database for user initial and
-      //     inserts a report with only a report_id and
-      //     time.
+/*--------
+get_user_inits.php
+
+Guthrie Hayward (gmh234)
+Nathan Ortolan (ndo28)
+Becky Williams (rjw125)
+Abdul Shaikh (ats234)
+
+Created by Rebecca on 11/16/16
+
+Modified by: rjw  on: 11/20/16
+
+    function: get_inits
+    purpose: expects an entered Oracle login and
+        password and mmerp username and performs the following:
+        --queries the database for the users initials
+        --stores the initials in the SESSION array
+
+    uses: hsu_conn_sess
+-------*/
 
       function get_inits($login, $username, $password)
       {
@@ -26,12 +39,12 @@
           oci_execute($user_stmt, OCI_DEFAULT);
           oci_fetch($user_stmt);
 
-          $first_init = oci_result($user_stmt, "USER_INITIALS");
+          $user_init = oci_result($user_stmt, "USER_INITIALS");
 
           oci_free_statement($user_stmt);
           oci_close($conn);
 
-          $_SESSION['first_init'] = $first_init;
+          $_SESSION['user_init'] = $user_init;
 
       }
 

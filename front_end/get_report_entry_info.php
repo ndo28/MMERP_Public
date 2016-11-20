@@ -1,28 +1,22 @@
 <?php
   /*--------
-  user_reports_dropdown.php
+  get_report_entry_info.php
 
   Guthrie Hayward (gmh234)
   Nathan Ortolan (ndo28)
   Becky Williams (rjw125)
   Abdul Shaikh (ats234)
 
-  Created by Abdul, Guthrie and Rebecca on 11/5/16
+  Created by Rebecca on 11/20/16
 
-  Modified by: rjw, ats  on: 11/13/16
-  Modified by: rjw  on: 11/14/16
-  Modified by: ats  on: 11/14/16
-  Modified by: ndo  on: 11/16/16
-  Modified by: rjw  on: 11/20/16
+  Modified by:   on:
 
-      function: user_reports_dropdown
-      purpose: expects an entered Oracle login and
-          password and mmerp username and retrives the
-          list of current reports in the database with that
-          user.  displays this with the report_date, beach-name and
-          report_id from query to the database.
-          --stores the selected report_id to the POST array on submit
-          --optional go back to main menu on submit
+      function: get_report_entry_info
+      purpose: expects an Oracle login and password, mmerp
+          username and report_id and builds a form for the
+          surveyor to report findings on beach walk.
+          current quanity on hand for that product
+          --stores this into the Session Array for next php function
 
       uses: hsu_conn_sess
   -------*/

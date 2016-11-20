@@ -14,6 +14,8 @@
 //     Modified By:
 //     On:
 
+//      uses: hsu_conn_sess
+
 function validate_user($login, $username, $password, $user_password)
 {
         $conn = hsu_conn_sess($login, $password);

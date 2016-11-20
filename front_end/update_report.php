@@ -1,15 +1,27 @@
 <?php
   /*--------
+
+  update_report.php
+
+  Guthrie Hayward (gmh234)
+  Nathan Ortolan (ndo28)
+  Becky Williams (rjw125)
+  Abdul Shaikh (ats234)
+
+  Created by Rebecca on 11/13/16
+
+  Modified by: rjw  on: 11/20/16
+
       function: update_report
-      purpose: expects an entered Oracle username and
+      purpose: expects an entered Oracle login and
           password and a selected beach_abbr and report_id
           updates that report_id with beach, sysdate
-          -- commits teh transaction
+          -- commits the transaction
 
       uses: hsu_conn_sess
   -------*/
 
-function update_report($login, $username, $password, $report_id, $beach_abbr)
+function update_report($login, $password, $report_id, $beach_abbr)
 {
     // try to connect to Oracle student database
 

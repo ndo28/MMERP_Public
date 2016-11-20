@@ -40,11 +40,10 @@
     <!-- required module files to launch app -->
     <?php
 
-        require_once("custom-login-9.php");
+        require_once("custom_login_9.php");
         require_once("main_menu.php");
         require_once("get_report_id.php");
         require_once("get_user_inits.php");
-        require_once("get_second_inits.php");
         require_once("user_reports_dropdown.php");
         require_once("hsu_conn_sess.php");
         require_once("update_report.php");
@@ -94,8 +93,8 @@
     {
       $username = strip_tags($_POST['username']);
       $user_password = $_POST['password'];
-      $password = 'thebangshow';  // this will be hard coded password for Oracle
-      $login = 'mmerp';  // this is hard coded username for Oracle
+      $password = 'Clo\/er1swyd0g';  // this will be hard coded password for Oracle
+      $login = 'rjw125';  // this is hard coded username for Oracle
 
       $_SESSION['login'] = $login;
       $_SESSION['username'] = $username;
@@ -170,7 +169,7 @@
       $password = $_SESSION['password'];
       $login = strip_tags($_SESSION['login']);
 
-      create_map($login, $username, $password);
+      create_map($login, $password);
      }
 
     /* if username exists in the SESSION array and new exists in the POST array,
@@ -190,10 +189,11 @@
           // first, get current report_id and 1st USER_INITIALS
       get_inits($login, $username, $password);
 
+      $_SESSION['first_init'] =   $_SESSION['user_init'];
       $_SESSION["first_user"] = $username;
 
       // get report_id from database
-      get_report_id($login, $username, $password);
+      get_report_id($login, $password);
 
        // second display to the user the report options
       get_report_info($login, $username, $password);
@@ -237,10 +237,11 @@
             $_SESSION['beach_abbr'] = $beach_abbr;
 
             //get 2nd USER_INITIALS
-            get_second_inits($login, $username, $password, $second_user);
+            get_inits($login, $second_user, $password);
+            $_SESSION['second_init'] =   $_SESSION['user_init'];
 
             //update report table with beach, date
-            update_report($login, $username, $password, $report_id, $beach_abbr);
+            update_report($login, $password, $report_id, $beach_abbr);
 
             // Echo session variables that were set on previous pages
             echo "Username is " . $_SESSION["username"] . ".<br>";
@@ -257,8 +258,8 @@
             $first_user = strip_tags($_SESSION['first_user']);
             $second_user = strip_tags($_SESSION['second_user']);
 
-            create_surveyors($login, $username, $password, $report_id, $first_user);
-            create_surveyors($login, $username, $password, $report_id, $second_user);
+            create_surveyors($login, $password, $report_id, $first_user);
+            create_surveyors($login, $password, $report_id, $second_user);
 
           }
           else

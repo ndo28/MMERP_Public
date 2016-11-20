@@ -12,7 +12,7 @@ function admin_console()
             <fieldset>
 
               <div class="chooseItem">
-                <input type="submit" name="back" value="back "/>
+                <input type="submit" name="main_menu" value="Go Back "/>
                 <input type="submit" name="map_view" value="View Map"/>
               </div>
             </fieldset>

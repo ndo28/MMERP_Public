@@ -1,14 +1,28 @@
 <?php
 
-      // function:  get_report_id
-      // purpose: expects Oracle username and password
-      //     returns nothing but stores into session variable
-      //     the new report_id and USER_INITIALS
-      //     queries the database for user initial and
-      //     inserts a report with only a report_id and
-      //     time.
+/*--------
+create_surveyors.php
 
-      function create_surveyors($login, $username, $password, $report_id, $surveyor)
+Guthrie Hayward (gmh234)
+Nathan Ortolan (ndo28)
+Becky Williams (rjw125)
+Abdul Shaikh (ats234)
+
+Created by Rebecca on 11/16/16
+
+Modified by: rjw  on: 11/20/16
+
+    function: create_surveyors
+    purpose: expects an entered Oracle login and
+        password and report_id and surveyor HSU_USERNAME
+        and performs the following:
+        --inserts the surveyor and report_id into the surveyor table
+        --commits the transaction
+
+    uses: hsu_conn_sess
+-------*/
+
+      function create_surveyors($login, $password, $report_id, $surveyor)
       {
           $conn = hsu_conn_sess($login, $password);
 
