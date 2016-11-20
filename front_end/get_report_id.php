@@ -8,9 +8,9 @@
       //     inserts a report with only a report_id and
       //     time.
 
-      function get_report_id($username, $password)
+      function get_report_id($login, $username, $password)
       {
-          $conn = hsu_conn_sess($username, $password);
+          $conn = hsu_conn_sess($login, $password);
 
           // here  ive connected
           // this creates a report in the database

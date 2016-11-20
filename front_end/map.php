@@ -6,9 +6,9 @@
 </script>
 <?php
 
-function create_map($username,$password)
+function create_map($login, $username, $password)
 {
-  $conn = hsu_conn_sess($username, $password);
+  $conn = hsu_conn_sess($login, $password);
 
   $location_query = 'SELECT LATITUDE, LONGITUDE, PRN, REPORT_DATE '.
                     'FROM REPORT_ENTRIES, REPORTS '.

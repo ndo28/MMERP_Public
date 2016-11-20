@@ -9,11 +9,11 @@
       uses: hsu_conn_sess
   -------*/
 
-function update_report($username, $password, $report_id, $beach_abbr)
+function update_report($login, $username, $password, $report_id, $beach_abbr)
 {
     // try to connect to Oracle student database
 
-    $conn = hsu_conn_sess($username, $password);
+    $conn = hsu_conn_sess($login, $password);
 
     $update_call = 'update reports '.
                     'set BEACH_ABBR = :beach_abbr '.
