@@ -12,73 +12,88 @@
   Modified by:   on:
 
       function: get_report_entry_info
-      purpose: expects an Oracle login and password, mmerp
-          username and report_id and builds a form for the
-          surveyor to report findings on beach walk.
-          current quanity on hand for that product
-          --stores this into the Session Array for next php function
+      purpose:
 
       uses: hsu_conn_sess
   -------*/
 
-function user_reports_dropdown($login, $username, $password)
+function get_report_entry_info($login, $password, $first_init, $second_init)
 {
-    // Now a query to display results of updated row
+
     $conn = hsu_conn_sess($login, $password);
 
     ?>
     <form action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
     <fieldset>
-      <legend> Select the report you you like to continue </legend>
+      <legend> Select values to report </legend>
       <?PHP
+     // Now a query to display species information
+      $species_query = 'SELECT SPEC_ABBR, SPEC_NAME '.
+                    'FROM SPECIES';
 
-      $report_query = 'SELECT REPORTS.REPORT_ID, REPORT_DATE, BEACH_NAME '.
-                    'FROM REPORTS, SURVEYORS, BEACHES '.
-                    'WHERE HSU_USERNAME = :USERNAME '.
-                    'AND REPORTS.BEACH_ABBR = BEACHES.BEACH_ABBR '.
-                    'AND REPORTS.REPORT_ID = SURVEYORS.REPORT_ID';
+    $species_stmt = oci_parse($conn, $species_query);
 
-    $query_stmt = oci_parse($conn, $report_query);
 
-    // bind php variable to Oracle variable
-
-    oci_bind_by_name($query_stmt, ":username",
-                     $username);
-
-    // now execute! non-selects, when executed,
-    //    return number of rows affected,
-    //    (or 0 for statements that don't affect rows)
-
-    oci_execute($query_stmt, OCI_DEFAULT);
+    oci_execute($species_stmt, OCI_DEFAULT);
 
     ?>
-    <label for="reports"> User Reports </label>
-    <select name = "report_id">
+    <label for="species">Select Species found </label>
+    <select name = "spec_abbr">
       <?php
-        while (oci_fetch($query_stmt))
+        while (oci_fetch($species_stmt))
         {
-          $curr_report_id = oci_result($query_stmt, "REPORT_ID");
-          $curr_date = oci_result($query_stmt, "REPORT_DATE");
-          $curr_beach = oci_result($query_stmt, "BEACH_NAME");
+          $curr_species_abbr = oci_result($species_stmt, "SPEC_ABBR");
+          $curr_species_name = oci_result($species_stmt, "SPEC_NAME");
           ?>
-          <option value = "<?= $curr_report_id ?>">
-            <?= $curr_date ?> .. <?= $curr_beach ?> .. <?= $curr_report_id ?>
+          <option value = "<?= $curr_species_abbr ?>">
+             <?= $curr_species_name ?>
           </option>
 
           <?php
         }
 
-    oci_free_statement($query_stmt);
+    oci_free_statement($species_stmt);
     ?>
-    </select>
-    <?php
+    </select><br>
+    <label for="coordinates">Coordinates:</label><br>
+    Latitude:
+      <input type="text" name="latitude"><br>
+    Longitude:
+      <input type="text" name="longitude"><br>
 
+
+    <label for="post_tag">Post Survey Tag? </label>
+    <input type="radio" name="post_tag" value="y" checked> Yes
+    <input type="radio" name="post_tag" value="n" > No<br>
+
+    <label for="photos">Photos? </label>
+    <input type="radio" name="photos" value="y" checked> Yes
+    <input type="radio" name="photos" value="n" > No<br>
+
+    <label for="existing_tags">Existing Tags? </label>
+    <input type="radio" name="existing_tags" value="y" > Yes
+    <input type="radio" name="existing_tags" value="n" checked> No<br>
+
+    <label for="survey_type">Systematic or Opportunistic Observations? </label>
+    <input type="radio" name="survey_type" value="SYS" checked> Systematic
+    <input type="radio" name="survey_type" value="OPP" > Opportunistic<br>
+
+
+    <label for="surveyor_init"> <strong>Which Surveyor initials for <br>
+      Personal Reference Number (PRN)</strong></label>
+    <label for="first"><input type="radio" name="surveyor_init" value = "<?= $first_init ?>">
+      <?php echo $first_init ?> </label>
+    <label for="second"><input type="radio" name="surveyor_init" value = "<?= $second_init ?>">
+      <?php echo $second_init ?> </label>
+
+    <?php
     oci_close($conn);
     ?>
 
     <div class="submit">
-      <input type="submit" name="report_recap" value="Continue" />
-      <input type="submit" name="main_menu" value="Go Back" />
+      <input type="submit" name="entry_recap" value="Continue" />
+      <input type="submit" name="report_recap" value="Go Back" />
+      <input type="submit" name="main_menu" value="Exit to Main Menu" />
     </div>
 
   </fieldset>

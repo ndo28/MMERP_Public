@@ -68,7 +68,7 @@ Modified by: rjw  on: 11/20/16
               <?php
 
 
-                $user_query = 'select HSU_USERNAME, USER_INITIALS
+                $user_query = 'select HSU_USERNAME
                                from USERS
                                where HSU_USERNAME != :username';
 
@@ -84,7 +84,6 @@ Modified by: rjw  on: 11/20/16
              <?php
                   while (oci_fetch($user_stmt))
                   {
-                      $curr_user_initials = oci_result($user_stmt, "USER_INITIALS");
                       $curr_user_name = oci_result($user_stmt, "HSU_USERNAME");
                       ?>
                       <option value = "<?= $curr_user_name ?>">
@@ -101,7 +100,7 @@ Modified by: rjw  on: 11/20/16
 
              <div class="submit">
              <input class="button" type="submit" name="main_menu" value="Go Back">
-             <input class="button" type="submit" name="report_recap" value="Continue"/>
+             <input class="button" type="submit" name="new_reports_update" value="Continue"/>
                 </div>
           </fieldset>
         </form>

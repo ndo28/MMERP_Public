@@ -1,19 +1,14 @@
 <?php
-// function:  report_recap
-// purpose: expects Oracle username and password
-//     returns nothing but displays to the user
-//     the current report number and PRNs associated
-//     with that report (via a sql query)
-//     inserts a report with only a report_id and
-//     includes options to return to main_menu, go on to
-//     report_summary or go on to make a stranding report via
-//     add_entry
+/*------------------------
 
-//     Created by:  Guthrie Hayward and Rebecca Williams
-//     Created on:  11/16/16
-//     Modified By:  Rebecca Williams
-//     On:  11/19/16
-function report_recap($login, $password, $report_id)
+function:  entry_recap
+purpose:   this is not done!!!!!
+
+    Created by:  Rebecca Williams
+    Created on:  11/20/16
+    Modified By:   On:
+    ----------------*/
+function entry_recap($login, $password)
 {
         $conn = hsu_conn_sess($login, $password);
         ?>
@@ -22,7 +17,7 @@ function report_recap($login, $password, $report_id)
                 action="<?= htmlentities($_SERVER['PHP_SELF'],
                                          ENT_QUOTES) ?>">
          <fieldset>
-           <legend>Report Recap</legend>
+           <legend>Entry Recap</legend>
            <?php
 
                 $report_id = strip_tags($_SESSION['report_id']);
@@ -33,7 +28,7 @@ function report_recap($login, $password, $report_id)
 
                  $entries_stmt = oci_parse($conn, $entries_query);
 
-                 oci_bind_by_name($entries_stmt, ":report_id", $report_id);
+
 
                  oci_execute($entries_stmt, OCI_DEFAULT);
             ?>

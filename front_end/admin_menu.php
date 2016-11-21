@@ -1,4 +1,23 @@
 <?php
+/*--------
+admin_menu.php
+
+Guthrie Hayward (gmh234)
+Nathan Ortolan (ndo28)
+Becky Williams (rjw125)
+Abdul Shaikh (ats234)
+
+Created by Abdul on 11/13/16
+
+Modified by: rjw  on: 11/20/16
+
+    function: admin_console
+    purpose: a form containing several submit buttons with the following
+    choices:
+        --option to go view map
+        --option to go back to main menu
+
+-------*/
 
 function admin_console()
 {

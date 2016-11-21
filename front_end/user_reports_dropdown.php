@@ -83,7 +83,7 @@ function user_reports_dropdown($login, $username, $password)
     ?>
 
     <div class="submit">
-      <input type="submit" name="report_recap" value="Continue" />
+      <input type="submit" name="get_existing_report_info" value="Continue" />
       <input type="submit" name="main_menu" value="Go Back" />
     </div>
 
