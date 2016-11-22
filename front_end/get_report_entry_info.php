@@ -56,10 +56,13 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
     ?>
     </select><br>
     <label for="coordinates">Coordinates:</label><br>
+    <!-- <button onclick="getLocation()">Use Current Location</button> -->
+    <input type="checkbox" onclick="getLocation()" value="Use Current Location" />Use Current Location <br>
     Latitude:
-      <input type="text" name="latitude"><br>
+      <input type="text" name="latitude" id = "latitude"><br>
     Longitude:
-      <input type="text" name="longitude"><br>
+      <input type="text" name="longitude" id="longitude"><br>
+
 
 
     <label for="post_tag">Post Survey Tag? </label>
@@ -98,6 +101,21 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
 
   </fieldset>
   </form>
+  <script>
+    var lat = document.getElementById("latitude");
+    var long = document.getElementById("longitude");
+    function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+              alert("Geolocation is not supported by this browser.");
+          }
+      }
+      function showPosition(position) {
+        lat.value = position.coords.latitude.toFixed(7);
+        long.value = position.coords.longitude.toFixed(7);
+      }
+    </script>
 
     <?php
   }
