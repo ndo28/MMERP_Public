@@ -99,8 +99,8 @@
     {
         $username = strip_tags($_POST['username']);
         $user_password = $_POST['password'];
-        $password = 'Clo\/er1swyd0g';  // this will be hard coded password for Oracle
-        $login = 'rjw125';  // this is hard coded username for Oracle
+        $password = 'thebangshow';  // this will be hard coded password for Oracle
+        $login = 'mmerp';  // this is hard coded username for Oracle
 
         $_SESSION['login'] = $login;
         $_SESSION['username'] = $username;
