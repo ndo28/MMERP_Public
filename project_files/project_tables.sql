@@ -10,6 +10,7 @@
 --modified: 2016-10-12 by ndo28
 --modified: 2016-10-12 by ats234
 --modified: 2016-10-14 by ndo28 and rjw125(pair programming)
+--modified: 2016-11-25 by rjw125
 
 spool project-tables-out.txt
 
@@ -24,7 +25,7 @@ commit;
 drop table Beaches cascade constraints;
 create table Beaches
 (
-    beach_abbr                  char(4) not null, --Beach abbreviation
+    beach_abbr                  char(2) not null, --Beach abbreviation
     beach_name                  varchar2(45) not null, -- Beach name or description (Based on the data sheet document)
     primary key (beach_abbr)
 );
@@ -64,48 +65,6 @@ create table Users
 	primary key (hsu_username)
 );
 
-/*
---============================================================
--- Admins
--- Determined by a 2-digit admin id
--- admin_id : 2-digit id determined by sequence admin_seq
-drop table Admins cascade constraints;
-
-create table Admins
-(
-	admin_id			                   number(2) not null,
-  admin_lname                      varchar2 not null,
-  admin_fname                      varchar2 not null,
-  admin_email                      varchar2 not null,
-  --admin_phone                    --integer(10)???,
-  user_name                        varchar2,
-	primary key (admin_id),
-  foreign key (user_name) references Users
-);
-
-
---============================================================
--- Surveyors
--- Determined by a 3-digit surveyor id
--- surv_id : 3-digit id determined by sequene surveyor_seq
-
-drop table Surveyors cascade constraints;
-
-create table Surveyors
-(
-	surv_id			                   integer(3) not null,
-  surv_lname                     varchar2 not null,
-  surv_fname                     varchar2 not null,
-  surv_email                     varchar2 not null,
-  --surv_phone                   --integer(10)???,
-  user_name                      varchar2,
-	primary key (surv_id),
-  foreign key (user_name) references Users
-);
-
-
-*/
-
 --============================================================
 --Reports table => purpose: to track important information about
 --     beach walks.
@@ -118,7 +77,7 @@ create table Reports
  start_time                     char(5) not null,
  end_time                       char(5),
  report_date                    date,
- beach_abbr                     char(4),
+ beach_abbr                     char(2),
  survey_summary                 long,
  primary key (report_id),
  foreign key (beach_abbr) references Beaches
