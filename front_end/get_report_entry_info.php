@@ -9,7 +9,8 @@
 
   Created by Rebecca on 11/20/16
 
-  Modified by:   on:
+  Modified by:  ats on:  11/20/16
+
 
       function: get_report_entry_info
       purpose:

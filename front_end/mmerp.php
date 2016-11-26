@@ -19,6 +19,7 @@
     Modified by: ndo  on: 11/16/16
     Modified by: rjw  on: 11/19/16
     Modified by: rjw  on: 11/20/16
+    Modified by: rjw  on: 11/25/16
 
     File: mmerp.php
 
@@ -50,12 +51,13 @@
         require_once("report_recap.php");
         require_once("validate_user.php");
         require_once("get_report_entry_info.php");
-        //require_once("entry_recap.php");
+        require_once("entry_recap.php");
         require_once("get_PRN.php");
         require_once("get_report_date.php");
         require_once("get_beach_abbr.php");
         require_once("get_second_user.php");
         require_once("fix_date.php");
+        require_once ('create_report_entry.php');
 
     ?>
 
@@ -97,8 +99,8 @@
     {
         $username = strip_tags($_POST['username']);
         $user_password = $_POST['password'];
-        $password = 'thebangshow';  // this will be hard coded password for Oracle
-        $login = 'mmerp';  // this is hard coded username for Oracle
+        $password = 'Clo\/er1swyd0g';  // this will be hard coded password for Oracle
+        $login = 'rjw125';  // this is hard coded username for Oracle
 
         $_SESSION['login'] = $login;
         $_SESSION['username'] = $username;
@@ -109,17 +111,17 @@
         // validate user password with database, store variables for is_surveyor, is_admin
         validate_user($login, $username, $password, $user_password);
 
-        // if vaidation is successful continue to main_menu, else restart session
+        // if validation is successful continue to main_menu, else restart session
         if ((array_key_exists('is_surveyor', $_SESSION))
             and (array_key_exists('is_admin', $_SESSION)))
         {
             $username = strip_tags($_SESSION['username']);
             $is_surveyor = strip_tags($_SESSION['is_surveyor']);
             $is_admin = strip_tags($_SESSION['is_admin']);
-            $user_password = strip_tags($_SESSION['user_password']);
+            $user_password = $_SESSION['user_password'];
             $password = $_SESSION["password"];
-            echo "session->is_admin is " . $_SESSION["is_admin"] . ".<br>";
-            echo "session->is_surveyor is " . $_SESSION["is_surveyor"] . ".<br>";
+            //echo "session->is_admin is " . $_SESSION["is_admin"] . ".<br>";
+            //echo "session->is_surveyor is " . $_SESSION["is_surveyor"] . ".<br>";
             //$user_password = $_SESSION['user_password'];
 
               main_menu();
@@ -226,15 +228,15 @@
         update_report($login, $password, $report_id, $beach_abbr);
 
         // Echo session variables that were set on previous pages
-        echo "Username is " . $_SESSION["username"] . ".<br>";
-        echo "beach_choice is " . $_SESSION["beach_abbr"] . ".<br>";
-        echo "report_id is " . $_SESSION["report_id"] . ".<br>";
-        echo "second_user is " . $_SESSION["second_user"] . ".<br>";
-        echo "second_init is " . $_SESSION["second_init"] . ".<br>";
-        echo "first_init is " . $_SESSION["first_init"] . ".<br>";
-        echo "first_user is " . $_SESSION["first_user"] . ".<br>";
-        echo "user_password is " . $_SESSION["user_password"] . ".<br>";
-        echo "password " . $_SESSION["password"] . ".";
+        //echo "Username is " . $_SESSION["username"] . ".<br>";
+        //echo "beach_choice is " . $_SESSION["beach_abbr"] . ".<br>";
+        //echo "report_id is " . $_SESSION["report_id"] . ".<br>";
+        //echo "second_user is " . $_SESSION["second_user"] . ".<br>";
+        //echo "second_init is " . $_SESSION["second_init"] . ".<br>";
+        //echo "first_init is " . $_SESSION["first_init"] . ".<br>";
+        //echo "first_user is " . $_SESSION["first_user"] . ".<br>";
+        //echo "user_password is " . $_SESSION["user_password"] . ".<br>";
+        //echo "password " . $_SESSION["password"] . ".";
 
 
         $first_user = strip_tags($_SESSION['first_user']);
@@ -249,8 +251,8 @@
         //$password = $_SESSION['password'];
         //$login = strip_tags($_SESSION['login']);
         //$report_id = strip_tags($_SESSION['report_id']);
+        //echo "report_id is " . $_SESSION["report_id"] . ".<br>";
 
-        echo "report_id is " . $_SESSION["report_id"] . ".<br>";
         // get initials for both surveyors
         // first, get 1st USER_INITIALS
         get_inits($login, $first_user, $password);
@@ -261,16 +263,16 @@
         $_SESSION['second_init'] =   $_SESSION['user_init'];
 
         // Echo session variables that were set on previous pages
-        echo "Username is " . $_SESSION["username"] . ".<br>";
-        echo "beach_choice is " . $_SESSION["beach_abbr"] . ".<br>";
-        echo "report_id is " . $_SESSION["report_id"] . ".<br>";
-        echo "second_user is " . $_SESSION["second_user"] . ".<br>";
-        echo "second_init is " . $_SESSION["second_init"] . ".<br>";
-        echo "first_init is " . $_SESSION["first_init"] . ".<br>";
-        echo "first_user is " . $_SESSION["first_user"] . ".<br>";
-        echo "user_password is " . $_SESSION["user_password"] . ".<br>";
-        echo "password " . $_SESSION["password"] . ".";
-        echo "you have arrived at report recap";
+        //echo "Username is " . $_SESSION["username"] . ".<br>";
+        //echo "beach_choice is " . $_SESSION["beach_abbr"] . ".<br>";
+        //echo "report_id is " . $_SESSION["report_id"] . ".<br>";
+        //echo "second_user is " . $_SESSION["second_user"] . ".<br>";
+        //echo "second_init is " . $_SESSION["second_init"] . ".<br>";
+        //echo "first_init is " . $_SESSION["first_init"] . ".<br>";
+        //echo "first_user is " . $_SESSION["first_user"] . ".<br>";
+        //echo "user_password is " . $_SESSION["user_password"] . ".<br>";
+        //echo "password " . $_SESSION["password"] . ".";
+        //echo "you have arrived at report recap";
 
         report_recap($login, $password, $report_id);
 
@@ -313,20 +315,24 @@
         $login = strip_tags($_SESSION['login']);
         $report_id = strip_tags($_SESSION['report_id']);
 
-        echo "report_id is " . $_SESSION["report_id"] . ".<br>";
+        //echo "report_id is " . $_SESSION["report_id"] . ".<br>";
+
         // get second surveyor
         get_second_user($login, $password, $username, $report_id);
 
-        echo "second_user is " . $_SESSION["second_user"] . ".<br>";
+        //echo "second_user is " . $_SESSION["second_user"] . ".<br>";
+
         // get beach_abbr
         get_beach_abbr($login, $password, $report_id);
-        echo "beach_abbr is " . $_SESSION["beach_abbr"] . ".<br>";
+
+        //echo "beach_abbr is " . $_SESSION["beach_abbr"] . ".<br>";
 
         //$username = strip_tags($_SESSION['username']);
         $first_user = strip_tags($_SESSION['first_user']);
         $second_user = strip_tags($_SESSION['second_user']);
 
-        echo "report_id is " . $_SESSION["report_id"] . ".<br>";
+        //echo "report_id is " . $_SESSION["report_id"] . ".<br>";
+
         // get initials for both surveyors
         // first, get 1st USER_INITIALS
         get_inits($login, $first_user, $password);
@@ -336,7 +342,8 @@
         get_inits($login, $second_user, $password);
         $_SESSION['second_init'] =   $_SESSION['user_init'];
 
-        echo "you have arrived at report recap";
+        //echo "you have arrived at report recap";
+
         report_recap($login, $password, $report_id);
 
     }
@@ -392,38 +399,103 @@
 
 
          get_report_date($login, $password, $report_id);
+
          // Echo session variables that are stored
-         echo "beach_abbr is " . $_SESSION["beach_abbr"] . ".<br>";
-         echo "report_id is " . $_SESSION["report_id"] . ".<br>";
-         echo "second_user is " . $_SESSION["second_user"] . ".<br>";
-         echo "first_user is " . $_SESSION["first_user"] . ".<br>";
-         echo "second_init is " . $_SESSION["second_init"] . ".<br>";
-         echo "first_init is " . $_SESSION["first_init"] . ".<br>";
-         echo "spec_abbr is " . $_SESSION["spec_abbr"] . ".<br>";
-         echo "report_date is " . $_SESSION["report_date"] . ".<br>";
-         echo "post_tag is " . $_SESSION["post_tag"] . ".<br>";
-         echo "latitude is " . $_SESSION["latitude"] . ".<br>";
-         echo "longitude is " . $_SESSION["longitude"] . ".<br>";
-         echo "photos is " . $_SESSION["photos"] . ".<br>";
-         echo "existing_tags is " . $_SESSION["existing_tags"] . ".<br>";
-         echo "survey_type is " . $_SESSION["survey_type"] . ".<br>";
+        //  echo "beach_abbr is " . $_SESSION["beach_abbr"] . ".<br>";
+        //  echo "report_id is " . $_SESSION["report_id"] . ".<br>";
+        //  echo "second_user is " . $_SESSION["second_user"] . ".<br>";
+        //  echo "first_user is " . $_SESSION["first_user"] . ".<br>";
+        //  echo "second_init is " . $_SESSION["second_init"] . ".<br>";
+        //  echo "first_init is " . $_SESSION["first_init"] . ".<br>";
+        //  echo "spec_abbr is " . $_SESSION["spec_abbr"] . ".<br>";
+        //  echo "report_date is " . $_SESSION["report_date"] . ".<br>";
+        //  echo "post_tag is " . $_SESSION["post_tag"] . ".<br>";
+        //  echo "latitude is " . $_SESSION["latitude"] . ".<br>";
+        //  echo "longitude is " . $_SESSION["longitude"] . ".<br>";
+        //  echo "photos is " . $_SESSION["photos"] . ".<br>";
+        //  echo "existing_tags is " . $_SESSION["existing_tags"] . ".<br>";
+        //  echo "survey_type is " . $_SESSION["survey_type"] . ".<br>";
 
          $report_date = $_SESSION['report_date'];
 
          fix_date($report_date);
-         echo "day is " . $_SESSION["PRN_date"] . ".<br>";
+
+         //echo "day is " . $_SESSION["PRN_date"] . ".<br>";
 
          $PRN_date = $_SESSION['PRN_date'];
          $beach_abbr = $_SESSION["beach_abbr"];
 
          get_PRN($login, $password, $report_id, $PRN_date, $beach_abbr,
                            $spec_abbr, $surveyor_init, $survey_type);
-         echo "PRN is " . $_SESSION["PRN"] . ".<br>";
 
+         //echo "PRN is " . $_SESSION["PRN"] . ".<br>";
 
-       //entry_recap($login, $password);  done to here!!!!
+         $PRN = $_SESSION['PRN'];
+
+         entry_recap($login, $password, $PRN, $latitude, $longitude, $spec_abbr);
+       }
+         /* if username exists in the SESSION array and submit_entry exists in the POST array,
+             then store login, password and comment (from POST)as PHP
+             variables and display the insert report_entry module*/
+     elseif (array_key_exists("username", $_SESSION)
+             and (array_key_exists('submit_entry', $_POST))
+             and ($_SESSION["is_surveyor"] == 'Y'))
+     {
+         $username = strip_tags($_SESSION['username']);
+         $login = strip_tags($_SESSION['login']);
+         $password = $_SESSION['password'];
+
+         //echo "you have arrived at report entry submit";
+
+         $comment = $_POST['comment'];
+         $_SESSION['comment'] = $comment;
+
+         //echo "comment is " . $_SESSION["comment"] . ".<br>";
+         $report_id = strip_tags($_SESSION['report_id']);
+         $username = strip_tags($_SESSION['username']);
+         $spec_abbr = strip_tags($_SESSION['spec_abbr']);
+         $latitude = strip_tags($_SESSION['latitude']);
+         $longitude = strip_tags($_SESSION['longitude']);
+         $post_tag = strip_tags($_SESSION['post_tag']);
+         $existing_tags = strip_tags($_SESSION['existing_tags']);
+         $photos = strip_tags($_SESSION['photos']);
+         $no_animals = strip_tags($_SESSION['no_animals']);
+         $PRN = strip_tags($_SESSION['PRN']);
+
+         create_report_entry($login, $password, $PRN, $report_id, $username, $spec_abbr,
+                             $post_tag, $existing_tags, $photos, $no_animals, $comment);
+
      }
-    /* otherwise... destroy, regenerate, begin a new SESSION, and display
+     /* if username exists in the SESSION array and submit_entry exists in the POST array,
+         then store username and password as PHP variables and begin a new report:
+             -- get the next sequencial report_id from DB
+             -- display the report info input module */
+     elseif (array_key_exists("username", $_SESSION)
+             and (array_key_exists('add_photos', $_POST))
+             and ($_SESSION["is_surveyor"] == 'Y'))
+     {
+         $username = strip_tags($_SESSION['username']);
+         $login = strip_tags($_SESSION['login']);
+
+          //   add photo capture page here!!
+
+     }
+         /* if username exists in the SESSION array and report_recap exists in the POST
+             array, then store username and password as PHP variables and display the
+             report_recap module */
+     elseif (array_key_exists("username", $_SESSION)
+             and (array_key_exists('report_recap', $_POST))
+             and ($_SESSION["is_surveyor"] == 'Y'))
+     {
+         $report_id = strip_tags($_SESSION['report_id']);
+         $password = $_SESSION['password'];
+         $login = strip_tags($_SESSION['login']);
+
+         report_recap($login, $password, $report_id);
+
+     }
+
+         /* otherwise... destroy, regenerate, begin a new SESSION, and display
         the login module */
     else
     {
