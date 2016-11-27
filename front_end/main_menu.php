@@ -18,7 +18,7 @@ Modified by: rjw  on: 11/20/16
         --option to go to Admin console
         --option to go to list existing reports for user
         --option to go to create a new report
-        --option to change password 
+        --option to change password
 
 -------*/
 
@@ -39,11 +39,12 @@ function main_menu()
                   <input type="submit" name="admin" value="Admin"/>
                   <input type="submit" name="new" value="New Report"/>
                   <input type="submit" name="continue" value="Continue"/>
-                  <input type="submit" name="change_password" value="Change Password" />
+
               </div>
             </fieldset>
           </form>
         </div>
         <?php
+        //<input type="submit" name="change_password" value="Change Password" />
         }
 ?>

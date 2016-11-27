@@ -70,9 +70,9 @@ function report_recap($login, $password, $report_id)
 
               <div class="chooseAction">
                   <input type="submit" name="add_entry" value="Add Entries"/>
-                  <input type="submit" name="summary" value="No Findings"/>
+                  <input type="submit" name="to_summary" value="No Findings"/>
                   <input type="submit" name="main_menu" value="Go Back"/>
-                  <input type="submit" name="summary" value="Report Summary" />
+                  <input type="submit" name="to_summary" value="Report Summary" />
               </div>
             </fieldset>
           </form>

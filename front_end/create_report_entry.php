@@ -49,7 +49,7 @@ Modified by:   on:
           oci_execute($insert_stmt, OCI_DEFAULT);
           oci_commit($conn);
 
-          // oci_free_statement($insert_stmt);
+          oci_free_statement($insert_stmt);
           // echo "comment is " . $comment . ".<br>";
           //
           // $update_call = 'update report_entries '.

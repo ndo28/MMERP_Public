@@ -58,6 +58,8 @@
         require_once("get_second_user.php");
         require_once("fix_date.php");
         require_once ('create_report_entry.php');
+        require_once ('create_report_summary.php');
+        require_once ('report_summary.php');
 
     ?>
 
@@ -494,6 +496,36 @@
          report_recap($login, $password, $report_id);
 
      }
+     /* if username exists in the SESSION array and to_summary exists in the POST
+         array, then store username and password as PHP variables and display the
+         report_summary module */
+      elseif (array_key_exists("username", $_SESSION)
+             and (array_key_exists('to_summary', $_POST))
+             and ($_SESSION["is_surveyor"] == 'Y'))
+      {
+         $report_id = strip_tags($_SESSION['report_id']);
+         $password = $_SESSION['password'];
+         $login = strip_tags($_SESSION['login']);
+
+         report_summary();
+
+ }
+
+ /* if username exists in the SESSION array and submit_report exists in the POST
+     array, then store username and password as PHP variables and display the
+     report_summary module */
+      elseif (array_key_exists("username", $_SESSION)
+             and (array_key_exists('submit_report', $_POST))
+             and ($_SESSION["is_surveyor"] == 'Y'))
+      {
+           $report_id = strip_tags($_SESSION['report_id']);
+           $password = $_SESSION['password'];
+           $login = strip_tags($_SESSION['login']);
+           $summary = ($_POST['summary']);
+
+           create_report_summary($login, $password, $summary, $report_id);
+
+}
 
          /* otherwise... destroy, regenerate, begin a new SESSION, and display
         the login module */

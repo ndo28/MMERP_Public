@@ -33,8 +33,8 @@ function validate_user($login, $username, $password, $user_password)
          oci_fetch($password_stmt);
 
          $db_password = oci_result($password_stmt, "PASSWORD");
-         echo "db_password is " . $db_password . ".<br>";
-         echo "user_password is " . $user_password . ".<br>";
+         //echo "db_password is " . $db_password . ".<br>";
+         //echo "user_password is " . $user_password . ".<br>";
 
 
          oci_free_statement($password_stmt);
@@ -57,12 +57,12 @@ function validate_user($login, $username, $password, $user_password)
 
            $is_admin = oci_result($user_type_stmt, "IS_ADMIN");
            $is_surveyor = oci_result($user_type_stmt, "IS_SURVEYOR");
-           echo "is_admin is " . $is_admin . ".<br>";
-           echo "is_surveyor is " . $is_surveyor . ".<br>";
+           //echo "is_admin is " . $is_admin . ".<br>";
+           //echo "is_surveyor is " . $is_surveyor . ".<br>";
            $_SESSION['is_admin'] = $is_admin;
            $_SESSION['is_surveyor'] = $is_surveyor;
-           echo "session->is_admin is " . $_SESSION["is_admin"] . ".<br>";
-           echo "session->is_surveyor is " . $_SESSION["is_surveyor"] . ".<br>";
+           //echo "session->is_admin is " . $_SESSION["is_admin"] . ".<br>";
+           //echo "session->is_surveyor is " . $_SESSION["is_surveyor"] . ".<br>";
 
            oci_free_statement($user_type_stmt);
          }
