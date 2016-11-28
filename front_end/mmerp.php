@@ -58,8 +58,9 @@
         require_once("get_second_user.php");
         require_once("fix_date.php");
         require_once ('create_report_entry.php');
-        require_once ('create_report_summary.php');
-        require_once ('report_summary.php');
+        require_once("view_reports.php");
+        require_once("view_reports_by_user.php");
+        require_once("display_existing_report_info.php");
 
     ?>
 
@@ -101,8 +102,8 @@
     {
         $username = strip_tags($_POST['username']);
         $user_password = $_POST['password'];
-        $password = 'thebangshow';  // this will be hard coded password for Oracle
-        $login = 'mmerp';  // this is hard coded username for Oracle
+        $password = 'WdvNko67';  // this will be hard coded password for Oracle
+        $login = 'ndo28';  // this is hard coded username for Oracle
 
         $_SESSION['login'] = $login;
         $_SESSION['username'] = $username;
@@ -164,12 +165,12 @@
          $password = $_SESSION['password'];
          $login = strip_tags($_SESSION['login']);
 
-         admin_console();
+         admin_console($login, $password);
 
     }
     /* if username exists in the SESSION array and map_view exists in the POST
-        array, then store username and password as PHP variables and display
-        the respective users map module*/
+        array and the user is an admin, then store username and password as
+        PHP variables and display the admin map module */
     elseif (array_key_exists("username", $_SESSION)
             and (array_key_exists("map_view", $_POST))
             and ($_SESSION["is_admin"] == 'Y'))
@@ -180,6 +181,67 @@
 
         create_map($login, $password);
      }
+     /* if username exists in the SESSION array and report_view exists in the POST
+         array and the user is an admin, then store username and password as
+         PHP variables and display the admin report module */
+     elseif (array_key_exists("username", $_SESSION)
+             and (array_key_exists("report_view", $_POST))
+             and ($_SESSION["is_admin"] == 'Y'))
+     {
+         $username = strip_tags($_SESSION['username']);
+         $password = $_SESSION['password'];
+         $login = strip_tags($_SESSION['login']);
+
+         view_reports($login, $password);
+      }
+      /* if username exists in the SESSION array and report_view_by_user exists
+            in the POST array and the user is an admin, then store username and
+            password as PHP variables and display the admin report by user
+            module */
+      elseif (array_key_exists("username", $_SESSION)
+              and (array_key_exists("report_view_by_user", $_POST))
+              and ($_SESSION["is_admin"] == 'Y'))
+      {
+          $username = strip_tags($_SESSION['username']);
+          $password = $_SESSION['password'];
+          $login = strip_tags($_SESSION['login']);
+          $surveyor = strip_tags($_POST['hsu_username']);
+          $_SESSION["surveyor"] = $surveyor;
+
+          view_reports_by_user($login, $password, $surveyor);
+       }
+       /* if username exists in the SESSION array and report_view_by_beach exists
+             in the POST array and the user is an admin, then store username and
+             password as PHP variables and display the admin report by user
+             module */
+       elseif (array_key_exists("username", $_SESSION)
+               and (array_key_exists("report_view_by_beach", $_POST))
+               and ($_SESSION["is_admin"] == 'Y'))
+       {
+           $username = strip_tags($_SESSION['username']);
+           $password = $_SESSION['password'];
+           $login = strip_tags($_SESSION['login']);
+           $beach = strip_tags($_POST['beach_choice']);
+           $_SESSION["beach_choice"] = $beach;
+
+           view_reports_by_beach($login, $password, $beach);
+        }
+       /* if username exists in the SESSION array and get_existing_report_info exists
+             in the POST array and the user is an admin, then store username and
+             password as PHP variables and display the admin existing report info
+             module */
+       elseif (array_key_exists("username", $_SESSION)
+               and (array_key_exists("get_existing_report_info", $_POST))
+               and ($_SESSION["is_admin"] == 'Y'))
+       {
+           $username = strip_tags($_SESSION['username']);
+           $password = $_SESSION['password'];
+           $login = strip_tags($_SESSION['login']);
+           $report = strip_tags($_POST['report_id']);
+
+           display_existing_report_info($login, $password, $report);
+
+        }
 
     /* if username exists in the SESSION array and new exists in the POST array,
         then store username and password as PHP variables and begin a new report:
@@ -496,36 +558,6 @@
          report_recap($login, $password, $report_id);
 
      }
-     /* if username exists in the SESSION array and to_summary exists in the POST
-         array, then store username and password as PHP variables and display the
-         report_summary module */
-      elseif (array_key_exists("username", $_SESSION)
-             and (array_key_exists('to_summary', $_POST))
-             and ($_SESSION["is_surveyor"] == 'Y'))
-      {
-         $report_id = strip_tags($_SESSION['report_id']);
-         $password = $_SESSION['password'];
-         $login = strip_tags($_SESSION['login']);
-
-         report_summary();
-
- }
-
- /* if username exists in the SESSION array and submit_report exists in the POST
-     array, then store username and password as PHP variables and display the
-     report_summary module */
-      elseif (array_key_exists("username", $_SESSION)
-             and (array_key_exists('submit_report', $_POST))
-             and ($_SESSION["is_surveyor"] == 'Y'))
-      {
-           $report_id = strip_tags($_SESSION['report_id']);
-           $password = $_SESSION['password'];
-           $login = strip_tags($_SESSION['login']);
-           $summary = ($_POST['summary']);
-
-           create_report_summary($login, $password, $summary, $report_id);
-
-}
 
          /* otherwise... destroy, regenerate, begin a new SESSION, and display
         the login module */
