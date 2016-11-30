@@ -6,7 +6,7 @@
 5. type the following commands:
    start project_tables.sql
    start project-population.sql
-   start project_db_test
+   start project_db_test.sql
 
 *List of files included in this iteration:
 testing-plan-1.txt - file describes how we tested the code
