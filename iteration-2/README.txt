@@ -1,5 +1,5 @@
 1. Precondition- complete the steps from iteration 1
-2. navigate nrs-projects.humboldt.edu/~st10/mmerp.php
+2. Navigate nrs-projects.humboldt.edu/~mmerp/mmerp.php
 
 *List of files included in this iteration:
 
