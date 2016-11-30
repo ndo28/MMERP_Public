@@ -3,7 +3,7 @@
 --Guthrie Hayward
 --Abdul Shaikh
 -- CS 458 - Fall 2016
--- Last Edited 10/16/16
+-- Last Edited 11/30/16
 
 spool project-population-out.txt
 
@@ -112,6 +112,8 @@ insert into Users
   values ('gmh234','GH','Hayward','Guthrie','gmh234@humboldt.edu','root','N','Y');
 insert into Users
   values ('rjw125','RW','Williams','Rebecca','rjw125@humboldt.edu','root','N','Y');
+insert into Users
+  values ('st10', 'ST', 'Tuttle', 'Sharon', 'st10@humboldt.edu', 'root', 'Y', 'Y');
 insert into Users
   values ('adm000','AD','ADMIN','SYS','admin000@humboldt.edu','admin','Y','N');
 
