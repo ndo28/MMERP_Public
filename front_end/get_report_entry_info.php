@@ -13,7 +13,8 @@
 
 
       function: get_report_entry_info
-      purpose:
+      purpose: expects a username, password, and first/last initials. Returns nothing. 
+	       Creates a form to add additional information to the report. 
 
       uses: hsu_conn_sess
   -------*/
