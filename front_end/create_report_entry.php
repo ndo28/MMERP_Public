@@ -50,34 +50,6 @@ Modified by:   on:
           oci_commit($conn);
 
           oci_free_statement($insert_stmt);
-          echo "comment is " . $comment . ".<br>";
-
-          // $update_call = 'update report_entries '.
-          //                 'set COMMENTS = jesjdsnfvoknds '.
-          //                 'where PRN = :PRN and report_id = :report_id';
-          //
-          // $update_stmt = oci_parse($conn, $update_call);
-
-          // set the bind variables
-
-          // when a bind variable is for input purposes
-          //    (input TO the data tier), only NEED 3
-          //    arguments
-
-
-          // oci_bind_by_name($update_stmt, ":comment",
-          //                  $comment);
-          // oci_bind_by_name($update_stmt, ":report_id",
-          //                  $report_id);
-          // oci_bind_by_name($update_stmt, ":PRN",
-          //                 $PRN);
-
-          // now, executing! (and committing -- changed database,
-          //     and want to commit that change;)
-
-          //oci_execute($update_stmt, OCI_DEFAULT);
-          //oci_commit($conn);
-          //oci_free_statement($update_stmt);
           oci_close($conn);
           ?>
           <form action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">

@@ -13,8 +13,7 @@
 
 
       function: get_report_entry_info
-      purpose: expects a username, password, and first/last initials. Returns nothing. 
-	       Creates a form to add additional information to the report. 
+      purpose:
 
       uses: hsu_conn_sess
   -------*/
@@ -83,15 +82,19 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
     <input type="radio" name="survey_type" value="SYS" checked> Systematic
     <input type="radio" name="survey_type" value="OPP" > Opportunistic<br>
 
-
-    <label for="surveyor_init"> <strong>Which Surveyor initials for <br>
-      Personal Reference Number (PRN)</strong></label>
-    <label for="first"><input type="radio" name="surveyor_init" value = "<?= $first_init ?>">
-      <?php echo $first_init ?> </label>
-    <label for="second"><input type="radio" name="surveyor_init" value = "<?= $second_init ?>">
-      <?php echo $second_init ?> </label>
-
     <?php
+
+    if($second_init != 'NONE')
+    {
+      ?>
+      <label for="surveyor_init"> <strong>Which Surveyor initials for <br>
+        Personal Reference Number (PRN)</strong></label>
+        <label for="first"><input type="radio" name="surveyor_init" value = "<?= $first_init ?>">
+          <?php echo $first_init ?> </label>
+          <label for="second"><input type="radio" name="surveyor_init" value = "<?= $second_init ?>">
+            <?php echo $second_init ?> </label>
+    <?PHP
+    }
     oci_close($conn);
     ?>
 

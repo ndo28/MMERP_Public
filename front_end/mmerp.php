@@ -347,6 +347,9 @@
           get_inits($login, $second_user, $password);
           $_SESSION['second_init'] =   $_SESSION['user_init'];
         }
+        else {
+          $_SESSION['second_init'] = 'NONE';
+        }
 
         // Echo session variables that were set on previous pages
         //echo "Username is " . $_SESSION["username"] . ".<br>";
@@ -406,7 +409,7 @@
         // get second surveyor
         get_second_user($login, $password, $username, $report_id);
 
-        //echo "second_user is " . $_SESSION["second_user"] . ".<br>";
+        echo "second_user is " . $_SESSION["second_user"] . ".<br>";
 
         // get beach_abbr
         get_beach_abbr($login, $password, $report_id);
@@ -425,8 +428,14 @@
         $_SESSION['first_init'] =   $_SESSION['user_init'];
 
         //get 2nd USER_INITIALS
-        get_inits($login, $second_user, $password);
-        $_SESSION['second_init'] =   $_SESSION['user_init'];
+        if($second_user != '')
+        {
+          get_inits($login, $second_user, $password);
+          $_SESSION['second_init'] =   $_SESSION['user_init'];
+        }
+        else {
+          $_SESSION['second_init'] = 'NONE';
+        }
 
         //echo "you have arrived at report recap";
 
