@@ -78,7 +78,7 @@ create table Reports
  end_time                       char(5),
  report_date                    date,
  beach_abbr                     char(2),
- survey_summary                 long,
+ survey_summary                 varchar2(256),
  primary key (report_id),
  foreign key (beach_abbr) references Beaches
  );
@@ -94,7 +94,7 @@ create table Reports
 Drop table Report_entries cascade constraints;
 
 create table Report_entries
-(PRN				                    varchar2(30) not null,
+(PRN				                    varchar2(31) not null,
  hsu_username                   varchar2(7) not null,
  report_id                      number(5,0) not null,
  species_abbr			              char(4) not null,
@@ -103,7 +103,7 @@ create table Report_entries
  post_survey_tag                char(1) check(post_survey_tag in('y', 'n')) not null,
  existing_tags                  char(1) check(existing_tags in('y', 'n')) not null,
  photos                         char(1) check(photos in('y', 'n')) not null,
- comments                       long,
+ comments                       varchar2(256),
  photos_uploaded                varchar2(256), -- should this be a link to a photo album?
  no_of_animals                  number(2,0) not null,
  primary key (PRN),

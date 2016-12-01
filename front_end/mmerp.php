@@ -36,9 +36,11 @@
 
     <!-- required module files to launch app -->
     <?php
-
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
         require_once("custom_login_9.php");
         require_once("main_menu.php");
+        require_once("admin_main_menu.php");
         require_once("get_report_id.php");
         require_once("get_user_inits.php");
         require_once("user_reports_dropdown.php");
@@ -60,8 +62,8 @@
         require_once ('create_report_entry.php');
         require_once("view_reports.php");
         require_once("view_reports_by_user.php");
+        require_once("view_reports_by_beach.php");
         require_once("display_existing_report_info.php");
-
     ?>
 
     <!-- css normalization  -->
@@ -102,8 +104,8 @@
     {
         $username = strip_tags($_POST['username']);
         $user_password = $_POST['password'];
-        $password = 'WdvNko67';  // this will be hard coded password for Oracle
-        $login = 'ndo28';  // this is hard coded username for Oracle
+        $login = 'mmerp';  // this is hard coded username for Oracle
+        $password = 'thebangshow';  // this will be hard coded password for Oracle
 
         $_SESSION['login'] = $login;
         $_SESSION['username'] = $username;
@@ -126,8 +128,14 @@
             //echo "session->is_admin is " . $_SESSION["is_admin"] . ".<br>";
             //echo "session->is_surveyor is " . $_SESSION["is_surveyor"] . ".<br>";
             //$user_password = $_SESSION['user_password'];
-
+            if($username == 'adm000')
+            {
+              admin_main_menu();
+            }
+            else
+            {
               main_menu();
+            }
 
         }
         else
@@ -149,8 +157,16 @@
     elseif  ((array_key_exists('main_menu', $_POST)) and
              (array_key_exists("username", $_SESSION)))
     {
-
-          main_menu();
+      $username = strip_tags($_SESSION['username']);
+      $password = $_SESSION['password'];
+      if($username == 'adm000')
+      {
+        admin_main_menu();
+      }
+      else
+      {
+        main_menu();
+      }
 
     }
 
@@ -307,7 +323,10 @@
         $second_user = strip_tags($_SESSION['second_user']);
 
         create_surveyors($login, $password, $report_id, $first_user);
-        create_surveyors($login, $password, $report_id, $second_user);
+        if($second_user != 'none')
+        {
+          create_surveyors($login, $password, $report_id, $second_user);
+        }
 
         //$username = strip_tags($_SESSION['username']);
         //$first_user = strip_tags($_SESSION['first_user']);
@@ -323,8 +342,11 @@
         $_SESSION['first_init'] =   $_SESSION['user_init'];
 
         //get 2nd USER_INITIALS
-        get_inits($login, $second_user, $password);
-        $_SESSION['second_init'] =   $_SESSION['user_init'];
+        if($second_user != 'none')
+        {
+          get_inits($login, $second_user, $password);
+          $_SESSION['second_init'] =   $_SESSION['user_init'];
+        }
 
         // Echo session variables that were set on previous pages
         //echo "Username is " . $_SESSION["username"] . ".<br>";
@@ -512,7 +534,7 @@
          //echo "you have arrived at report entry submit";
 
          $comment = $_POST['comment'];
-         $_SESSION['comment'] = $comment;
+         //$_SESSION['comment'] = $comment;
 
          //echo "comment is " . $_SESSION["comment"] . ".<br>";
          $report_id = strip_tags($_SESSION['report_id']);
@@ -527,7 +549,7 @@
          $PRN = strip_tags($_SESSION['PRN']);
 
          create_report_entry($login, $password, $PRN, $report_id, $username, $spec_abbr,
-                             $post_tag, $existing_tags, $photos, $no_animals, $comment);
+                             $post_tag, $existing_tags, $photos, $no_animals, $comment, $latitude, $longitude);
 
      }
      /* if username exists in the SESSION array and submit_entry exists in the POST array,
@@ -542,6 +564,7 @@
          $login = strip_tags($_SESSION['login']);
 
           //   add photo capture page here!!
+          photo_upload();
 
      }
          /* if username exists in the SESSION array and report_recap exists in the POST

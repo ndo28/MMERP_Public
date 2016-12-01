@@ -23,7 +23,7 @@ Modified by: rjw  on: 11/20/16
 -------*/
 
 
-function main_menu()
+function admin_main_menu()
 {
 
         ?>
@@ -36,8 +36,10 @@ function main_menu()
               <h2> Would you like to create a new report, or continue an exisiting report? </h2>
 
               <div class="chooseItem">
+                  <input type="submit" name="admin" value="Admin Console"/>
                   <input type="submit" name="new" value="New Report"/>
                   <input type="submit" name="continue" value="Continue"/>
+
               </div>
             </fieldset>
           </form>

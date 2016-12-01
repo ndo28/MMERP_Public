@@ -58,7 +58,7 @@ function report_recap($login, $password, $report_id)
             </table>
 
             <?php
-            oci_free_statement($query_stmt);
+            oci_free_statement($entries_stmt);
             oci_close($conn);
                ?>
 
