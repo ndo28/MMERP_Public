@@ -68,9 +68,9 @@ Modified by: rjw  on: 11/20/16
               <?php
 
 
-                $user_query = 'select HSU_USERNAME
+                $user_query = "select HSU_USERNAME
                                from USERS
-                               where HSU_USERNAME != :username';
+                               where HSU_USERNAME != :username and is_surveyor = 'Y'";
 
                 $user_stmt = oci_parse($conn, $user_query);
 
@@ -81,6 +81,7 @@ Modified by: rjw  on: 11/20/16
 
            <label for="user_choice"> Additional Surveyor:  </label>
            <select name="user_choice" id="user_choice">
+             <option value = "none">none</option>
              <?php
                   while (oci_fetch($user_stmt))
                   {

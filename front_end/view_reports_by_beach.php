@@ -26,7 +26,7 @@ function view_reports_by_beach($login, $password, $beach)
     $report_query = 'SELECT REPORTS.REPORT_ID, REPORT_DATE, BEACH_NAME '.
                   'FROM REPORTS, BEACHES '.
                   'WHERE BEACH_NAME = :BEACH '.
-                  'AND REPORTS.BEACH_ABBR = BEACHES.BEACH_ABBR '.
+                  'AND REPORTS.BEACH_ABBR = BEACHES.BEACH_ABBR ';
 
     $query_stmt = oci_parse($conn, $report_query);
 

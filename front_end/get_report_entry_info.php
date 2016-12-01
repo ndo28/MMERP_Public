@@ -113,8 +113,8 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
           }
       }
       function showPosition(position) {
-        lat.value = position.coords.latitude.toFixed(7);
-        long.value = position.coords.longitude.toFixed(7);
+        lat.value = position.coords.latitude.toFixed(5);
+        long.value = position.coords.longitude.toFixed(5);
       }
     </script>
 

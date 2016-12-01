@@ -51,7 +51,7 @@
             oci_close($conn);
 
 
-            $animal = ($prior_entries + 1) % 10;
+            $animal = ($prior_entries + 1);
 
             $PRN = "HSU_".$PRN_date."_".$beach_abbr."_".$spec_abbr.
                    "_".$animal."_".$surveyor_init."_".$survey_type;

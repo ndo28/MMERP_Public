@@ -63,8 +63,7 @@ function entry_recap($login, $password, $PRN, $latitude, $longitude, $spec_abbr)
             <fieldset>
               <h2> Would you like to add comment to a report entry? Would you like to add
                     report summary? </h2>
-                    <textarea rows="4" cols="50" name = "comment">
-                    </textarea>
+              <input type="text" name="comment"/>
               <div class="chooseAction">
                   <input type="submit" name="submit_entry" value="Submit Entry"/>
                   <input type="submit" name="add_entry" value="Edit Entry"/>

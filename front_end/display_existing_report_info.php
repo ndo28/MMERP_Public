@@ -75,7 +75,7 @@ function display_existing_report_info($login, $password, $report)
        $entry_count = $entry_count + 1;
 
        $curr_prn = oci_result($entries_stmt, "PRN");
-       $curr_user = oci_result($entires_stmt, "HSU_USERNAME");
+       $curr_user = oci_result($entries_stmt, "HSU_USERNAME");
        //$curr_species = oci_result($entries_stmt, "SPECIES_NAME");
        $curr_species = oci_result($entries_stmt, "SPECIES_ABBR");
        //$curr_surv_tag = oci_result($entries_stmt, "POST_SURVEY_TAG");
