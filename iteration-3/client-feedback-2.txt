@@ -10,4 +10,4 @@ Need to add photo upload functionality.
 
 Need to "beautify" the page.
 
-Add functionality to upload report time
+Add functionality to add start time, end time, total time
