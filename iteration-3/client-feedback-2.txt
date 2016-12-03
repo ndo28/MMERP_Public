@@ -1,1 +1,13 @@
-PUT STUFF HERE
+People in attendance: Becky, Abdul, Nathan, Guthrie, Brianna (client)
+
+"Beautiful, awesome, exactly what I need" - Brianna
+
+Need to add add/remove/edit users functionality.
+
+Admin has to set users passwords, but says this is okay.
+
+Need to add photo upload functionality.
+
+Need to "beautify" the page.
+
+Add functionality to upload report time
