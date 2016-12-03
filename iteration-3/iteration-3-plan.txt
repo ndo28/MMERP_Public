@@ -14,6 +14,8 @@ Iteration 3 user stories:
 
   Surveryor_photo
 
+  Admin_view_by_species
+
 
 -Client feedback from iteration 2
  can be found in client-feedback-2.txt
