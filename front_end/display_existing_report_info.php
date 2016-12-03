@@ -97,7 +97,6 @@ function display_existing_report_info($login, $password, $report)
      }
 
      oci_free_statement($entries_stmt);
-     oci_close($conn);
      ?>
      </fieldset>
 

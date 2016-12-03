@@ -23,9 +23,10 @@ Modified by: rjw  on: 11/20/16
 -------*/
 
 
-function main_menu()
+function main_menu($is_admin, $is_surveyor)
 {
-
+      // echo "is_admin is " . $is_admin . ".<br>";
+      // echo "is_surveyor is " . $is_surveyor . ".<br>";
         ?>
         <div class="login-block">
           <form method="post"
@@ -34,11 +35,35 @@ function main_menu()
             <fieldset>
               <h1> Welcome to MMERP! </h1>
               <h2> Would you like to create a new report, or continue an exisiting report? </h2>
-
-              <div class="chooseItem">
+              <?php
+                if(($is_surveyor == 'Y') and ($is_admin == 'N'))
+                {
+                  ?>
+                  <div class="chooseItem">
                   <input type="submit" name="new" value="New Report"/>
                   <input type="submit" name="continue" value="Continue"/>
-              </div>
+                  </div>
+                <?php
+              }
+                elseif(($is_surveyor == 'N') and ($is_admin == 'Y'))
+                {
+                  ?>
+                  <div class="chooseItem">
+                  <input type="submit" name="admin" value="Admin Console"/>
+                  </div>
+                <?php
+              }
+              elseif(($is_surveyor == 'Y') and ($is_admin == 'Y'))
+                {
+                  ?>
+                  <div class="chooseItem">
+                  <input type="submit" name="new" value="New Report"/>
+                  <input type="submit" name="continue" value="Continue"/>
+                  <input type="submit" name="admin" value="Admin Console"/>
+                  </div>
+                <?php
+              }
+              ?>
             </fieldset>
           </form>
         </div>

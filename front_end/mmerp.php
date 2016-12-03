@@ -38,9 +38,8 @@
     <?php
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
-        require_once("custom_login_9.php");
+        require_once("mmerp_login.php");
         require_once("main_menu.php");
-        require_once("admin_main_menu.php");
         require_once("get_report_id.php");
         require_once("get_user_inits.php");
         require_once("user_reports_dropdown.php");
@@ -64,6 +63,9 @@
         require_once("view_reports_by_user.php");
         require_once("view_reports_by_beach.php");
         require_once("display_existing_report_info.php");
+        require_once("report_summary.php");
+        require_once("create_report_summary.php");
+
     ?>
 
     <!-- css normalization  -->
@@ -89,8 +91,7 @@
     if((! array_key_exists("username", $_POST)) and
         (! array_key_exists("next_screen", $_SESSION)))
     {
-        custom_login_9();
-
+        db_login();
         $_SESSION['next_screen'] = 'validate_user';
 
     }
@@ -113,6 +114,9 @@
         $_SESSION['user_password'] = $user_password;
         $_SESSION['first_user'] = $username;
 
+
+
+
         // validate user password with database, store variables for is_surveyor, is_admin
         validate_user($login, $username, $password, $user_password);
 
@@ -125,23 +129,15 @@
             $is_admin = strip_tags($_SESSION['is_admin']);
             $user_password = $_SESSION['user_password'];
             $password = $_SESSION["password"];
-            //echo "session->is_admin is " . $_SESSION["is_admin"] . ".<br>";
-            //echo "session->is_surveyor is " . $_SESSION["is_surveyor"] . ".<br>";
+            echo "session->is_admin is " . $_SESSION["is_admin"] . ".<br>";
+            echo "session->is_surveyor is " . $_SESSION["is_surveyor"] . ".<br>";
             //$user_password = $_SESSION['user_password'];
-            if($username == 'adm000')
-            {
-              admin_main_menu();
-            }
-            else
-            {
-              main_menu();
-            }
-
+            main_menu($is_admin, $is_surveyor);
         }
         else
         {
             echo "Invalid username and/or password.<br>";
-            custom_login_9();
+            db_login();
 
             session_destroy();
             session_regenerate_id(TRUE);
@@ -159,14 +155,9 @@
     {
       $username = strip_tags($_SESSION['username']);
       $password = $_SESSION['password'];
-      if($username == 'adm000')
-      {
-        admin_main_menu();
-      }
-      else
-      {
-        main_menu();
-      }
+      $is_surveyor = strip_tags($_SESSION['is_surveyor']);
+      $is_admin = strip_tags($_SESSION['is_admin']);
+      main_menu($is_admin, $is_surveyor);
 
     }
 
@@ -591,11 +582,41 @@
 
      }
 
+     /* if username exists in the SESSION array and to_summary exists in the POST
+         array, then store username and password as PHP variables and display the
+         report_summary module */
+       elseif (array_key_exists("username", $_SESSION)
+               and (array_key_exists('to_summary', $_POST))
+               and ($_SESSION["is_surveyor"] == 'Y'))
+       {
+           $report_id = strip_tags($_SESSION['report_id']);
+           $password = $_SESSION['password'];
+           $login = strip_tags($_SESSION['login']);
+
+          report_summary();
+       }
+
+       /* if username exists in the SESSION array and submit_report exists in the POST
+           array, then store username and password as PHP variables and display the
+           create_report_summary module */
+         elseif (array_key_exists("username", $_SESSION)
+                 and (array_key_exists('submit_report', $_POST))
+                 and ($_SESSION["is_surveyor"] == 'Y'))
+         {
+             $report_id = strip_tags($_SESSION['report_id']);
+             $password = $_SESSION['password'];
+             $login = strip_tags($_SESSION['login']);
+             $summary = $_POST['summary'];
+
+             create_report_summary($login, $password, $summary, $report_id);
+         }
+
+
          /* otherwise... destroy, regenerate, begin a new SESSION, and display
         the login module */
     else
     {
-        custom_login_9();
+        db_login();
 
         session_destroy();
         session_regenerate_id(TRUE);
@@ -604,7 +625,7 @@
         $_SESSION['next_screen'] = 'validate_user';
     }?>
     <div class='footer'>
-    <?php require_once("328footer-better.html"); ?>
+    <?php require_once("footer.html"); ?>
    </div>
 </body>
 </html>

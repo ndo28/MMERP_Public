@@ -27,8 +27,7 @@ function report_summary()
            <legend>Report Summary</legend>
 
               <h2> Would you like to add a survey summary? Include conditions and other general observations.  </h2>
-                    <textarea rows="4" cols="50" name = "summary">
-                    </textarea>
+                    <textarea rows="4" cols="50" name = "summary" maxlength="256"></textarea>
               <div class="chooseAction">
                   <input type="submit" name="submit_report" value="Submit Report"/>
                   <input type="submit" name="main_menu" value="Cancel"/>

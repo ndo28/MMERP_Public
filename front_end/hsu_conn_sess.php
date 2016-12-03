@@ -34,7 +34,7 @@
         if (! $connctn)
         {
         ?>
-            <p> Could not log into Oracle, sorry. </p>
+            <p> Could not log into MMERP, sorry. </p>
 
             <?php
             session_destroy();
