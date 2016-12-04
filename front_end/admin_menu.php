@@ -10,6 +10,7 @@ Abdul Shaikh (ats234)
 Created by Abdul on 11/13/16
 
 Modified by: rjw  on: 11/20/16
+Modified by: gmh  on: 12/04/16
 
     function: admin_console
     purpose: a form containing several submit buttons with the following
@@ -34,8 +35,7 @@ function admin_console($login, $password)
                 <input type="submit" name="main_menu" value="Go Back "/>
                 <input type="submit" name="map_view" value="View Map"/>
                 <input type="submit" name="report_view" value="View All Reports"/>
-                <input type="submit" name="create_new_user" value="Add New User"/>
-                <input type="submit" name="modify_user" value="Edit Existing User"/>
+                <input type="submit" name="modify_users" value="Add/Edit Users"/>
               </div>
             </fieldset>
           <?php
@@ -57,7 +57,7 @@ function admin_console($login, $password)
                         {
                           $curr_surveyor = oci_result($user_stmt, "HSU_USERNAME");
                           ?>
-                          <option value="<?= $curr_surveyor ?>">
+                          <option value="<?= $curr_surveyor ?>" required>
                             <?= $curr_surveyor ?>
                           </option>
                           <?php
@@ -89,7 +89,7 @@ function admin_console($login, $password)
                         {
                           $curr_beach = oci_result($beach_stmt, "BEACH_NAME");
                           ?>
-                          <option value="<?= $curr_beach ?>">
+                          <option value="<?= $curr_beach ?>" required>
                             <?= $curr_beach ?>
                           </option>
                           <?php
@@ -122,7 +122,7 @@ function admin_console($login, $password)
                         {
                           $curr_species = oci_result($species_stmt, "SPEC_NAME");
                           ?>
-                          <option value="<?= $curr_species ?>">
+                          <option value="<?= $curr_species ?>" required>
                             <?= $curr_species ?>
                           </option>
                           <?php

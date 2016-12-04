@@ -1,19 +1,20 @@
 <?php
   /*--------
-  get_report_entry_info.php
+  edit_existing_user.php
 
   Guthrie Hayward (gmh234)
   Nathan Ortolan (ndo28)
   Becky Williams (rjw125)
   Abdul Shaikh (ats234)
 
-  Created by Rebecca on 11/20/16
+  Created by Rebecca Williams on 12/04/16
 
-  Modified by:  ats on:  11/20/16
+  Modified by:  Guthrie Hayward on:  12/04/16
 
 
       function: edit_existing_user
-      purpose:
+      purpose: Expects login, password, and current username. Creates a form
+      from which an administrator can edit user information.
 
       uses: hsu_conn_sess
   -------*/
@@ -65,6 +66,7 @@ function edit_existing_user($login, $password, $existing_username)
     <label for="post_tag">Give Admin access? </label>
     <input type="radio" name="is_admin" value="N"<?php if($admin == "N") { echo " checked"; } ?>/> No
     <input type="radio" name="is_admin" value="Y"<?php if($admin == "Y") { echo " checked"; } ?>/> Yes<br>
+, or continue an exisiting report?
 
     <label for="photos">Surveyor? </label>
     <input type="radio" name="photos" value="y" checked> Yes

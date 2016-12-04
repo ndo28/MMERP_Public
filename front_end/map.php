@@ -64,8 +64,7 @@ function create_map($login, $password)
       #map {
         height: 100%;
       }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
+      html,body,.container-fluid{
         height: 100%;
         margin: 0;
         padding: 0;
@@ -73,7 +72,7 @@ function create_map($login, $password)
     </style>
   </head>
   <body>
-    <div id="map"></div>
+    <div id="map" ></div>
     <script>
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {

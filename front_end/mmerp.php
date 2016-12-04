@@ -70,9 +70,6 @@
         require_once("display_existing_report_info.php");
         require_once("report_summary.php");
         require_once("create_report_summary.php");
-        require_once ('select_user_dropdown.php');
-        require_once ('edit_existing_user.php');
-        require_once ('create_new_user_entry.php');
 
     ?>
 
@@ -94,13 +91,11 @@
 
 <body>
 
-  <div class="container">
+  <div class="container-fluid">
 
   <header class="header">
     <h1>MMERP</h1>
   </header>
-
-
     <?php
 
     /* if there is currently no username or next_screen variables in
@@ -206,49 +201,19 @@
         create_map($login, $password);
      }
 
-     /* if username exists in the SESSION array and modify_user exists in the POST
+     /* if username exists in the SESSION array and modify_users exists in the POST
          array and the user is an admin, then store username and password as
-         PHP variables and display the select_user_dropdown */
+         PHP variables and display the admin select_create_users */
      elseif (array_key_exists("username", $_SESSION)
-             and (array_key_exists("modify_user", $_POST))
+             and (array_key_exists("modify_users", $_POST))
              and ($_SESSION["is_admin"] == 'Y'))
      {
          $username = strip_tags($_SESSION['username']);
          $password = $_SESSION['password'];
          $login = strip_tags($_SESSION['login']);
 
-         select_user_dropdown($login, $password);
+         select_create_users($login, $password);
       }
-
-      /* if username exists in the SESSION array and edit_user exists in the POST
-          array and the user is an admin, then store username and password as
-          PHP variables and display the edit_existing_user module */
-      elseif (array_key_exists("username", $_SESSION)
-              and (array_key_exists("edit_user", $_POST))
-              and ($_SESSION["is_admin"] == 'Y'))
-      {
-          $username = strip_tags($_SESSION['username']);
-          $password = $_SESSION['password'];
-          $login = strip_tags($_SESSION['login']);
-          $existing_username = strip_tags($_POST['existing_username']);
-          $_SESSION['existing_username'] = $existing_username;
-
-          edit_existing_user($login, $password, $existing_username);
-       }
-
-      /* if username exists in the SESSION array and create_new_user exists in the POST
-          array and the user is an admin, then store username and password as
-          PHP variables and display the create_new_user_entry module */
-      elseif (array_key_exists("username", $_SESSION)
-              and (array_key_exists("create_new_user", $_POST))
-              and ($_SESSION["is_admin"] == 'Y'))
-      {
-          $username = strip_tags($_SESSION['username']);
-          $password = $_SESSION['password'];
-          $login = strip_tags($_SESSION['login']);
-
-        create_new_user_entry($login, $password);
-       }
 
      /* if username exists in the SESSION array and report_view exists in the POST
          array and the user is an admin, then store username and password as

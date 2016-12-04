@@ -11,7 +11,7 @@ purpose:   expects username and password, returns nothing and
     Created by:  Rebecca Williams
     Created on:  12/03/16
 
-    Modified By:   On:
+    Modified By: Guthrie Hayward   On: 12/04/16
     ----------------*/
 function create_new_user_entry($login, $password)
 {
@@ -25,7 +25,7 @@ function create_new_user_entry($login, $password)
            <legend>Enter the HSU username for the new user</legend>
 
                 New User:
-                <input type="text" name="new_username" id = "new_username"><br>
+                <input type="text" name="new_username" id ="new_username" required><br>
 
               <div class="chooseAction">
                 <input type="submit" name="admin" value="Go Back"/>
