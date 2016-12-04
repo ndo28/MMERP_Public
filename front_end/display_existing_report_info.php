@@ -101,8 +101,8 @@ function display_existing_report_info($login, $password, $report)
      </fieldset>
 
      <div class="submit">
-         <input type="submit" name="get_existing_report_info" value="Continue" />
-         <input type="submit" name="main_menu" value="Go Back" />
+       <input type="submit" name="admin" value="Go Back" />
+       <input type="submit" name="main_menu" value="Main Menu" />
      </div>
     </fieldset>
    </form>

@@ -5,6 +5,7 @@
 
 
   modified : ndo28 - 11/26/16
+             rjw125 - 12/03/16
 
       function: view_reports
       purpose: expects an Oracle login and password and returns nothing
@@ -21,7 +22,8 @@ function view_reports($login, $password)
 
     $report_query = 'SELECT REPORTS.REPORT_ID, REPORT_DATE, BEACH_NAME '.
                   'FROM REPORTS, BEACHES '.
-                  'WHERE REPORTS.BEACH_ABBR = BEACHES.BEACH_ABBR';
+                  'WHERE REPORTS.BEACH_ABBR = BEACHES.BEACH_ABBR '.
+                  'ORDER BY REPORT_DATE';
 
     $query_stmt = oci_parse($conn, $report_query);
 
@@ -55,8 +57,8 @@ function view_reports($login, $password)
       </select>
 
      <div class="submit">
-         <input type="submit" name="get_existing_report_info" value="Continue" />
-         <input type="submit" name="main_menu" value="Go Back" />
+       <input type="submit" name="admin" value="Go Back" />
+       <input type="submit" name="main_menu" value="Main Menu" />
      </div>
 
     </fieldset>

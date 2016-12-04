@@ -62,6 +62,7 @@
         require_once("view_reports.php");
         require_once("view_reports_by_user.php");
         require_once("view_reports_by_beach.php");
+        require_once("view_reports_by_species.php");
         require_once("display_existing_report_info.php");
         require_once("report_summary.php");
         require_once("create_report_summary.php");
@@ -219,7 +220,7 @@
        }
        /* if username exists in the SESSION array and report_view_by_beach exists
              in the POST array and the user is an admin, then store username and
-             password as PHP variables and display the admin report by user
+             password as PHP variables and display the admin report by beach
              module */
        elseif (array_key_exists("username", $_SESSION)
                and (array_key_exists("report_view_by_beach", $_POST))
@@ -233,6 +234,23 @@
 
            view_reports_by_beach($login, $password, $beach);
         }
+
+        /* if username exists in the SESSION array and report_view_by_species exists
+              in the POST array and the user is an admin, then store username and
+              password as PHP variables and display the admin report by species
+              module */
+        elseif (array_key_exists("username", $_SESSION)
+                and (array_key_exists("report_view_by_species", $_POST))
+                and ($_SESSION["is_admin"] == 'Y'))
+        {
+            $username = strip_tags($_SESSION['username']);
+            $password = $_SESSION['password'];
+            $login = strip_tags($_SESSION['login']);
+            $species_choice = strip_tags($_POST['species_choice']);
+            $_SESSION["species_choice"] = $species_choice;
+
+            view_reports_by_species($login, $password, $species_choice);
+         }
        /* if username exists in the SESSION array and get_existing_report_info exists
              in the POST array and the user is an admin, then store username and
              password as PHP variables and display the admin existing report info

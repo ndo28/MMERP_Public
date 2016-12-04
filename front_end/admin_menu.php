@@ -34,19 +34,18 @@ function admin_console($login, $password)
                 <input type="submit" name="main_menu" value="Go Back "/>
                 <input type="submit" name="map_view" value="View Map"/>
                 <input type="submit" name="report_view" value="View All Reports"/>
-          </form>
-
+              </div>
+            </fieldset>
           <?php
           $user_query = 'SELECT DISTINCT HSU_USERNAME '.
-                        'FROM SURVEYORS';
+                        'FROM SURVEYORS '.
+                        'ORDER BY HSU_USERNAME';
 
 
           $user_stmt = oci_parse($conn, $user_query);
 
           oci_execute($user_stmt, OCI_DEFAULT);
           ?>
-
-          <form action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
               <fieldset>
                   <legend> View Reports by Surveyor </legend>
                     <label for="surveyors"> Surveyors </label>
@@ -65,21 +64,20 @@ function admin_console($login, $password)
                     </select>
                     <input type="submit" name="report_view_by_user" value="View Reports"/>
 
-            </fieldset>
-          </form>
+              </fieldset>
           <?php
             oci_free_statement($user_stmt);
 
             $beach_query = 'SELECT DISTINCT REPORTS.BEACH_ABBR, BEACH_NAME '.
                            'FROM REPORTS, BEACHES '.
-                           'WHERE REPORTS.BEACH_ABBR = BEACHES.BEACH_ABBR ';
+                           'WHERE REPORTS.BEACH_ABBR = BEACHES.BEACH_ABBR '.
+                           'ORDER BY BEACH_NAME';
 
             $beach_stmt = oci_parse($conn, $beach_query);
 
             oci_execute($beach_stmt, OCI_DEFAULT);
-          ?>
 
-          <form action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+          ?>
               <fieldset>
                   <legend> View Reports by Beach </legend>
                     <label for="surveyors"> Beaches </label>
@@ -97,12 +95,48 @@ function admin_console($login, $password)
                         ?>
                     </select>
                     <input type="submit" name="report_view_by_beach" value="View Reports"/>
-              </div>
+
+            </fieldset>
+
+          <?php
+          oci_free_statement($beach_stmt);
+          $species_query = 'SELECT DISTINCT spec_name '.
+                        'FROM SPECIES, reports, report_entries '.
+                        'WHERE reports.report_id = report_entries.report_id '.
+                        'AND report_entries.species_abbr = species.spec_abbr '.
+                        'ORDER BY spec_name';
+
+
+          $species_stmt = oci_parse($conn, $species_query);
+
+          oci_execute($species_stmt, OCI_DEFAULT);
+          ?>
+              <fieldset>
+                  <legend> View Reports by Species </legend>
+                    <label for="species"> Species </label>
+                    <select name="species_choice">
+                      <?php
+                        while(oci_fetch($species_stmt))
+                        {
+                          $curr_species = oci_result($species_stmt, "SPEC_NAME");
+                          ?>
+                          <option value="<?= $curr_species ?>">
+                            <?= $curr_species ?>
+                          </option>
+                          <?php
+                        }
+                        ?>
+                    </select>
+                    <input type="submit" name="report_view_by_species" value="View Reports"/>
+
             </fieldset>
           </form>
+          <?php
+            oci_free_statement($species_stmt);
+            ?>
         </div>
         <?php
-        oci_free_statement($user_stmt);
+
         oci_close($conn);
         }
 ?>

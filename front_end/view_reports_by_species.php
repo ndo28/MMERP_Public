@@ -1,15 +1,15 @@
 <?php
   /*--------
 
-  view_reports_by_user.php
+  view_reports_by_species.php
 
 
-  modified : ndo28 - 11/26/16
+  modified : rjw125 - 12/03/16
 
-      function: view_reports_by_user
-      purpose: expects an Oracle login and password and hsu_username, returns nothing
-          but has the side effect of generating a dropdown of reports in which the
-          surveyor has participated.
+      function: view_reports_by_species
+      purpose: expects an Oracle login and password and species_choice, returns nothing
+          but has the side effect of generating a dropdown of reports that have been
+          made involving that species
 
       uses: hsu_conn_sess
   -------*/
@@ -17,22 +17,23 @@
 
 
 <?php
-function view_reports_by_user($login, $password, $surveyor)
+function view_reports_by_species($login, $password, $species)
 {
     // try to connect to Oracle student database
 
     $conn = hsu_conn_sess($login, $password);
 
-    $report_query = 'SELECT REPORTS.REPORT_ID, REPORT_DATE, BEACH_NAME '.
-                  'FROM REPORTS, SURVEYORS, BEACHES '.
-                  'WHERE HSU_USERNAME = :SURVEYOR '.
+    $report_query = 'SELECT DISTINCT REPORTS.REPORT_ID, REPORT_DATE, BEACH_NAME '.
+                  'FROM REPORTS, BEACHES, REPORT_ENTRIES, SPECIES '.
+                  'WHERE SPEC_NAME = :SPECIES '.
                   'AND REPORTS.BEACH_ABBR = BEACHES.BEACH_ABBR '.
-                  'AND REPORTS.REPORT_ID = SURVEYORS.REPORT_ID '.
+                  'AND REPORTS.REPORT_ID = REPORT_ENTRIES.REPORT_ID '.
+                  'AND SPECIES.SPEC_ABBR = REPORT_ENTRIES.SPECIES_ABBR '.
                   'ORDER BY REPORT_DATE';
 
     $query_stmt = oci_parse($conn, $report_query);
 
-    oci_bind_by_name($query_stmt, ":surveyor", $surveyor);
+    oci_bind_by_name($query_stmt, ":species", $species);
 
 
     // now, executing! (and committing -- changed database,
@@ -64,8 +65,9 @@ function view_reports_by_user($login, $password, $surveyor)
       </select>
 
      <div class="submit">
-       <input type="submit" name="admin" value="Go Back" />
-       <input type="submit" name="main_menu" value="Main Menu" />
+         <input type="submit" name="admin" value="Go Back" />
+         <input type="submit" name="main_menu" value="Main Menu" />
+
      </div>
 
     </fieldset>

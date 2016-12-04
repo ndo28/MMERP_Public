@@ -26,7 +26,8 @@ function view_reports_by_beach($login, $password, $beach)
     $report_query = 'SELECT REPORTS.REPORT_ID, REPORT_DATE, BEACH_NAME '.
                   'FROM REPORTS, BEACHES '.
                   'WHERE BEACH_NAME = :BEACH '.
-                  'AND REPORTS.BEACH_ABBR = BEACHES.BEACH_ABBR ';
+                  'AND REPORTS.BEACH_ABBR = BEACHES.BEACH_ABBR '.
+                  'ORDER BY REPORT_DATE';
 
     $query_stmt = oci_parse($conn, $report_query);
 
@@ -62,8 +63,8 @@ function view_reports_by_beach($login, $password, $beach)
       </select>
 
      <div class="submit">
-         <input type="submit" name="get_existing_report_info" value="Continue" />
-         <input type="submit" name="main_menu" value="Go Back" />
+       <input type="submit" name="admin" value="Go Back" />
+       <input type="submit" name="main_menu" value="Main Menu" />
      </div>
 
     </fieldset>
