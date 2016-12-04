@@ -24,7 +24,8 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
     $conn = hsu_conn_sess($login, $password);
 
     ?>
-    <form class="form_block" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+    <form class="form-inline" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+    <div class="form-group">
     <fieldset>
       <legend> Select values to report </legend>
       <?PHP
@@ -102,6 +103,7 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
       <input type="submit" name="main_menu" value="Exit to Main Menu" />
 
   </fieldset>
+  </div>
   </form>
   <script>
     var lat = document.getElementById("latitude");

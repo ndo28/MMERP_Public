@@ -19,10 +19,11 @@ purpose:   display to the use the report sumamry page, including:
 function report_summary()
 {
         ?>
-          <form class="form_block" method="post"
+          <form class="form-inline" method="post"
                 action="<?= htmlentities($_SERVER['PHP_SELF'],
                                          ENT_QUOTES) ?>">
-         <fieldset>
+          <div class="form-group">
+           <fieldset>
            <legend>Report Summary</legend>
 
               <h2> Would you like to add a survey summary? Include conditions and other general observations.  </h2>
@@ -30,6 +31,7 @@ function report_summary()
                   <input type="submit" name="submit_report" value="Submit Report"/>
                   <input type="submit" name="main_menu" value="Cancel"/>
             </fieldset>
+          </div>
           </form>
         <?php
         }

@@ -42,7 +42,8 @@ function view_reports_by_beach($login, $password, $beach)
 
     ?>
 
-    <form class="form_block" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+    <form class="form-inline" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+    <div class="form-group">
      <fieldset>
       <legend> Select a report to view details </legend>
 
@@ -67,6 +68,7 @@ function view_reports_by_beach($login, $password, $beach)
        <input type="submit" name="get_existing_report_info" value="Continue" />
 
     </fieldset>
+   </div>
    </form>
    <?php
     // done with THIS statement

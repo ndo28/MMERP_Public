@@ -52,7 +52,8 @@ Modified by:   on:
           oci_free_statement($insert_stmt);
           oci_close($conn);
           ?>
-          <form class="form_block" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+          <form class="form-inline" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+          <div class="form-group">
           <fieldset>
             <legend> Would you like to submit photos of this finding? </legend>
           <div class="submit">
@@ -62,6 +63,7 @@ Modified by:   on:
           </div>
 
         </fieldset>
+        </div>
         </form>
         <?php
       }

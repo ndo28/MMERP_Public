@@ -17,9 +17,10 @@ function report_recap($login, $password, $report_id)
 {
         $conn = hsu_conn_sess($login, $password);
         ?>
-          <form class="form_block" method="post"
+          <form class="form-inline" method="post"
                 action="<?= htmlentities($_SERVER['PHP_SELF'],
                                          ENT_QUOTES) ?>">
+         <div class="form-group">
          <fieldset>
            <legend>Report Recap</legend>
            <?php
@@ -71,8 +72,9 @@ function report_recap($login, $password, $report_id)
                   <input type="submit" name="to_summary" value="No Findings"/>
                   <input type="submit" name="main_menu" value="Go Back"/>
                   <input type="submit" name="to_summary" value="Report Summary" />
-                  
+
             </fieldset>
+          </div>
           </form>
         <?php
         }

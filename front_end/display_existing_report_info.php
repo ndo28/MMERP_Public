@@ -35,7 +35,8 @@ function display_existing_report_info($login, $password, $report)
     oci_fetch($query_stmt);
     ?>
 
-    <form class="form_block" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+    <form class="form-inline" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+    <div class="form-group">
      <fieldset>
       <legend> Report Details </legend>
       <p name="report_details">
@@ -102,6 +103,7 @@ function display_existing_report_info($login, $password, $report)
        <input type="submit" name="admin" value="Go Back" />
        <input type="submit" name="main_menu" value="Main Menu" />
     </fieldset>
+   </div>
    </form>
    <?php
 

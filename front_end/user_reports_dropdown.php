@@ -34,7 +34,8 @@ function user_reports_dropdown($login, $username, $password)
     $conn = hsu_conn_sess($login, $password);
 
     ?>
-    <form class="form_block" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+    <form class="form-inline" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+    <div class="form-group">
     <fieldset>
       <legend> Select the report you you like to continue </legend>
       <?PHP
@@ -82,11 +83,12 @@ function user_reports_dropdown($login, $username, $password)
 
     oci_close($conn);
     ?>
-    
+
       <input type="submit" name="main_menu" value="Go Back" />
       <input type="submit" name="existing_reports" value="Continue" />
 
   </fieldset>
+  </div>
   </form>
 
     <?php

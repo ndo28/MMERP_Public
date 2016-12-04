@@ -32,8 +32,11 @@
 
 -->
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title> MMERP </title>
-    <meta charset="utf-8" />
 
     <!-- required module files to launch app -->
     <?php
@@ -73,6 +76,13 @@
     <!-- css normalization  -->
     <link href="http://users.humboldt.edu/smtuttle/styles/normalize.css"
           type="text/css" rel="stylesheet" />
+    <!-- initial bootstrap -->
+    <link href="css_main/bootstrap.css"
+          type="text/css" rel="stylesheet" />
+    <link href="css_main/bootstrap-theme.css"
+          type="text/css" rel="stylesheet" />
+    <link href="css_main/mmerp.css"
+          type="text/css" rel="stylesheet" />
   <!--  <link href="custom.css" type="text/css"
           rel="stylesheet" />
   <script src="custom-session-validate.js" type="text/javascript"> </script> -->
@@ -80,6 +90,8 @@
 </head>
 
 <body>
+
+  <div class="container">
 
   <header class="header">
     <h1>MMERP</h1>
@@ -660,5 +672,6 @@
     }
 
   require_once("footer.html"); ?>
+</div>
 </body>
 </html>

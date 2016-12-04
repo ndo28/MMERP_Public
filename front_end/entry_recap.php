@@ -24,10 +24,11 @@ function entry_recap($login, $password, $PRN, $latitude, $longitude, $spec_abbr)
 {
         $conn = hsu_conn_sess($login, $password);
         ?>
-          <form class="form_block" method="post"
+          <form class="form-inline" method="post"
                 action="<?= htmlentities($_SERVER['PHP_SELF'],
                                          ENT_QUOTES) ?>">
-         <fieldset>
+          <div class="form-group">
+           <fieldset>
            <legend>Entry Recap</legend>
            <?php
 
@@ -67,6 +68,7 @@ function entry_recap($login, $password, $PRN, $latitude, $longitude, $spec_abbr)
                   <input type="submit" name="add_entry" value="Edit Entry"/>
                   <input type="submit" name="main_menu" value="Main Menu"/>
             </fieldset>
+          </div>
           </form>
         <?php
         }

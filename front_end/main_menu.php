@@ -27,9 +27,10 @@ Modified by: gmh on 12/3/16
 function main_menu($is_admin, $is_surveyor)
 {
         ?>
-          <form class="form_block" method="post"
+          <form class="form-inline" method="post"
                 action="<?= htmlentities($_SERVER['PHP_SELF'],
                                          ENT_QUOTES) ?>">
+          <div class="form-group">
             <fieldset>
               <h1> Welcome to MMERP! </h1>
               <h2> Would you like to create a new report, or continue an exisiting report? </h2>
@@ -57,6 +58,7 @@ function main_menu($is_admin, $is_surveyor)
               }
               ?>
             </fieldset>
+          </div>
           </form>
         <?php
         }

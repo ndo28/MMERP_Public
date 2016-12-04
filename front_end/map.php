@@ -102,12 +102,14 @@ function create_map($login, $password)
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAauA3pry1_VFzT92pYd7WZBnO3uJHZlBk&callback=initMap"
     async defer></script>
-    <form class="form_block"method="post"
+    <form class="form-inline"method="post"
           action="<?= htmlentities($_SERVER['PHP_SELF'],
                                    ENT_QUOTES) ?>">
+    <div class="form-group">
       <fieldset>
             <input type="submit" name="admin" value="Back"/>
       </fieldset>
+    </div>
     </form>
         <?php
         }
