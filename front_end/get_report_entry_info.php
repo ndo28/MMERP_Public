@@ -40,7 +40,7 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
 
     ?>
     <label for="species">Select Species found </label>
-    <select name = "spec_abbr">
+    <select name = "spec_abbr" required>
       <?php
         while (oci_fetch($species_stmt))
         {
@@ -60,9 +60,9 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
     <label for="coordinates">Coordinates:</label><br>
     <input type="checkbox" onclick="getLocation()" value="Use Current Location" />Use Current Location <br>
     Latitude:
-      <input type="text" name="latitude" id = "latitude"><br>
+      <input type="text" name="latitude" id = "latitude" required><br>
     Longitude:
-      <input type="text" name="longitude" id="longitude"><br>
+      <input type="text" name="longitude" id="longitude" required><br>
 
 
 
@@ -89,7 +89,7 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
       ?>
       <label for="surveyor_init"> <strong>Which Surveyor initials for <br>
         Personal Reference Number (PRN)</strong></label>
-        <label for="first"><input type="radio" name="surveyor_init" value = "<?= $first_init ?>">
+        <label for="first"><input type="radio" name="surveyor_init" value = "<?= $first_init ?>" checked>
           <?php echo $first_init ?> </label>
           <label for="second"><input type="radio" name="surveyor_init" value = "<?= $second_init ?>">
             <?php echo $second_init ?> </label>
