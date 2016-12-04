@@ -36,7 +36,7 @@ function select_user_dropdown($login, $password)
 
                  oci_execute($users_stmt, OCI_DEFAULT);
                  ?>
-                 <select class="form_block" name="existing_username">
+                 <select class="form_block" name="existing_username" required="required" >
                  <?php
                  while (oci_fetch($users_stmt))
                  {
