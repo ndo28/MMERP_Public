@@ -14,6 +14,7 @@
   Modified by: ats  on: 11/14/16
   Modified by: ndo  on: 11/16/16
   Modified by: rjw  on: 11/20/16
+  Modified by: gmh  on: 12/03/16
 
       function: user_reports_dropdown
       purpose: expects an entered Oracle login and
@@ -33,7 +34,7 @@ function user_reports_dropdown($login, $username, $password)
     $conn = hsu_conn_sess($login, $password);
 
     ?>
-    <form action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+    <form class="form_block" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
     <fieldset>
       <legend> Select the report you you like to continue </legend>
       <?PHP
@@ -81,11 +82,9 @@ function user_reports_dropdown($login, $username, $password)
 
     oci_close($conn);
     ?>
-
-    <div class="submit">
-      <input type="submit" name="existing_reports" value="Continue" />
+    
       <input type="submit" name="main_menu" value="Go Back" />
-    </div>
+      <input type="submit" name="existing_reports" value="Continue" />
 
   </fieldset>
   </form>

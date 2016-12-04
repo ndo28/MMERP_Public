@@ -52,7 +52,7 @@ Modified by:   on:
           oci_free_statement($insert_stmt);
           oci_close($conn);
           ?>
-          <form action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+          <form class="form_block" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
           <fieldset>
             <legend> Would you like to submit photos of this finding? </legend>
           <div class="submit">

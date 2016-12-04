@@ -20,6 +20,7 @@
     Modified by: rjw  on: 11/19/16
     Modified by: rjw  on: 11/20/16
     Modified by: rjw  on: 11/25/16
+    Modified by: gmh  on: 12/3/16
 
     File: mmerp.php
 
@@ -656,9 +657,8 @@
         session_start();
 
         $_SESSION['next_screen'] = 'validate_user';
-    }?>
-    <div class='footer'>
-    <?php require_once("footer.html"); ?>
-   </div>
+    }
+
+  require_once("footer.html"); ?>
 </body>
 </html>

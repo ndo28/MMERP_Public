@@ -5,6 +5,7 @@
 
 
   modified : ndo28 - 11/26/16
+             gmh234 = 12/03/16
 
       function: view_reports_by_beach
       purpose: expects an Oracle login and password and beach_choice, returns nothing
@@ -41,7 +42,7 @@ function view_reports_by_beach($login, $password, $beach)
 
     ?>
 
-    <form action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+    <form class="form_block" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
      <fieldset>
       <legend> Select a report to view details </legend>
 
@@ -62,10 +63,8 @@ function view_reports_by_beach($login, $password, $beach)
         ?>
       </select>
 
-     <div class="submit">
        <input type="submit" name="admin" value="Go Back" />
        <input type="submit" name="get_existing_report_info" value="Continue" />
-     </div>
 
     </fieldset>
    </form>

@@ -35,7 +35,7 @@ Modified by: rjw  on: 11/20/16
 
           // here  ive connected
           ?>
-          <form class="new_report" action="<?= htmlentities($_SERVER['PHP_SELF'],
+          <form class="form_block" action="<?= htmlentities($_SERVER['PHP_SELF'],
                                  ENT_QUOTES) ?>" method="post" id="new_report">
           <fieldset>
             <legend>New Report</legend>
@@ -99,10 +99,8 @@ Modified by: rjw  on: 11/20/16
                 ?>
              </select><br/>
 
-             <div class="submit">
              <input class="button" type="submit" name="main_menu" value="Go Back">
              <input class="button" type="submit" name="new_reports_update" value="Continue"/>
-                </div>
           </fieldset>
         </form>
           <?php

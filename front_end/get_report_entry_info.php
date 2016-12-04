@@ -24,7 +24,7 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
     $conn = hsu_conn_sess($login, $password);
 
     ?>
-    <form action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+    <form class="form_block" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
     <fieldset>
       <legend> Select values to report </legend>
       <?PHP
@@ -57,7 +57,6 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
     ?>
     </select><br>
     <label for="coordinates">Coordinates:</label><br>
-    <!-- <button onclick="getLocation()">Use Current Location</button> -->
     <input type="checkbox" onclick="getLocation()" value="Use Current Location" />Use Current Location <br>
     Latitude:
       <input type="text" name="latitude" id = "latitude"><br>
@@ -98,11 +97,9 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
     oci_close($conn);
     ?>
 
-    <div class="submit">
-      <input type="submit" name="entry_recap" value="Continue" />
       <input type="submit" name="report_recap" value="Go Back" />
+      <input type="submit" name="entry_recap" value="Continue" />
       <input type="submit" name="main_menu" value="Exit to Main Menu" />
-    </div>
 
   </fieldset>
   </form>

@@ -14,13 +14,12 @@ purpose:   display to the use the report sumamry page, including:
     Created by:  Rebecca Williams
     Created on:  11/27/16
 
-    Modified By:   On:
+    Modified By: Guthrie Hayward On: 12/3/16
     ----------------*/
 function report_summary()
 {
         ?>
-        <div class="entry-block">
-          <form method="post"
+          <form class="form_block" method="post"
                 action="<?= htmlentities($_SERVER['PHP_SELF'],
                                          ENT_QUOTES) ?>">
          <fieldset>
@@ -28,13 +27,10 @@ function report_summary()
 
               <h2> Would you like to add a survey summary? Include conditions and other general observations.  </h2>
                     <textarea rows="4" cols="50" name = "summary" maxlength="256"></textarea>
-              <div class="chooseAction">
                   <input type="submit" name="submit_report" value="Submit Report"/>
                   <input type="submit" name="main_menu" value="Cancel"/>
-              </div>
             </fieldset>
           </form>
-        </div>
         <?php
         }
 ?>

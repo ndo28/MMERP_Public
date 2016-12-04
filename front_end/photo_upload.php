@@ -27,7 +27,7 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST"){
 	}
 }
 ?>
-  	<form action="" method="post" enctype="multipart/form-data">
+  	<form class="form_block" action="" method="post" enctype="multipart/form-data">
        <input type="file" id="file" name="files[]" multiple="multiple" accept="image/*" />
      <input type="submit" value="Upload!" />
      <a href="photos.php">Photos page</a>

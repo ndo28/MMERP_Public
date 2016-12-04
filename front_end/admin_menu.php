@@ -25,8 +25,7 @@ function admin_console($login, $password)
         $conn = hsu_conn_sess($login, $password);
         ?>
         <h2>Welcome to the admin console</h2>
-        <div class="login-block">
-          <form method="post"
+          <form class="form_block" method="post"
                 action="<?= htmlentities($_SERVER['PHP_SELF'],
                                          ENT_QUOTES) ?>">
             <fieldset>
@@ -134,9 +133,6 @@ function admin_console($login, $password)
           </form>
           <?php
             oci_free_statement($species_stmt);
-            ?>
-        </div>
-        <?php
 
         oci_close($conn);
         }
