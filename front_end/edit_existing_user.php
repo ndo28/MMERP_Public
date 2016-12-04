@@ -51,26 +51,30 @@ function edit_existing_user($login, $password, $existing_username)
 
     oci_free_statement($user_stmt);
     ?>
-    <label for="username">User Name:</label><br>
+    <label for="username">User Name: <?php echo $existing_username; ?></label><br>
     Last Name:
-      <input type="text" name="lname" id = "lname" value="<?php echo $lname; ?>"><br>
+      <input type="text" name="edit_lname" id = "lname" value="<?php echo $lname; ?>" required="required" ><br>
     First Name:
-      <input type="text" name="fname" id = "fname" value="<?php echo $fname; ?>"><br>
+      <input type="text" name="edit_fname" id = "fname" value="<?php echo $fname; ?>" required="required" ><br>
     Password:
-      <input type="text" name="new_password" id = "password" value="<?php echo $password; ?>"><br>
+      <input type="text" name="edit_new_password" id = "password" value="<?php echo $password; ?>" required="required" ><br>
     Email:
-      <input type="text" name="email" id = "email" value="<?php echo $email; ?>"><br>
-
+      <input type="text" name="edit_email" id = "email" value="<?php echo $email; ?>" required="required" ><br>
 
 
     <label for="post_tag">Give Admin access? </label>
+<<<<<<< Updated upstream
     <input type="radio" name="is_admin" value="N"<?php if($admin == "N") { echo " checked"; } ?>/> No
     <input type="radio" name="is_admin" value="Y"<?php if($admin == "Y") { echo " checked"; } ?>/> Yes<br>
 , or continue an exisiting report?
+=======
+    <input type="radio" name="edit_admin" value="N"<?php if($admin == "N") { echo " checked"; } ?> required="required" /> No
+    <input type="radio" name="edit_admin" value="Y"<?php if($admin == "Y") { echo " checked"; } ?>/> Yes<br>
+>>>>>>> Stashed changes
 
-    <label for="photos">Surveyor? </label>
-    <input type="radio" name="photos" value="y" checked> Yes
-    <input type="radio" name="photos" value="n" > No<br>
+    <label for="photos">Give Surveyor access? </label>
+    <input type="radio" name="edit_surveyor" value="N"<?php if($surveyor == "N") { echo " checked"; } ?> required="required" /> No
+    <input type="radio" name="edit_surveyor" value="Y"<?php if($surveyor == "Y") { echo " checked"; } ?>/> Yes<br>
 
     <?php
 

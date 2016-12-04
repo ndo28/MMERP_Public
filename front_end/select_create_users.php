@@ -13,7 +13,7 @@ purpose:   expects username and password, returns nothing and
 
     Modified By:   On:
     ----------------*/
-function select_user_dropdown($login, $password)
+function select_create_users($login, $password)
 {
         $conn = hsu_conn_sess($login, $password);
         ?>
@@ -22,8 +22,11 @@ function select_user_dropdown($login, $password)
                 action="<?= htmlentities($_SERVER['PHP_SELF'],
                                          ENT_QUOTES) ?>">
          <fieldset>
-           <legend>Select Existing User to Modify</legend>
-
+           <legend>Add or Edit Existing User</legend>
+           <p>
+              Add a new HSU username or select a user from the dropdown</p><br>
+              New HSU Username:
+                <input type="text" name="new_username" id = 'new_username'><br>
                 Existing Users:
            <?php
 
@@ -34,9 +37,11 @@ function select_user_dropdown($login, $password)
 
                  $users_stmt = oci_parse($conn, $users_query);
 
+                 //oci_bind_by_name($species_stmt, ":spec_abbr", $spec_abbr);
+
                  oci_execute($users_stmt, OCI_DEFAULT);
                  ?>
-                 <select class="form_block" name="existing_username" required="required" >
+                 <select class="form_block" name="existing_username">
                  <?php
                  while (oci_fetch($users_stmt))
                  {
@@ -59,7 +64,8 @@ function select_user_dropdown($login, $password)
             ?>
               <div class="chooseAction">
                 <input type="submit" name="admin" value="Go Back"/>
-                  <input type="submit" name="edit_user" value="Continue"/>
+                  <input type="submit" name="add_users" value="Add New User"/>
+                  <input type="submit" name="edit_users" value="Edit Existing User"/>
               </div>
             </fieldset>
           </form>

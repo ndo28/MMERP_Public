@@ -11,16 +11,16 @@
 
 //     Created by:  Guthrie Hayward and Rebecca Williams
 //     Created on:  11/16/16
-//     Modified By: Rebecca Williams on:  11/19/16
-//     Modified by: Guthrie Hayward  on:  12/03/16
+//     Modified By:  Rebecca Williams
+//     On:  11/19/16
 function report_recap($login, $password, $report_id)
 {
         $conn = hsu_conn_sess($login, $password);
         ?>
-          <form class="form-inline" method="post"
+        <div class="login-block">
+          <form method="post"
                 action="<?= htmlentities($_SERVER['PHP_SELF'],
                                          ENT_QUOTES) ?>">
-         <div class="form-group">
          <fieldset>
            <legend>Report Recap</legend>
            <?php
@@ -68,14 +68,15 @@ function report_recap($login, $password, $report_id)
               <h2> Would you like to add a report entry? Would you like to add
                     report summary? </h2>
 
+              <div class="chooseAction">
                   <input type="submit" name="add_entry" value="Add Entries"/>
                   <input type="submit" name="to_summary" value="No Findings"/>
                   <input type="submit" name="main_menu" value="Go Back"/>
                   <input type="submit" name="to_summary" value="Report Summary" />
-
+              </div>
             </fieldset>
-          </div>
           </form>
+        </div>
         <?php
         }
 ?>

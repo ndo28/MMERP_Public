@@ -24,11 +24,11 @@ function entry_recap($login, $password, $PRN, $latitude, $longitude, $spec_abbr)
 {
         $conn = hsu_conn_sess($login, $password);
         ?>
-          <form class="form-inline" method="post"
+        <div class="entry-block">
+          <form method="post"
                 action="<?= htmlentities($_SERVER['PHP_SELF'],
                                          ENT_QUOTES) ?>">
-          <div class="form-group">
-           <fieldset>
+         <fieldset>
            <legend>Entry Recap</legend>
            <?php
 
@@ -64,12 +64,14 @@ function entry_recap($login, $password, $PRN, $latitude, $longitude, $spec_abbr)
               <h2> Would you like to add comment to a report entry? Would you like to add
                     report summary? </h2>
               <input type="text" name="comment"/>
+              <div class="chooseAction">
                   <input type="submit" name="submit_entry" value="Submit Entry"/>
                   <input type="submit" name="add_entry" value="Edit Entry"/>
                   <input type="submit" name="main_menu" value="Main Menu"/>
+              </div>
             </fieldset>
-          </div>
           </form>
+        </div>
         <?php
         }
 ?>

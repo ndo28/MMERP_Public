@@ -24,8 +24,7 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
     $conn = hsu_conn_sess($login, $password);
 
     ?>
-    <form class="form-inline" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
-    <div class="form-group">
+    <form action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
     <fieldset>
       <legend> Select values to report </legend>
       <?PHP
@@ -58,28 +57,35 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
     ?>
     </select><br>
     <label for="coordinates">Coordinates:</label><br>
+    <!-- <button onclick="getLocation()">Use Current Location</button> -->
     <input type="checkbox" onclick="getLocation()" value="Use Current Location" />Use Current Location <br>
     Latitude:
+<<<<<<< Updated upstream
       <input type="text" name="latitude" id = "latitude" required><br>
     Longitude:
       <input type="text" name="longitude" id="longitude" required><br>
+=======
+      <input type="text" name="latitude" id = "latitude" required="required" > <br>
+    Longitude:
+      <input type="text" name="longitude" id="longitude" required="required" ><br>
+>>>>>>> Stashed changes
 
 
 
     <label for="post_tag">Post Survey Tag? </label>
-    <input type="radio" name="post_tag" value="y" checked> Yes
+    <input type="radio" name="post_tag" value="y" checked required="required" > Yes
     <input type="radio" name="post_tag" value="n" > No<br>
 
     <label for="photos">Photos? </label>
-    <input type="radio" name="photos" value="y" checked> Yes
+    <input type="radio" name="photos" value="y" checked required="required" > Yes
     <input type="radio" name="photos" value="n" > No<br>
 
     <label for="existing_tags">Existing Tags? </label>
     <input type="radio" name="existing_tags" value="y" > Yes
-    <input type="radio" name="existing_tags" value="n" checked> No<br>
+    <input type="radio" name="existing_tags" value="n" checked required="required" > No<br>
 
     <label for="survey_type">Systematic or Opportunistic Observations? </label>
-    <input type="radio" name="survey_type" value="SYS" checked> Systematic
+    <input type="radio" name="survey_type" value="SYS" checked required="required" > Systematic
     <input type="radio" name="survey_type" value="OPP" > Opportunistic<br>
 
     <?php
@@ -89,21 +95,26 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
       ?>
       <label for="surveyor_init"> <strong>Which Surveyor initials for <br>
         Personal Reference Number (PRN)</strong></label>
+<<<<<<< Updated upstream
         <label for="first"><input type="radio" name="surveyor_init" value = "<?= $first_init ?>" checked>
+=======
+        <label for="first"><input type="radio" name="surveyor_init" value = "<?= $first_init ?>" required="required" >
+>>>>>>> Stashed changes
           <?php echo $first_init ?> </label>
-          <label for="second"><input type="radio" name="surveyor_init" value = "<?= $second_init ?>">
+          <label for="second"><input type="radio" name="surveyor_init" value = "<?= $second_init ?>" required="required" >
             <?php echo $second_init ?> </label>
     <?PHP
     }
     oci_close($conn);
     ?>
 
-      <input type="submit" name="report_recap" value="Go Back" />
+    <div class="submit">
       <input type="submit" name="entry_recap" value="Continue" />
+      <input type="submit" name="report_recap" value="Go Back" />
       <input type="submit" name="main_menu" value="Exit to Main Menu" />
+    </div>
 
   </fieldset>
-  </div>
   </form>
   <script>
     var lat = document.getElementById("latitude");

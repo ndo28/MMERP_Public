@@ -26,10 +26,10 @@ function admin_console($login, $password)
         $conn = hsu_conn_sess($login, $password);
         ?>
         <h2>Welcome to the admin console</h2>
-          <form class="form-inline" method="post"
+        <div class="login-block">
+          <form method="post"
                 action="<?= htmlentities($_SERVER['PHP_SELF'],
                                          ENT_QUOTES) ?>">
-          <div class="form-group">
             <fieldset>
               <div class="chooseItem">
                 <input type="submit" name="main_menu" value="Go Back "/>
@@ -132,10 +132,12 @@ function admin_console($login, $password)
                     <input type="submit" name="report_view_by_species" value="View Reports"/>
 
             </fieldset>
-          </div>
           </form>
           <?php
             oci_free_statement($species_stmt);
+            ?>
+        </div>
+        <?php
 
         oci_close($conn);
         }
