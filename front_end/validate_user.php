@@ -1,5 +1,5 @@
 <?php
-// function:  get_report_id
+// function:  validate_user
 // purpose: expects Oracle username and password and
 //     the password of a user that is stored in the
 //     database, as a field,  will query the database
