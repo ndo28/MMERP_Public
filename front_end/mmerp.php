@@ -189,6 +189,21 @@
 
         create_map($login, $password);
      }
+
+     /* if username exists in the SESSION array and modify_users exists in the POST
+         array and the user is an admin, then store username and password as
+         PHP variables and display the admin select_create_users */
+     elseif (array_key_exists("username", $_SESSION)
+             and (array_key_exists("modify_users", $_POST))
+             and ($_SESSION["is_admin"] == 'Y'))
+     {
+         $username = strip_tags($_SESSION['username']);
+         $password = $_SESSION['password'];
+         $login = strip_tags($_SESSION['login']);
+
+         select_create_users($login, $password);
+      }
+
      /* if username exists in the SESSION array and report_view exists in the POST
          array and the user is an admin, then store username and password as
          PHP variables and display the admin report module */
@@ -392,7 +407,7 @@
 
     }
     /* if username exists in the SESSION array and
-         get_existing_report_info exists in the POST array,
+         existing_reports exists in the POST array,
          then store SESSION variable and POST variables
          as PHP variables, then do the following modules:
             -- get second user id from surveyors table
@@ -404,7 +419,7 @@
              -- display report_recap module
     ----------*/
     elseif (array_key_exists("username", $_SESSION)
-            and (array_key_exists('get_existing_report_info', $_POST))
+            and (array_key_exists('existing_reports', $_POST))
             and ($_SESSION["is_surveyor"] == 'Y'))
     {
         $username = strip_tags($_SESSION['username']);

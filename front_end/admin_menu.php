@@ -34,6 +34,7 @@ function admin_console($login, $password)
                 <input type="submit" name="main_menu" value="Go Back "/>
                 <input type="submit" name="map_view" value="View Map"/>
                 <input type="submit" name="report_view" value="View All Reports"/>
+                <input type="submit" name="modify_users" value="Add/Edit Users"/>
               </div>
             </fieldset>
           <?php
