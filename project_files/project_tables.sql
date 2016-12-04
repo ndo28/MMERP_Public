@@ -76,6 +76,7 @@ create table Reports
 (report_id                      number(5,0) not null,
  start_time                     char(5) not null,
  end_time                       char(5),
+ total_time                     decimal(3,2),
  report_date                    date,
  beach_abbr                     char(2),
  survey_summary                 varchar2(256),
