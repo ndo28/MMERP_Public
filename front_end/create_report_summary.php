@@ -55,14 +55,13 @@ Modified by:   on:
           oci_close($conn);
 
           ?>
-          <form action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+          <form class="form-inline" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
+          <div class="form-group">
           <fieldset>
             <legend> Thank you for submitting the report summary. </legend>
-          <div class="submit">
             <input type="submit" name="main_menu" value="Exit to Main Menu" />
-          </div>
-
         </fieldset>
+        </div>
         </form>
         <?php
       }

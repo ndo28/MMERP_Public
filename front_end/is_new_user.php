@@ -12,7 +12,7 @@
 
 //      uses: hsu_conn_sess
 
-function is_new_user($login, $password, $new_username)
+function is_new_user($login, $username, $new_username)
 {
         $conn = hsu_conn_sess($login, $password);
 
@@ -40,23 +40,17 @@ function is_new_user($login, $password, $new_username)
          if ($user_count  == 0 )  // if 0 -- user not in db
          {
 
-           $user_insert = "INSERT INTO USERS (HSU_USERNAME, USER_INITIALS,
-                              USER_LNAME, USER_FNAME, USER_EMAIL,
-                              PASSWORD, IS_ADMIN, IS_SURVEYOR)
-                             VALUES (:new_username, 'xx', 'xx', 'xx', 'xx', 'xx',
-                                      'N','N') ";
+           $user_insert = "INSERT INTO USERS (HSU_USERNAME)
+                             VALUES (:new_username) ";
 
            $insert_stmt = oci_parse($conn, $user_insert);
-
-           oci_bind_by_name($insert_stmt, ":new_username", $new_username);
            oci_execute($insert_stmt, OCI_DEFAULT);
            oci_commit($conn);
            oci_free_statement($insert_stmt);
 
-
          }
 
-         $_SESSION['existing_username'] = $new_username;
+         $_SESSION['existing_user'] = $new_username;
 
 
         oci_close($conn);

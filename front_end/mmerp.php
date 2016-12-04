@@ -20,6 +20,7 @@
     Modified by: rjw  on: 11/19/16
     Modified by: rjw  on: 11/20/16
     Modified by: rjw  on: 11/25/16
+    Modified by: gmh  on: 12/3/16
 
     File: mmerp.php
 
@@ -31,8 +32,11 @@
 
 -->
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title> MMERP </title>
-    <meta charset="utf-8" />
 
     <!-- required module files to launch app -->
     <?php
@@ -66,21 +70,18 @@
         require_once("display_existing_report_info.php");
         require_once("report_summary.php");
         require_once("create_report_summary.php");
-<<<<<<< Updated upstream
-=======
-        require_once ('select_user_dropdown.php');
-        require_once ('edit_existing_user.php');
-        require_once ('create_new_user_entry.php');
-        require_once ('edit_user_create_initials.php');
-        require_once ('edit_existing_user_recap.php');
-        require_once ('edit_new_user.php');
-        require_once('is_new_user.php');
->>>>>>> Stashed changes
 
     ?>
 
     <!-- css normalization  -->
     <link href="http://users.humboldt.edu/smtuttle/styles/normalize.css"
+          type="text/css" rel="stylesheet" />
+    <!-- initial bootstrap -->
+    <link href="css_main/bootstrap.css"
+          type="text/css" rel="stylesheet" />
+    <link href="css_main/bootstrap-theme.css"
+          type="text/css" rel="stylesheet" />
+    <link href="css_main/mmerp.css"
           type="text/css" rel="stylesheet" />
   <!--  <link href="custom.css" type="text/css"
           rel="stylesheet" />
@@ -90,11 +91,8 @@
 
 <body>
 
-<<<<<<< Updated upstream
   <div class="container-fluid">
 
-=======
->>>>>>> Stashed changes
   <header class="header">
     <h1>MMERP</h1>
   </header>
@@ -217,99 +215,6 @@
          select_create_users($login, $password);
       }
 
-<<<<<<< Updated upstream
-=======
-      /* if username exists in the SESSION array and edit_user exists in the POST
-          array and the user is an admin, then store username and password as
-          PHP variables and display the edit_existing_user module */
-      elseif (array_key_exists("username", $_SESSION)
-              and (array_key_exists("edit_user", $_POST))
-              and ($_SESSION["is_admin"] == 'Y'))
-      {
-          $username = strip_tags($_SESSION['username']);
-          $password = $_SESSION['password'];
-          $login = strip_tags($_SESSION['login']);
-          $existing_username = strip_tags($_POST['existing_username']);
-          $_SESSION['existing_username'] = $existing_username;
-
-          edit_existing_user($login, $password, $existing_username);
-       }
-       /* if username exists in the SESSION array and redo_edit_user exists in the POST
-           array and the user is an admin, then store username and password as
-           PHP variables and display the edit_existing_user module */
-       elseif (array_key_exists("username", $_SESSION)
-               and (array_key_exists("redo_edit_user", $_POST))
-               and ($_SESSION["is_admin"] == 'Y'))
-       {
-           $username = strip_tags($_SESSION['username']);
-           $password = $_SESSION['password'];
-           $login = strip_tags($_SESSION['login']);
-           $existing_username = strip_tags($_SESSION['existing_username']);
-           $_SESSION['existing_username'] = $existing_username;
-
-           edit_existing_user($login, $password, $existing_username);
-        }
-       /* if username exists in the SESSION array and edit_user_recap exists in the POST
-           array and the user is an admin, then store username and password as
-           PHP variables and performs the following:
-              --- creates the initials from fname, lname
-              ---displays the edit_user_recap module */
-       elseif (array_key_exists("username", $_SESSION)
-               and (array_key_exists("edit_user_recap", $_POST))
-               and ($_SESSION["is_admin"] == 'Y'))
-       {
-           $username = strip_tags($_SESSION['username']);
-           $password = $_SESSION['password'];
-           $login = strip_tags($_SESSION['login']);
-           $edit_lname = strip_tags($_POST['edit_lname']);
-           $edit_fname = strip_tags($_POST['edit_fname']);
-           $edit_email = strip_tags($_POST['edit_email']);
-           $edit_admin = strip_tags($_POST['edit_admin']);
-           $edit_surveyor = strip_tags($_POST['edit_surveyor']);
-           $edit_new_password = $_POST['edit_new_password'];
-           $existing_username = strip_tags($_SESSION['existing_username']);
-
-           edit_user_create_initials($edit_lname, $edit_fname);
-
-           $edit_initials = strip_tags($_SESSION['edit_initials']);
-
-           edit_existing_user_recap($login, $password, $existing_username,
-                       $edit_new_password, $edit_lname, $edit_fname, $edit_email,
-                       $edit_admin, $edit_surveyor, $edit_initials);
-        }
-
-      /* if username exists in the SESSION array and create_new_user exists in the POST
-          array and the user is an admin, then store username and password as
-          PHP variables and display the create_new_user_entry module */
-      elseif (array_key_exists("username", $_SESSION)
-              and (array_key_exists("create_new_user", $_POST))
-              and ($_SESSION["is_admin"] == 'Y'))
-      {
-          $username = strip_tags($_SESSION['username']);
-          $password = $_SESSION['password'];
-          $login = strip_tags($_SESSION['login']);
-
-        create_new_user_entry($login, $password);
-       }
-
-       /* if username exists in the SESSION array and new_user exists in the POST
-           array and the user is an admin, then store username and password as
-           PHP variables and display the create_new_user_entry module */
-       elseif (array_key_exists("username", $_SESSION)
-               and (array_key_exists("new_user", $_POST))
-               and ($_SESSION["is_admin"] == 'Y'))
-       {
-           $username = strip_tags($_SESSION['username']);
-           $password = $_SESSION['password'];
-           $login = strip_tags($_SESSION['login']);
-           $_SESSION['new_username'] = $_POST['new_username'];
-
-           is_new_user($login, $password, $_SESSION['new_username']);
-
-          edit_new_user($login, $password, $_SESSION['existing_username']);
-        }
-
->>>>>>> Stashed changes
      /* if username exists in the SESSION array and report_view exists in the POST
          array and the user is an admin, then store username and password as
          PHP variables and display the admin report module */
@@ -765,9 +670,9 @@
         session_start();
 
         $_SESSION['next_screen'] = 'validate_user';
-    }?>
-    <div class='footer'>
-    <?php require_once("footer.html"); ?>
-   </div>
+    }
+
+  require_once("footer.html"); ?>
+</div>
 </body>
 </html>

@@ -19,6 +19,7 @@ Modified by: rjw  on:
              then reorder the date for the PRN
              which needs to be DDMONYYYY
 
+    uses: hsu_conn_sess
 -------*/
 
       function fix_date($report_date)
