@@ -434,8 +434,11 @@
         $_SESSION['second_user'] = $second_user;
         $_SESSION['beach_abbr'] = $beach_abbr;
 
+        $start_time_hrs = strip_tags($_POST['start_time_hrs']);
+        $start_time_mins = strip_tags($_POST['start_time_mins']);
+
         //update report table with beach, date
-        update_report($login, $password, $report_id, $beach_abbr);
+        update_report($login, $password, $report_id, $beach_abbr, $start_time_hrs, $start_time_mins);
 
         // Echo session variables that were set on previous pages
         //echo "Username is " . $_SESSION["username"] . ".<br>";

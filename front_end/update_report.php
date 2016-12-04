@@ -21,14 +21,16 @@
       uses: hsu_conn_sess
   -------*/
 
-function update_report($login, $password, $report_id, $beach_abbr)
+function update_report($login, $password, $report_id, $beach_abbr, $start_time_hrs, $start_time_mins)
 {
     // try to connect to Oracle student database
 
     $conn = hsu_conn_sess($login, $password);
 
+    $real_start_time = "$start_time_hrs".":"."$start_time_mins";
+
     $update_call = 'update reports '.
-                    'set BEACH_ABBR = :beach_abbr '.
+                    'set BEACH_ABBR = :beach_abbr, START_TIME = :real_start_time '.
                     'where report_id = :report_id';
 
     $update_stmt = oci_parse($conn, $update_call);
@@ -39,11 +41,9 @@ function update_report($login, $password, $report_id, $beach_abbr)
     //    (input TO the data tier), only NEED 3
     //    arguments
 
-
-    oci_bind_by_name($update_stmt, ":beach_abbr",
-                     $beach_abbr);
-    oci_bind_by_name($update_stmt, ":report_id",
-                     $report_id);
+    oci_bind_by_name($update_stmt, ":real_start_time", $real_start_time);
+    oci_bind_by_name($update_stmt, ":beach_abbr", $beach_abbr);
+    oci_bind_by_name($update_stmt, ":report_id", $report_id);
 
     // now, executing! (and committing -- changed database,
     //     and want to commit that change;)
