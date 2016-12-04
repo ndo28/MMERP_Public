@@ -1,3 +1,5 @@
+We are changing the deadline from 11:59pm on Friday Dec 11 to 9:00am on Tuesday, Dec 11 (presentation time).
+
 Iteration 3 user stories:
 
   Admin_add_users
