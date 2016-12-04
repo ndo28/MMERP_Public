@@ -7,6 +7,7 @@
   modified : ndo28 - 11/26/16
              rjw125 - 12/03/16
              gmh234 - 12/03/16
+             gmh234 - 12/04/16
 
       function: view_reports
       purpose: expects an Oracle login and password and returns nothing
@@ -42,7 +43,7 @@ function view_reports($login, $password)
       <legend> Select a report to view details </legend>
 
       <label for="reports"> Reports </label>
-      <select name = "report_id">
+      <select name = "report_id" required>
       <?php
         while (oci_fetch($query_stmt))
         {

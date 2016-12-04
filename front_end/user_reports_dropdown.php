@@ -15,6 +15,7 @@
   Modified by: ndo  on: 11/16/16
   Modified by: rjw  on: 11/20/16
   Modified by: gmh  on: 12/03/16
+  Modified by: gmh  on: 12/04/16
 
       function: user_reports_dropdown
       purpose: expects an entered Oracle login and
@@ -61,7 +62,7 @@ function user_reports_dropdown($login, $username, $password)
 
     ?>
     <label for="reports"> User Reports </label>
-    <select name = "report_id">
+    <select name = "report_id" required>
       <?php
         while (oci_fetch($query_stmt))
         {

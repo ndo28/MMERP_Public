@@ -49,7 +49,7 @@ function view_reports_by_user($login, $password, $surveyor)
       <legend> Select a report to view details </legend>
 
       <label for="reports"> Reports </label>
-      <select name = "report_id">
+      <select name = "report_id" required>
       <?php
         while (oci_fetch($query_stmt))
         {

@@ -6,6 +6,7 @@
 
   modified : rjw125 - 12/03/16
              gmh234 - 12/03/16
+             gmh234 - 12/04/16
 
       function: view_reports_by_species
       purpose: expects an Oracle login and password and species_choice, returns nothing
@@ -50,7 +51,7 @@ function view_reports_by_species($login, $password, $species)
       <legend> Select a report to view details </legend>
 
       <label for="reports"> Reports </label>
-      <select name = "report_id">
+      <select name = "report_id" required>
       <?php
         while (oci_fetch($query_stmt))
         {
