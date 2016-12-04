@@ -14,6 +14,7 @@
   Modified by: ats  on: 11/14/16
   Modified by: ndo  on: 11/16/16
   Modified by: rjw  on: 11/20/16
+  Modified by: gmh234 on: 12/03/16
 
       function: user_reports_dropdown
       purpose: expects an entered Oracle login and
@@ -83,8 +84,8 @@ function user_reports_dropdown($login, $username, $password)
     ?>
 
     <div class="submit">
-      <input type="submit" name="get_existing_report_info" value="Continue" />
       <input type="submit" name="main_menu" value="Go Back" />
+      <input type="submit" name="get_existing_report_info" value="Continue" />
     </div>
 
   </fieldset>
