@@ -58,7 +58,8 @@ function view_reports($login, $password)
 
      <div class="submit">
        <input type="submit" name="admin" value="Go Back" />
-       <input type="submit" name="main_menu" value="Main Menu" />
+       <input type="submit" name="get_existing_report_info" value="Continue" />
+
      </div>
 
     </fieldset>
