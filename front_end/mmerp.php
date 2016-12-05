@@ -619,8 +619,6 @@
         // get second surveyor
         get_second_user($login, $password, $username, $report_id);
 
-        echo "second_user is " . $_SESSION["second_user"] . ".<br>";
-
         // get beach_abbr
         get_beach_abbr($login, $password, $report_id);
 
@@ -812,7 +810,7 @@
            $password = $_SESSION['password'];
            $login = strip_tags($_SESSION['login']);
 
-          report_summary();
+          report_summary($login, $password, $report_id);
        }
 
        /* if username exists in the SESSION array and submit_report exists in the POST
@@ -826,8 +824,11 @@
              $password = $_SESSION['password'];
              $login = strip_tags($_SESSION['login']);
              $summary = $_POST['summary'];
+             $end_time_hrs = $_POST['end_time_hrs'];
+             $end_time_mins = $_POST['end_time_mins'];
+             $total_time = $_POST['total_time'];
 
-             create_report_summary($login, $password, $summary, $report_id);
+             create_report_summary($login, $password, $summary, $report_id, $end_time_hrs, $end_time_mins, $total_time);
          }
 
 
@@ -843,8 +844,7 @@
 
         $_SESSION['next_screen'] = 'validate_user';
     }
-
-  require_once("footer.html"); ?>
+ ?>
 </div>
 </body>
 </html>

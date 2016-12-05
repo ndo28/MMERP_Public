@@ -88,7 +88,7 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
     {
       ?>
       <label for="surveyor_init"> <strong>Which Surveyor initials for <br>
-        Personal Reference Number (PRN)</strong></label>
+        Personal Reference Number (PRN)</strong></label><br>
         <label for="first"><input type="radio" name="surveyor_init" value = "<?= $first_init ?>" checked>
           <?php echo $first_init ?> </label>
           <label for="second"><input type="radio" name="surveyor_init" value = "<?= $second_init ?>">

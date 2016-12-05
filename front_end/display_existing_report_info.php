@@ -52,15 +52,15 @@ function display_existing_report_info($login, $password, $report)
      <?php
      oci_free_statement($query_stmt);
 
-     /*$entries_query = 'SELECT PRN, HSU_USERNAME, SPECIES_NAME, POST_SURVEY_TAG, '.
+     $entries_query = 'SELECT PRN, HSU_USERNAME, SPEC_NAME, POST_SURVEY_TAG, '.
                       'EXISTING_TAGS, PHOTOS, COMMENTS '.
-                      'FROM REPORT_ENTRIES, REPORTS, SPECIES '.
-                      'WHERE REPORTS.REPORT_ID = REPORT_ENTRIES.REPORT_ID '.
-                      'AND REPORT_ENTRIES.SPECIES_ABBR = SPECIES.SPECIES_ABBR '.
-                      'AND REPORTS.REPORT_ID = :REPORT'; */
-     $entries_query = 'SELECT PRN, HSU_USERNAME, SPECIES_ABBR, COMMENTS '.
+                      'FROM REPORT_ENTRIES, SPECIES '.
+                      'WHERE REPORT_ENTRIES.SPECIES_ABBR = SPECIES.SPEC_ABBR '.
+                      'AND REPORT_ID = :REPORT';
+                      
+     /* $entries_query = 'SELECT PRN, HSU_USERNAME, SPECIES_ABBR, COMMENTS '.
                       'FROM REPORT_ENTRIES '.
-                      'WHERE REPORT_ID = :REPORT ';
+                      'WHERE REPORT_ID = :REPORT '; */
 
      $entries_stmt = oci_parse($conn, $entries_query);
 
@@ -78,11 +78,11 @@ function display_existing_report_info($login, $password, $report)
 
        $curr_prn = oci_result($entries_stmt, "PRN");
        $curr_user = oci_result($entries_stmt, "HSU_USERNAME");
-       //$curr_species = oci_result($entries_stmt, "SPECIES_NAME");
-       $curr_species = oci_result($entries_stmt, "SPECIES_ABBR");
-       //$curr_surv_tag = oci_result($entries_stmt, "POST_SURVEY_TAG");
-       // = oci_result($entries_stmt, "EXISTING_TAGS");
-       //$curr_photos = oci_result($entries_stmt, "PHOTOS");
+       $curr_species = oci_result($entries_stmt, "SPEC_NAME");
+       //$curr_species = oci_result($entries_stmt, "SPEC_ABBR");
+       $curr_surv_tag = oci_result($entries_stmt, "POST_SURVEY_TAG");
+       $curr_exist_tag = oci_result($entries_stmt, "EXISTING_TAGS");
+       $curr_photos = oci_result($entries_stmt, "PHOTOS");
        $curr_comments = oci_result($entries_stmt, "COMMENTS");
       ?>
        <label for="entries"> Entry #<?=$entry_count?> </label>
@@ -90,9 +90,9 @@ function display_existing_report_info($login, $password, $report)
           PRN : <?= $curr_prn ?> <br>
           Surveyor : <?= $curr_user ?> <br>
           Species : <?= $curr_species ?> <br>
-          <!--Existing Tags? : <?= $curr_exist_tag ?> <br>
+          Existing Tags? : <?= $curr_exist_tag ?> <br>
           Post Survey Tag? : <?= $curr_surv_tag ?> <br>
-          Photos? : <?= $curr_photos ?> <br> -->
+          Photos? : <?= $curr_photos ?> <br>
           Comments : <?= $curr_comments ?> <br>
        </p>
      <?php

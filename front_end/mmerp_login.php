@@ -30,7 +30,7 @@ Modified by: gmh  on: 12/03/16
          <fieldset>
              <legend> Enter MMERP username/password:
                  </legend>
-
+              <div class="login">
              <label for="name_entry"> Username: </label>
              <input type="text" class="form-control" name="username" id="name_entry"
                     required="required" />
@@ -38,6 +38,7 @@ Modified by: gmh  on: 12/03/16
              <label for="pwd_entry"> Password: </label>
              <input type="password" class="form-control" name="password" id="pwd_entry"
                     required="required" />
+             </div>
                  <input type="submit" class="btn btn-default" value="Log In" />
          </fieldset>
         </div>
