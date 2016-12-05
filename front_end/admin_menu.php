@@ -26,16 +26,17 @@ function admin_console($login, $password)
         $conn = hsu_conn_sess($login, $password);
         ?>
         <h2>Welcome to the admin console</h2>
-          <form class="form-inline" method="post"
-                action="<?= htmlentities($_SERVER['PHP_SELF'],
-                                         ENT_QUOTES) ?>">
-          <div class="form-group">
+        <form class="form-inline" method="post"
+              action="<?= htmlentities($_SERVER['PHP_SELF'],
+                                       ENT_QUOTES) ?>">
+        <div class="form-group">
             <fieldset>
               <div class="chooseItem">
                 <input type="submit" name="main_menu" value="Go Back "/>
                 <input type="submit" name="map_view" value="View Map"/>
                 <input type="submit" name="report_view" value="View All Reports"/>
-                <input type="submit" name="modify_users" value="Add/Edit Users"/>
+                <input type="submit" name="create_new_user" value="Add New User"/>
+                <input type="submit" name="modify_user" value="Edit Existing User"/>
               </div>
             </fieldset>
           <?php
@@ -139,4 +140,4 @@ function admin_console($login, $password)
 
         oci_close($conn);
         }
-?>
+  ?>
