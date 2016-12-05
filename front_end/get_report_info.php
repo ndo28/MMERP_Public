@@ -101,10 +101,10 @@ Modified by: rjw  on: 11/20/16
              </select><br/>
 
              <label for="start_time"> Start time: </label>
-             <div name="start_time">
+             <div name="start_time" class="start_time">
                <input type="number" name="start_time_hrs" value="12" min="1" max="12" required="required"  width="50%"> :
                <input type="number" name="start_time_mins" value="30" min="00" max="59" required="required" width="50%" >
-            </div>
+             </div>
 
              <input class="button" type="submit" name="main_menu" value="Go Back" formnovalidate>
              <input class="button" type="submit" name="new_reports_update" value="Continue"/>
