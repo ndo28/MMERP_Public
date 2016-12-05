@@ -100,7 +100,7 @@ function get_report_entry_info($login, $password, $first_init, $second_init)
 
       <input type="submit" name="report_recap" value="Go Back" formnovalidate/>
       <input type="submit" name="entry_recap" value="Continue" />
-      <input type="submit" name="main_menu" value="Exit to Main Menu" />
+      <input type="submit" name="main_menu" value="Main Menu" formnovalidate/>
 
   </fieldset>
   </div>
