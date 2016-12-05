@@ -28,7 +28,7 @@ function create_new_user_entry($login, $password)
                 <input type="text" name="new_username" id = "new_username" required="required" maxlength="6"><br>
 
               <div class="chooseAction">
-                <input type="submit" name="admin" value="Go Back"/>
+                <input type="submit" name="admin" value="Go Back" formnovalidate/>
                   <input type="submit" name="new_user" value="Continue"/>
               </div>
             </fieldset>

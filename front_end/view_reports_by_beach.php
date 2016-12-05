@@ -65,8 +65,8 @@ function view_reports_by_beach($login, $password, $beach)
         ?>
       </select>
 
-       <input type="submit" name="admin" value="Go Back" />
-       <input type="submit" name="get_existing_report_info" value="Continue" />
+       <input type="submit" name="report_view" value="Go Back" />
+       <input type="submit" name="get_existing_report_info_beach" value="Continue" />
 
     </fieldset>
    </div>

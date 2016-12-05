@@ -39,21 +39,24 @@ function main_menu($is_admin, $is_surveyor)
                 {
                   ?>
                   <input type="submit" name="new" value="New Report"/>
-                  <input type="submit" name="continue" value="Continue"/>
+                  <input type="submit" name="continue" value="Continue Report"/>
+                  <input type="submit" name="logout" value="Logout" />
                 <?php
               }
                 elseif(($is_surveyor == 'N') and ($is_admin == 'Y'))
                 {
                   ?>
                   <input type="submit" name="admin" value="Admin Console"/>
+                  <input type="submit" name="logout" value="Logout" />
                 <?php
               }
               elseif(($is_surveyor == 'Y') and ($is_admin == 'Y'))
                 {
                   ?>
                   <input type="submit" name="new" value="New Report"/>
-                  <input type="submit" name="continue" value="Continue"/>
+                  <input type="submit" name="continue" value="Continue Report"/>
                   <input type="submit" name="admin" value="Admin Console"/>
+                  <input type="submit" name="logout" value="Logout" />
                 <?php
               }
               ?>

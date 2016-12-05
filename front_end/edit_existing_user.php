@@ -51,10 +51,10 @@ function edit_existing_user($login, $password, $existing_username)
     oci_free_statement($user_stmt);
     ?>
     <label for="username">User Name: <?php echo $existing_username; ?></label><br>
+    First Name:
+    <input type="text" name="edit_fname" id = "fname" value="<?php echo $fname; ?>" required="required" ><br>
     Last Name:
       <input type="text" name="edit_lname" id = "lname" value="<?php echo $lname; ?>" required="required" ><br>
-    First Name:
-      <input type="text" name="edit_fname" id = "fname" value="<?php echo $fname; ?>" required="required" ><br>
     Password:
       <input type="text" name="edit_new_password" id = "password" value="<?php echo $password; ?>" required="required" ><br>
     Email:
@@ -78,7 +78,7 @@ function edit_existing_user($login, $password, $existing_username)
     ?>
 
     <div class="submit">
-      <input type="submit" name="modify_user" value="Go Back" />
+      <input type="submit" name="modify_user" value="Go Back" formnovalidate/>
       <input type="submit" name="edit_user_recap" value="Continue" />
       <input type="submit" name="admin" value="Return to Admin Console" />
     </div>

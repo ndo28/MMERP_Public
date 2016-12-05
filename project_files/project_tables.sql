@@ -97,7 +97,7 @@ Drop table Report_entries cascade constraints;
 create table Report_entries
 (PRN				                    varchar2(31) not null,
  hsu_username                   varchar2(7) not null,
- report_id                      number(5,0) not null,
+ REPORT_ID                      number(5,0) not null,
  species_abbr			              char(4) not null,
  LATITUDE                       decimal(9,6), --Need to look at Maps API return format
  LONGITUDE                      decimal(9,6), --Need to look at Maps API return format
@@ -107,7 +107,7 @@ create table Report_entries
  comments                       varchar2(256),
  photos_uploaded                varchar2(256), -- should this be a link to a photo album?
  no_of_animals                  number(2,0) not null,
- primary key (PRN),
+ primary key (PRN, REPORT_ID),
  foreign key (species_abbr) references Species,
  foreign key (hsu_username) references Users,
  foreign key (report_id) references Reports

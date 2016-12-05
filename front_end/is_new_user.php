@@ -29,7 +29,6 @@ function is_new_user($login, $password, $new_username)
          oci_fetch($user_stmt);
 
          $user_count = oci_result($user_stmt, "COUNT(*)");
-         echo "user_count is " . $user_count . ".<br>";
          //echo "user_password is " . $user_password . ".<br>";
 
 

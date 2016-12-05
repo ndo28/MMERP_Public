@@ -78,6 +78,9 @@
         require_once ('edit_existing_user_recap.php');
         require_once ('edit_new_user.php');
         require_once('is_new_user.php');
+        require_once('display_existing_report_info_user.php');
+        require_once('display_existing_report_info_species.php');
+        require_once('display_existing_report_info_beach.php');
 
     ?>
 
@@ -111,7 +114,8 @@
     /* if there is currently no username or next_screen variables in
           the SESSION array, then display login module */
     if((! array_key_exists("username", $_POST)) and
-        (! array_key_exists("next_screen", $_SESSION)))
+        (! array_key_exists("next_screen", $_SESSION) or
+         (array_key_exists("logout",$_POST))))
     {
         db_login();
         $_SESSION['next_screen'] = 'validate_user';
@@ -151,9 +155,6 @@
             $is_admin = strip_tags($_SESSION['is_admin']);
             $user_password = $_SESSION['user_password'];
             $password = $_SESSION["password"];
-            echo "session->is_admin is " . $_SESSION["is_admin"] . ".<br>";
-            echo "session->is_surveyor is " . $_SESSION["is_surveyor"] . ".<br>";
-            //$user_password = $_SESSION['user_password'];
             main_menu($is_admin, $is_surveyor);
         }
         else
@@ -328,6 +329,22 @@
 
          view_reports($login, $password);
       }
+      /* if username exists in the SESSION array and get_existing_report_info exists
+            in the POST array and the user is an admin, then store username and
+            password as PHP variables and display the admin existing report info
+            module */
+      elseif (array_key_exists("username", $_SESSION)
+              and (array_key_exists("get_existing_report_info", $_POST))
+              and ($_SESSION["is_admin"] == 'Y'))
+      {
+          $username = strip_tags($_SESSION['username']);
+          $password = $_SESSION['password'];
+          $login = strip_tags($_SESSION['login']);
+          $report = strip_tags($_POST['report_id']);
+
+          display_existing_report_info($login, $password, $report);
+
+       }
       /* if username exists in the SESSION array and report_view_by_user exists
             in the POST array and the user is an admin, then store username and
             password as PHP variables and display the admin report by user
@@ -339,11 +356,35 @@
           $username = strip_tags($_SESSION['username']);
           $password = $_SESSION['password'];
           $login = strip_tags($_SESSION['login']);
-          $surveyor = strip_tags($_POST['hsu_username']);
-          $_SESSION["surveyor"] = $surveyor;
+
+          if(array_key_exists("hsu_username", $_POST))
+          {
+            $surveyor = strip_tags($_POST['hsu_username']);
+            $_SESSION["surveyor"] = $surveyor;
+          }
+          else
+          {
+            $surveyor = strip_tags($_SESSION['surveyor']);
+          }
 
           view_reports_by_user($login, $password, $surveyor);
        }
+       /* if username exists in the SESSION array and get_existing_report_info_user exists
+             in the POST array and the user is an admin, then store username and
+             password as PHP variables and display the admin existing report info
+             module */
+       elseif (array_key_exists("username", $_SESSION)
+               and (array_key_exists("get_existing_report_info_user", $_POST))
+               and ($_SESSION["is_admin"] == 'Y'))
+       {
+           $username = strip_tags($_SESSION['username']);
+           $password = $_SESSION['password'];
+           $login = strip_tags($_SESSION['login']);
+           $report = strip_tags($_POST['report_id']);
+
+           display_existing_report_info_user($login, $password, $report);
+
+        }
        /* if username exists in the SESSION array and report_view_by_beach exists
              in the POST array and the user is an admin, then store username and
              password as PHP variables and display the admin report by beach
@@ -355,12 +396,35 @@
            $username = strip_tags($_SESSION['username']);
            $password = $_SESSION['password'];
            $login = strip_tags($_SESSION['login']);
-           $beach = strip_tags($_POST['beach_choice']);
-           $_SESSION["beach_choice"] = $beach;
+
+           if(array_key_exists("hsu_username", $_POST))
+           {
+             $beach = strip_tags($_POST['beach_choice']);
+             $_SESSION["beach_choice"] = $beach;
+           }
+           else
+           {
+             $beach = strip_tags($_SESSION['beach_choice']);
+           }
 
            view_reports_by_beach($login, $password, $beach);
         }
+        /* if username exists in the SESSION array and get_existing_report_info_beach exists
+              in the POST array and the user is an admin, then store username and
+              password as PHP variables and display the admin existing report info
+              module */
+        elseif (array_key_exists("username", $_SESSION)
+                and (array_key_exists("get_existing_report_info_beach", $_POST))
+                and ($_SESSION["is_admin"] == 'Y'))
+        {
+            $username = strip_tags($_SESSION['username']);
+            $password = $_SESSION['password'];
+            $login = strip_tags($_SESSION['login']);
+            $report = strip_tags($_POST['report_id']);
 
+            display_existing_report_info_beach($login, $password, $report);
+
+         }
         /* if username exists in the SESSION array and report_view_by_species exists
               in the POST array and the user is an admin, then store username and
               password as PHP variables and display the admin report by species
@@ -372,27 +436,35 @@
             $username = strip_tags($_SESSION['username']);
             $password = $_SESSION['password'];
             $login = strip_tags($_SESSION['login']);
-            $species_choice = strip_tags($_POST['species_choice']);
-            $_SESSION["species_choice"] = $species_choice;
+
+            if(array_key_exists("hsu_username", $_POST))
+            {
+              $species_choice = strip_tags($_POST['species_choice']);
+              $_SESSION["species_choice"] = $species_choice;
+            }
+            else
+            {
+              $species_choice = strip_tags($_SESSION['species_choice']);
+            }
 
             view_reports_by_species($login, $password, $species_choice);
          }
-       /* if username exists in the SESSION array and get_existing_report_info exists
-             in the POST array and the user is an admin, then store username and
-             password as PHP variables and display the admin existing report info
-             module */
-       elseif (array_key_exists("username", $_SESSION)
-               and (array_key_exists("get_existing_report_info", $_POST))
-               and ($_SESSION["is_admin"] == 'Y'))
-       {
-           $username = strip_tags($_SESSION['username']);
-           $password = $_SESSION['password'];
-           $login = strip_tags($_SESSION['login']);
-           $report = strip_tags($_POST['report_id']);
+         /* if username exists in the SESSION array and get_existing_report_info_species exists
+               in the POST array and the user is an admin, then store username and
+               password as PHP variables and display the admin existing report info
+               module */
+         elseif (array_key_exists("username", $_SESSION)
+                 and (array_key_exists("get_existing_report_info_species", $_POST))
+                 and ($_SESSION["is_admin"] == 'Y'))
+         {
+             $username = strip_tags($_SESSION['username']);
+             $password = $_SESSION['password'];
+             $login = strip_tags($_SESSION['login']);
+             $report = strip_tags($_POST['report_id']);
 
-           display_existing_report_info($login, $password, $report);
+             display_existing_report_info_species($login, $password, $report);
 
-        }
+          }
 
     /* if username exists in the SESSION array and new exists in the POST array,
         then store username and password as PHP variables and begin a new report:

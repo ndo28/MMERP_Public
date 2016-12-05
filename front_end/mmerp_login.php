@@ -24,6 +24,9 @@ Modified by: gmh  on: 12/03/16
               action="<?= htmlentities($_SERVER['PHP_SELF'],
                                        ENT_QUOTES) ?>">
         <div class="form-group">
+
+          <p> Chrome is not supported, please use Firefox. </p>
+
          <fieldset>
              <legend> Enter MMERP username/password:
                  </legend>
@@ -35,7 +38,7 @@ Modified by: gmh  on: 12/03/16
              <label for="pwd_entry"> Password: </label>
              <input type="password" class="form-control" name="password" id="pwd_entry"
                     required="required" />
-                 <input type="submit" class="btn btn-default" value="log in" />
+                 <input type="submit" class="btn btn-default" value="Log In" />
          </fieldset>
         </div>
         </form>

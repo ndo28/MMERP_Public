@@ -9,7 +9,7 @@ Abdul Shaikh (ats234)
 
 Created by Rebecca on 11/25/16
 
-Modified by:   on:
+Modified by: Guthrie, Rebecca  on: 12/04/16
 
 
       function:  create_report_entry
@@ -55,9 +55,8 @@ Modified by:   on:
           <form class="form-inline" action="<?= htmlentities($_SERVER['PHP_SELF'],ENT_QUOTES) ?>" method="post">
           <div class="form-group">
           <fieldset>
-            <legend> Would you like to submit photos of this finding? </legend>
+            <legend> Report submission successful </legend>
           <div class="submit">
-            <input type="submit" name="add_photos" value="Add Photos" />
             <input type="submit" name="report_recap" value="Finish Entry" />
             <input type="submit" name="main_menu" value="Exit to Main Menu" />
           </div>

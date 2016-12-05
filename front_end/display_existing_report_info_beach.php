@@ -5,7 +5,6 @@
 
 
   modified : ndo28 - 11/26/16
-             gmh234, rjw125 - 12/04/16
 
       function: display_existing_report_info
       purpose: expects an Oracle login and password and report id, returns nothing
@@ -17,7 +16,7 @@
 
 
 <?php
-function display_existing_report_info($login, $password, $report)
+function display_existing_report_info_beach($login, $password, $report)
 {
     // try to connect to Oracle student database
 
@@ -101,7 +100,7 @@ function display_existing_report_info($login, $password, $report)
      oci_free_statement($entries_stmt);
      ?>
      </fieldset>
-       <input type="submit" name="report_view" value="Go Back" />
+       <input type="submit" name="report_view_by_beach" value="Go Back" />
        <input type="submit" name="main_menu" value="Main Menu" />
     </fieldset>
    </div>

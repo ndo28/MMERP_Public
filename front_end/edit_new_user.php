@@ -29,10 +29,10 @@ function edit_new_user($login, $password, $new_username)
       <legend> All fields are required.</legend>
 
     <label for="username">User Name: <?php echo $new_username; ?></label><br>
+    First Name:
+    <input type="text" name="edit_fname" id = "fname" required="required" ><br>
     Last Name:
       <input type="text" name="edit_lname" id = "lname" required="required" ><br>
-    First Name:
-      <input type="text" name="edit_fname" id = "fname" required="required" ><br>
     Password:
       <input type="text" name="edit_new_password" id = "password" required="required" ><br>
     Email:
@@ -48,7 +48,7 @@ function edit_new_user($login, $password, $new_username)
     <input type="radio" name="edit_surveyor" value="Y"/> Yes<br>
 
     <div class="submit">
-      <input type="submit" name="create_new_user" value="Go Back" />
+      <input type="submit" name="create_new_user" value="Go Back" formnovalidate/>
       <input type="submit" name="edit_user_recap" value="Continue" />
       <input type="submit" name="admin" value="Return to Admin Console" />
     </div>

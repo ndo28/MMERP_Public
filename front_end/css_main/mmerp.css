@@ -3,3 +3,7 @@ body {
   /*background-image: url("grey-seal-bg.jpg"); */
   background-size: cover;
 }
+fieldset
+{
+  box-shadow:none;
+}
