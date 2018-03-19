@@ -6,8 +6,8 @@ The goal of this project is to provide a [mobile-first web application](http://n
 
 ## Live Instance
 
-The application is currently available, but is being served by a temporary, student project server and may become unavailable at any time. \n
-Please use the following URL, username, and password for any testing in the live instance. \n
+The application is currently available, but is being served by a temporary, student project server and may become unavailable at any time.
+Please use the following URL, username, and password for any testing in the live instance.
 **URL**: [http://nrs-projects.humboldt.edu/~mmerp/mmerp.php](http://nrs-projects.humboldt.edu/~mmerp/mmerp.php)
 * **Username**: ndo28
 * **Password**: root
@@ -23,7 +23,7 @@ Please use the following URL, username, and password for any testing in the live
 
 ## Browser Support
 
-The MMERP App functions cross-browser, but is specifically tailored for use with [Firefox](https://www.mozilla.org/en-US/firefox/new/?utm_medium=referral&utm_source=firefox-com). \n
+The MMERP App functions cross-browser, but is specifically tailored for use with [Firefox](https://www.mozilla.org/en-US/firefox/new/?utm_medium=referral&utm_source=firefox-com).
 Browser capture of **geolocation** is only supported by Firefox.  
 
 ## Authors
