@@ -4,8 +4,10 @@ The [Marine Mammal Educational Research Program (MMERP)](https://sites.google.co
 It is part of the [West Coast Marine Mammal Stranding Network](http://www.westcoast.fisheries.noaa.gov/protected_species/marine_mammals/stranding_network.html), and therefore must meet specific reporting requirements.
 The goal of this project is to provide a [mobile-first web application](http://nrs-projects.humboldt.edu/~mmerp/mmerp.php) to replace the existing pen-and-paper form used by MMERP surveyors.
 
-## Using/Testing
+## Live Instance
 
+The application is currently available, but is being served by a temporary, student project server and may become unavailable at any time. \n
+Please use the following URL, username, and password for any testing in the live instance. \n
 **URL**: [http://nrs-projects.humboldt.edu/~mmerp/mmerp.php](http://nrs-projects.humboldt.edu/~mmerp/mmerp.php)
 * **Username**: ndo28
 * **Password**: root
@@ -21,7 +23,7 @@ The goal of this project is to provide a [mobile-first web application](http://n
 
 ## Browser Support
 
-The MMERP App functions cross-browser, but is specifically tailored for use with [Firefox](https://www.mozilla.org/en-US/firefox/new/?utm_medium=referral&utm_source=firefox-com).
+The MMERP App functions cross-browser, but is specifically tailored for use with [Firefox](https://www.mozilla.org/en-US/firefox/new/?utm_medium=referral&utm_source=firefox-com). \n
 Browser capture of **geolocation** is only supported by Firefox.  
 
 ## Authors
