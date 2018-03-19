@@ -2,11 +2,11 @@
 
 The [Marine Mammal Educational Research Program (MMERP)](https://sites.google.com/site/hsummerp/home) is Humboldt State University's internship program facilitating shore surveys of stranded marine mammals.
 It is part of the [West Coast Marine Mammal Stranding Network](http://www.westcoast.fisheries.noaa.gov/protected_species/marine_mammals/stranding_network.html), and therefore must meet specific reporting requirements.
-The goal of this project is to provide a [mobile-first web application](https://nrs-projects.humboldt.edu/~mmerp/mmerp.php) to replace the existing pen-and-paper form used by MMERP surveyors.
+The goal of this project is to provide a [mobile-first web application](http://nrs-projects.humboldt.edu/~mmerp/mmerp.php) to replace the existing pen-and-paper form used by MMERP surveyors.
 
 ## Using/Testing
 
-**URL**: [https://github.com/ndo28/MMERP_Public](https://github.com/ndo28/MMERP_Public)
+**URL**: [http://nrs-projects.humboldt.edu/~mmerp/mmerp.php](http://nrs-projects.humboldt.edu/~mmerp/mmerp.php)
 **Username**: ndo28
 **Password**: root
 
