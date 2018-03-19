@@ -16,7 +16,7 @@ Please use the following URL, username, and password for any testing in the live
 ## Built With
 
 * Oracle SQL - DBMS
-* PHP - Server-side scripting (Database calls)
+* PHP - Server-side scripting
 * JS - Client-side scripting
 * Bootstrap CSS
 * Google Maps API
