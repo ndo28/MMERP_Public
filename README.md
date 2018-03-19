@@ -8,9 +8,9 @@ The goal of this project is to provide a [mobile-first web application](http://n
 
 The application is currently available, but is being served by a temporary, student project server and may become unavailable at any time. <br />
 Please use the following URL, username, and password for any testing in the live instance. <br />
-**URL**: [http://nrs-projects.humboldt.edu/~mmerp/mmerp.php](http://nrs-projects.humboldt.edu/~mmerp/mmerp.php) <br />
-* **Username**: ndo28 <br />
-* **Password**: root
+**URL**: [http://nrs-projects.humboldt.edu/~mmerp/mmerp.php](http://nrs-projects.humboldt.edu/~mmerp/mmerp.php)
+> **Username**: ndo28 <br />
+> **Password**: root
 
 
 ## Built With
