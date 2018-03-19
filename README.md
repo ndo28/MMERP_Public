@@ -7,8 +7,8 @@ The goal of this project is to provide a [mobile-first web application](http://n
 ## Using/Testing
 
 **URL**: [http://nrs-projects.humboldt.edu/~mmerp/mmerp.php](http://nrs-projects.humboldt.edu/~mmerp/mmerp.php)
-**Username**: ndo28
-**Password**: root
+* **Username**: ndo28
+* **Password**: root
 
 
 ## Built With
