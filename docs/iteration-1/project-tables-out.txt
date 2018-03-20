@@ -1,0 +1,45 @@
+
+Sequence dropped.
+
+
+Commit complete.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Sequence created.
+

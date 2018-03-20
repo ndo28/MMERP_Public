@@ -1,0 +1,27 @@
+We are changing the deadline from 11:59pm on Friday Dec 11 to 9:00am on Tuesday, Dec 11 (presentation time).
+
+Iteration 3 user stories:
+
+  Admin_add_users
+
+  Admin_remove_user
+
+  Admin_edit_user
+
+  Surveyor_start_time
+
+  Surveyor_end_time
+
+  Surveyor_total_time
+
+  Surveryor_photo
+
+  Admin_view_by_species
+
+
+-Client feedback from iteration 2
+ can be found in client-feedback-2.txt
+
+-Confirmation of client's satisfaction
+ with our iteration 3 plan can be found
+ in client-conf-3.txt.
