@@ -1,0 +1,32 @@
+Our second iteration involved creating web interface for the application,
+and implementing the Google Maps API to pull the user's GPS location, and log
+findings on the map.
+Our unit testing went as follows for each of the user stories:
+
+  * Surveyor_coordinates: to unit test, we submitted several reports
+                          at multiple locations, and then checked to make sure they
+                          were added to the map appropriately. We also checked on Google
+                          Maps to verify the uploaded GPS coordinates are accurate.
+
+  * Surveyor_mammal: to unit test, we submitted various reports containing different mammal species.
+                      We then viewed the submitted reports in the database to verify the reports
+                      were properly submitted.
+
+  * Surveryor_beach: to unit test, we submitted various reports containing different beach names.
+                      We then viewed the submitted reports in the database to verify the reports
+                      were properly submitted.
+
+  * System_PRN: to unit test, we submitted various reports containing a variety of information.
+                  The tag information is then automatically generated. We then checked the database to
+                  ensure the validity of the information submitted is accurate.
+
+  * Surveyor_comments: to unit test, we submitted various reports with different comments. We then
+                       checked the database to verify the comments had been accurately submitted.
+
+  *Coordinator_reports: Coordinator also has ability to create beach walk reports. So to unit test,
+                        we submitted reports and then verified their validity in the database.
+
+
+
+  Acceptance testing will include submitting various reports from the web interface, and
+ verifying their validity in the database.

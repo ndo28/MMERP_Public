@@ -1,0 +1,61 @@
+body {
+  background-color: lightblue;
+  /*background-image: url("grey-seal-bg.jpg"); */
+  background-size: cover;
+}
+fieldset
+{
+  box-shadow:none;
+}
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px)
+{
+  .container-fluid{
+    text-align: center;
+  }
+  h1{
+    margin-top: .1em;
+  }
+  .container-fluid h2
+  {
+    font-size: 1em;
+    margin-top: 1em;
+  }
+  input[type="submit"]
+  {
+    width:80%;
+    font-size: 2em;
+    padding:.5em;
+    background-color: white;
+    border: none;
+    margin:.2em;
+  }
+  label{
+    margin-top:.3em;
+    font-weight:unset;
+    font-size: 1.3em;
+  }
+  input[type="text"],input[type="password"]
+  {
+    width:88%;
+    height: 3em;
+    margin-left:1%;
+  }
+  legend
+  {
+    margin-bottom: .5em;
+    border:none;
+  }
+  select{
+    height: 2em;
+    width:80%;
+  }
+  .login
+  {
+    margin-left: 10%;
+  }
+  strong{
+    font-size:1em;
+  }
+}
