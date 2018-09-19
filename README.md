@@ -4,14 +4,6 @@ The [Marine Mammal Educational Research Program (MMERP)](https://sites.google.co
 It is part of the [West Coast Marine Mammal Stranding Network](http://www.westcoast.fisheries.noaa.gov/protected_species/marine_mammals/stranding_network.html), and therefore must meet specific reporting requirements. <br />
 The goal of this project is to provide a [mobile-first web application](http://nrs-projects.humboldt.edu/~mmerp/mmerp.php) to replace the existing pen-and-paper form used by MMERP surveyors.
 
-## Live Instance
-
-The application is currently available, but is being served by a temporary, student project server and may become unavailable at any time. <br />
-Please use the following URL, username, and password for any testing in the live instance.
-> **URL**: [http://nrs-projects.humboldt.edu/~mmerp/mmerp.php](http://nrs-projects.humboldt.edu/~mmerp/mmerp.php) <br />
-> **Username**: ndo28 <br />
-> **Password**: root
-
 
 ## Built With
 
